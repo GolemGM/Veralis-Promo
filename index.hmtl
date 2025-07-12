@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velaris | Nový začátek civilizace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <h1 class="logo">VELARIS</h1>
+      <p class="cta">🌟 Přidej se k novému začátku lidstva – zaregistruj se</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="categories">
+      <div class="category">
+        <h2>🔍 Najdi</h2>
+        <p>Expedice, těžba, vozidla, technologie</p>
+      </div>
+      <div class="category">
+        <h2>⚙️ Vyrob</h2>
+        <p>Strom výrobků, škálování tieru, modifikační mřížka</p>
+      </div>
+      <div class="category">
+        <h2>🏗️ Postav</h2>
+        <p>Nový domov civilizace, nomádskou stezku, alianční korporát</p>
+      </div>
+    </section>
+
+    <section class="features-slider">
+      <div class="slider">
+        <p id="slider-text">🌌 Vstup do světa, kde přežití závisí na tvém rozhodování</p>
+      </div>
+    </section>
+
+    <section class="description">
+      <h2>🌍 O HŘE</h2>
+      <p>
+        Velaris je sci-fi strategie o budování civilizace na neznámé planetě. Průzkum, těžba, výroba a kolonizace – to jsou klíče k přežití.
+      </p>
+      <p>
+        Od ruční těžby a nouzového přežívání se posouváš k automatizaci, rozvoji a spolupráci s ostatními hráči. 
+        Vše začíná s prototypem lodi a minimem zásob, ale rozhodnutí je na tobě: přistaneš jako průzkumník nebo budovatel nové civilizace?
+      </p>
+    </section>
+
+    <section class="steam-style">
+      <h2>🎮 Informace o hře</h2>
+      <p>
+        Velaris je hra o přežití, stavbě a automatizaci ve vzdáleném koutě vesmíru.
+        Hráči začínají v prototypu kolonizační lodi, který musí přestavět na základnu. Těží suroviny, zpracovávají je, vytvářejí komponenty, staví infrastrukturu a rozhodují o dalším směru – izolace nebo spolupráce.
+      </p>
+      <p>
+        Společné výzvy ("world challenges") přináší nový typ MMO prožitku – sdílené stavby měst, otevřený výzkum a ekonomické cykly. 
+        Technologie vychází ze zbytků ztracené civilizace i lidského důvtipu – obojí potřebuješ pochopit, abys uspěl.
+      </p>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <a href="#">O hře</a> |
+        <a href="#">Registrace</a> |
+        <a href="#">Přihlášení</a> |
+        <a href="#">Podpora</a>
+        <p class="small">© 2025 Projekt Velaris</p>
+      </div>
+    </footer>
+
+    <script>
+      // Swipe motivace slider
+      const lines = [
+        "🌌 Vstup do světa, kde přežití závisí na tvém rozhodování",
+        "🛰️ Postav vlastní základnu na ruinách zaniklé civilizace",
+        "🔬 Prozkoumej tajemství technologie starší než lidstvo samo",
+        "⚔️ Zvol si cestu – izolace, obchod, nebo aliance",
+        "🚀 Od prototypu k městu – jen díky tvému umu a volbám"
+      ];
+      let index = 0;
+      setInterval(() => {
+        document.getElementById("slider-text").textContent = lines[index];
+        index = (index + 1) % lines.length;
+      }, 4000);
+    </script>
+</body>
+</html>
