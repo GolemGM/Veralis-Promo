@@ -175,3 +175,10 @@ main {
   margin: 30px auto 0 auto; /* zmenšení mezery pod header */
   padding: 2rem;
 }
+.call-to-arm {
+  color: #f8c471;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  text-align: center;
+}
