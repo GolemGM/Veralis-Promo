@@ -111,11 +111,11 @@
   langList.querySelectorAll('li').forEach(li => {
     li.addEventListener('click', () => {
       const selectedLang = li.getAttribute('data-lang');
-      if (selectedLang === 'en') {
-        window.location.href = 'en/index.html';
-      } else if (selectedLang === 'cs') {
-        window.location.href = '../index.html'; // ../ pokud jsi v en/
-      }
+       if (selectedLang === 'en') {
+       window.location.href = 'en/index.html';
+       } else if (selectedLang === 'cs') {
+       window.location.href = './index.html'; // místo ../index.html
+       }
     });
   });
 
