@@ -9,9 +9,17 @@
 <body>
 <header>
 <div class="top-bar">
-  <div class="logo">Velaris</div>
+  <div class="top-bar-left">
+    <div class="logo">Velaris</div>
+  </div>
   <div class="call-to-arm">Přidej se k budování nového světa</div>
-  <button class="register-btn">Registrace</button>
+  <div class="top-bar-right">
+    <select id="languageSwitcher">
+      <option value="cs" selected>🇨🇿</option>
+      <option value="en">🇬🇧</option>
+    </select>
+    <button class="register-btn">Registrace</button>
+  </div>
 </div>
 </header>
 
@@ -82,5 +90,15 @@
       index = (index + 1) % lines.length;
     }, 3000);
   </script>
+  <script>
+  document.getElementById("languageSwitcher").addEventListener("change", function () {
+    const lang = this.value;
+    if (lang === "en") {
+      window.location.href = "en/index.html";
+    } else {
+      window.location.href = "index.html";
+    }
+  });
+</script>
 </body>
 </html>
