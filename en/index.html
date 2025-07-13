@@ -127,4 +127,16 @@
     }
   });
 </script>  
-</body>
+  <script>
+    (() => {
+  const path = window.location.pathname;
+  if (path.includes('/en/')) {
+    langBtn.querySelector('img').src = '../images/flags/gb.svg';
+    langBtn.querySelector('.lang-text').textContent = 'EN';
+  } else {
+    langBtn.querySelector('img').src = '../images/flags/cz.svg';
+    langBtn.querySelector('.lang-text').textContent = 'CZ';
+  }
+})();
+  </script>
+  </body>
