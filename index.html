@@ -108,5 +108,33 @@
     }
   });
 </script>
+  <script>
+  const langBtn = document.getElementById('langBtn');
+  const langList = document.getElementById('langList');
+
+  // Přepínání viditelnosti menu
+  langBtn.addEventListener('click', () => {
+    langList.classList.toggle('visible');
+  });
+
+  // Přepnutí jazyka podle výběru
+  langList.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', () => {
+      const selectedLang = li.getAttribute('data-lang');
+      if (selectedLang === 'en') {
+        window.location.href = 'en/index.html';
+      } else if (selectedLang === 'cs') {
+        window.location.href = '../index.html'; // ../ pokud jsi v en/
+      }
+    });
+  });
+
+  // Kliknutí mimo menu skryje výběr
+  document.addEventListener('click', (e) => {
+    if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
+      langList.classList.remove('visible');
+    }
+  });
+</script>
 </body>
 </html>
