@@ -189,6 +189,7 @@ footer {
   display: none;
 }
 
+}
 #langList {
   position: absolute;
   top: 100%;
@@ -200,9 +201,10 @@ footer {
   padding: 5px 0;
   margin: 0;
   z-index: 999;
-  min-width: 120px;
+  min-width: unset;
   transform: translateX(0);
   left: 0;
+  width: 100%;
 }
 
 #langList li {
