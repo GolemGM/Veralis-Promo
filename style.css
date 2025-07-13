@@ -27,13 +27,18 @@ header {
   padding: 10px 20px;
   position: relative;
   display: flex;
-  flex-direction: row;           /* změna: řádkové uspořádání */
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   gap: 6px;
   background: transparent;
   border-bottom: none;
   height: auto;
+}
+.top-bar-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .top-bar-left,
