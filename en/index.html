@@ -87,29 +87,30 @@
     <p class="small">© 2025 Project Velaris</p>
   </div>
 </footer>
-
-<script>
-  const lines = [
-    "🌌 Enter a world where survival depends on your choices",
-    "🛰️ Build your base from the ruins of the last prosperity",
-    "🔬 Uncover the secrets of the human subconscious",
-    "⚔️ Choose your path – isolation, trade, or alliance",
-    "🚀 From prototype to city – only through your skill and choices"
-  ];
-  let index = 0;
-  setInterval(() => {
-    document.getElementById("slider-text").textContent = lines[index];
-    index = (index + 1) % lines.length;
-  }, 3000);
-</script>
+  
 <script>
   const langBtn = document.getElementById('langBtn');
   const langList = document.getElementById('langList');
 
+  // Inicializace aktuálního jazyka podle URL
+  (() => {
+    const path = window.location.pathname;
+    if (path.includes('/en/')) {
+      langBtn.querySelector('img').src = '../images/flags/gb.svg';
+      langBtn.querySelector('.lang-text').textContent = 'EN';
+    } else {
+      langBtn.querySelector('img').src = '../images/flags/cz.svg';
+      langBtn.querySelector('.lang-text').textContent = 'CZ';
+    }
+    console.log("Aktuální jazyk:", langBtn.querySelector('.lang-text').textContent);
+  })();
+
+  // Otevření / zavření dropdown menu
   langBtn.addEventListener('click', () => {
     langList.classList.toggle('visible');
   });
 
+  // Výběr jazyka - přesměrování
   langList.querySelectorAll('li').forEach(li => {
     li.addEventListener('click', () => {
       const selectedLang = li.getAttribute('data-lang');
@@ -121,22 +122,11 @@
     });
   });
 
+  // Kliknutí mimo menu zavře dropdown
   document.addEventListener('click', (e) => {
     if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
       langList.classList.remove('visible');
     }
   });
-</script>  
-  <script>
-    (() => {
-  const path = window.location.pathname;
-  if (path.includes('/en/')) {
-    langBtn.querySelector('img').src = '../images/flags/gb.svg';
-    langBtn.querySelector('.lang-text').textContent = 'EN';
-  } else {
-    langBtn.querySelector('img').src = '../images/flags/cz.svg';
-    langBtn.querySelector('.lang-text').textContent = 'CZ';
-  }
-})();
-  </script>
+</script>
   </body>
