@@ -31,4 +31,227 @@ header {
   align-items: center;
   gap: 6px;
   background: transparent;
-  border-b
+  border-bottom: none;
+  height: auto;
+}
+.top-bar-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar-left,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Logo vlevo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #66d9ef;
+  align-self: flex-start; /* logo vlevo v rámci sloupcového flexboxu */
+}
+
+/* Call to arm text */
+.call-to-arm {
+  color: #f8c471;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+  text-align: center;
+  align-self: center;
+}
+
+/* Tlačítko registrace */
+.register-btn {
+  position: static; /* odstraněno absolutní pozicování */
+  background-color: #f8c471;
+  color: #0e0e1a;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  align-self: center; /* centrování tlačítka */
+}
+
+/* Odstup hlavního obsahu pod hlavičkou */
+main {
+  max-width: 1080px;
+  margin: 30px auto 0 auto; /* zmenšená mezera */
+  padding: 2rem;
+}
+
+/* Sekce kategorií */
+.categories {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+  margin-top: 1rem;
+  background-color: #161a2b;
+}
+.category {
+  max-width: 25%;
+  text-align: center;
+}
+.category h2 {
+  font-size: 1.5rem;
+  color: #85c1e9;
+  margin-bottom: 0.5rem;
+}
+.category p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Motivační slider */
+.features-slider {
+  padding: 2rem;
+  background: #1b1f33;
+  text-align: center;
+}
+.slider p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+
+/* Popis hry */
+.description,
+.steam-style {
+  padding: 2rem 0;
+}
+.description h2,
+.steam-style h2 {
+  font-size: 1.4rem;
+  color: #74b9ff;
+  margin-bottom: 1rem;
+}
+.description p,
+.steam-style p {
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+/* Footer */
+footer {
+  padding: 1rem;
+  background-color: #111;
+  text-align: center;
+}
+.footer-content a {
+  color: #7ed6df;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+.footer-content a:hover {
+  text-decoration: underline;
+}
+.small {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Responsivita */
+@media (max-width: 768px) {
+  .categories {
+    flex-direction: column;
+    align-items: center;
+  }
+  .category {
+    max-width: 90%;
+    margin-bottom: 1rem;
+  }
+}
+.language-switcher {
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #1a1a2e;
+  color: #fff;
+  position: relative;
+  display: inline-block; /* přidáno */
+}
+.flag-icon {
+  width: 24px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.hidden {
+  display: none;
+}
+
+#langList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 4px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  z-index: 999;
+  min-width: unset;
+  transform: translateX(0);
+  left: 0;
+  width: 100%;
+}
+
+#langList li {
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+#langList li:hover {
+  background-color: #333;
+}
+
+.visible {
+  display: block;
+}
+#langBtn {
+  background-color: #1a1a2e;  /* tmavé pozadí */
+  border: 1px solid #444;     /* jednoduchý tmavý rámeček */
+  color: #fff;                /* světlý text */
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  /* Odstraníme jakékoliv vnitřní rámečky nebo stíny */
+  box-shadow: none;
+  outline: none;
+}
+
+#langBtn img.flag-icon {
+  /* Žádné rámečky, bez filtrů */
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+#langBtn span.lang-text {
+  /* Zajistí, že text nebude mít okraje nebo rámečky */
+  margin: 0;
+  padding: 0;
+}
