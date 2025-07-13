@@ -170,13 +170,14 @@ footer {
     margin-bottom: 1rem;
   }
 }
-#languageSwitcher {
+.language-switcher {
   padding: 5px;
   font-size: 1rem;
   border-radius: 4px;
   border: 1px solid #444;
   background-color: #1a1a2e;
   color: #fff;
+  position: relative;
 }
 .flag-icon {
   width: 24px;
@@ -191,7 +192,7 @@ footer {
 #langList {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 0;
   background-color: #1a1a2e;
   border: 1px solid #444;
   border-radius: 4px;
@@ -200,6 +201,7 @@ footer {
   margin: 0;
   z-index: 999;
   min-width: 120px;
+  transform: translateX(calc(100% - 30px));
 }
 
 #langList li {
