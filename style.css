@@ -188,8 +188,6 @@ footer {
 .hidden {
   display: none;
 }
-
-}
 #langList {
   position: absolute;
   top: 100%;
@@ -254,4 +252,14 @@ footer {
   /* Zajistí, že text nebude mít okraje nebo rámečky */
   margin: 0;
   padding: 0;
+}
+.language-switcher {
+  position: relative;
+  display: inline-block;  /* přidat, aby šířka odpovídala tlačítku */
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #1a1a2e;
+  color: #fff;
 }
