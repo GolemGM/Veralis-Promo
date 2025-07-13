@@ -178,3 +178,9 @@ footer {
   background-color: #1a1a2e;
   color: #fff;
 }
+.flag-icon {
+  width: 24px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 6px;
+}
