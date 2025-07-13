@@ -225,7 +225,7 @@ footer {
 }
 #langBtn {
   background-color: #1a1a2e;  /* tmavé pozadí */
-  border: 1px solid #444;     /* jednoduchý tmavý rámeček */
+  border: none;
   color: #fff;                /* světlý text */
   padding: 5px 10px;
   border-radius: 4px;
