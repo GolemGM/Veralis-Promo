@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velaris | A New Beginning for Civilization</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="logo">Velaris</div>
+    </div>
+    <div class="call-to-arm">Join the creation of a new world</div>
+    <div class="top-bar-right">
+      <select id="languageSwitcher">
+        <option value="cs">🇨🇿</option>
+        <option value="en" selected>🇬🇧</option>
+      </select>
+      <button class="register-btn">Register</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="categories">
+    <div class="category">
+      <h2>🔍 Explore</h2>
+      <p>Expeditions<br>
+        Mining<br>
+        Vehicles<br>
+        Technologies</p>
+    </div>
+    <div class="category">
+      <h2>⚙️ Craft</h2>
+      <p>Production Tree<br>
+        Tier Scaling<br>
+        Modification Grid<br>
+      </p>
+    </div>
+    <div class="category">
+      <h2>🏗️ Build</h2>
+      <p>New home for civilization<br>
+        Nomadic path<br>
+        Alliance corporate</p>
+    </div>
+    <div class="category">
+      <h2>🏆 Participate</h2>
+      <p>World events<br>
+        Quests<br>
+        Competitions...</p>
+    </div>
+  </section>
+
+  <section class="features-slider">
+    <div class="slider">
+      <p id="slider-text">🌌 Enter a world where survival depends on your choices</p>
+    </div>
+  </section>
+
+  <section class="description">
+    <h2>🌍 ABOUT</h2>
+    <p>Velaris is a sci-fi strategy game about the survival of civilization on an unknown planet.  
+    A cooperative effort to give humanity a second chance after self-destruction.  
+    A continuous story driven by the success of the entire game community.  
+    Shared challenges, known as “world challenges”, bring a new type of MMO experience – shared city building, economic cycles.  
+    Technology draws from the remnants of a lost civilization and human ingenuity – you must understand both to succeed.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <a href="#">About</a> |
+    <a href="#">Register</a> |
+    <a href="#">Login</a> |
+    <a href="#">Support</a>
+    <p class="small">© 2025 Project Velaris</p>
+  </div>
+</footer>
+
+<script>
+  const lines = [
+    "🌌 Enter a world where survival depends on your choices",
+    "🛰️ Build your base from the ruins of the last prosperity",
+    "🔬 Uncover the secrets of the human subconscious",
+    "⚔️ Choose your path – isolation, trade, or alliance",
+    "🚀 From prototype to city – only through your skill and choices"
+  ];
+  let index = 0;
+  setInterval(() => {
+    document.getElementById("slider-text").textContent = lines[index];
+    index = (index + 1) % lines.length;
+  }, 3000);
+</script>
+
+<script>
+  document.getElementById("languageSwitcher").addEventListener("change", function () {
+    const lang = this.value;
+    if (lang === "cs") {
+      window.location.href = "../index.html";
+    } else {
+      window.location.href = "index.html";
+    }
+  });
+</script>
+</body>
