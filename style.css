@@ -27,12 +27,20 @@ header {
   padding: 10px 20px;
   position: relative;
   display: flex;
-  flex-direction: column; /* změna na sloupec */
+  flex-direction: row;           /* změna: řádkové uspořádání */
+  justify-content: space-between;
   align-items: center;
   gap: 6px;
-  background: transparent; /* žádné pozadí, aby bylo vidět header gradient */
-  border-bottom: none; /* border je již na header */
+  background: transparent;
+  border-bottom: none;
   height: auto;
+}
+
+.top-bar-left,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Logo vlevo */
@@ -156,4 +164,12 @@ footer {
     max-width: 90%;
     margin-bottom: 1rem;
   }
+}
+#languageSwitcher {
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #1a1a2e;
+  color: #fff;
 }
