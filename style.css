@@ -114,7 +114,24 @@ main {
   font-size: 0.95rem;
   color: #ccc;
 }
+/* --- Poloprůhledný rámeček kolem sekce kategorií --- */
+.categories {
+  position: relative; /* nezbytné pro pseudo-element */
+  border-radius: 8px;
+  background: rgba(14, 14, 26, 0.5); /* tmavý poloprůhledný podklad */
+  padding: 2rem; /* mírně víc prostoru uvnitř */
+  overflow: hidden; /* aby se nic nevykreslilo mimo rámeček */
+}
 
+.categories::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(14,14,26,0.4), rgba(14,14,26,0.7));
+  backdrop-filter: blur(4px); /* jemné rozostření pozadí pod tím */
+  z-index: -1;
+  border-radius: 8px;
+}
 /* Motivační slider */
 .features-slider {
   padding: 2rem;
