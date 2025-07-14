@@ -273,7 +273,8 @@ footer {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(14, 14, 26, 0.6);
+  background: linear-gradient(rgba(14,14,26,0.5), rgba(14,14,26,0.7));
+  backdrop-filter: blur(4px); /* jemné rozostření pozadí pod tím */
   z-index: -1;
-  border-radius: 8px; /* aby se překryv shodoval s rohy */
+  border-radius: 8px;
 }
