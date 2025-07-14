@@ -273,3 +273,19 @@ body > *:not(.overlay) {
   position: relative;
   z-index: 1;
 }
+.description {
+  position: relative; /* NEZMIŇUJ - pro pseudo-element */
+  z-index: 1;         /* NEZMIŇUJ */
+  padding: 2rem;      /* můžeš upravit podle potřeby */
+  border-radius: 8px; /* zaoblené rohy pro pěkný efekt */
+  /* pokud chceš, můžeš přidat i nějaké další styly */
+}
+
+.description::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(14, 14, 26, 0.6);
+  z-index: -1;
+  border-radius: 8px; /* aby se překryv shodoval s rohy */
+}
