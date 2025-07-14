@@ -196,15 +196,17 @@ footer {
 }
 .footer-content {
   max-width: 1080px;
-  width: auto;            /* změna z 100% na auto */
+  width: auto;
   padding: 1rem 20px;
   box-sizing: border-box;
   color: #7ed6df;
 
-  background-color: #111;
+  background-color: rgba(14, 14, 26, 0.5);  /* průhledné pozadí jako u categories */
   border-radius: 8px;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.7);
-  margin: 0 auto;         /* pro jistotu vycentrování */
+  margin: 0 auto;
+
+  text-align: center; /* centrování textu */
 }
 .footer-content a:hover {
   text-decoration: underline;
