@@ -209,24 +209,22 @@ footer {
   text-align: center; /* centrování textu */
 }
 .footer-content a {
-  color: #f8c471; /* příjemná žlutá barva, ladí s headerem */
-  background-color: rgba(248, 196, 113, 0.1); /* slabé žluté pozadí */
-  padding: 6px 12px;
-  margin: 0 6px;
-  border-radius: 4px;
-  text-decoration: none; /* odstraníme podtržení */
-  font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  display: inline-block;
-  user-select: none;
+  color: #7ed6df;            /* původní světle modrá barva */
+  text-decoration: none;     /* žádné podtržení */
+  background-color: transparent; /* bez pozadí */
+  padding: 0;                /* bez vnitřního odsazení */
+  margin: 0 6px;             /* nebo zachovej okraje dle potřeby */
+  font-weight: normal;       /* podle potřeby */
+  transition: none;          /* žádná změna při hoveru */
+  cursor: pointer;           /* aby bylo vidět, že je to klikatelné */
 }
 
 .footer-content a:hover,
 .footer-content a:focus {
-  background-color: #f8c471;
-  color: #0e0e1a; /* tmavý kontrastní text při hover */
-  text-decoration: none;
-  outline: none;
+  color: #7ed6df;            /* barva zůstane stejná i při hover/focus */
+  text-decoration: none;     /* bez podtržení */
+  background-color: transparent; /* bez změny pozadí */
+  outline: none;             /* odstranění focus rámečku, pokud chceš */
   cursor: pointer;
 }
 .small {
