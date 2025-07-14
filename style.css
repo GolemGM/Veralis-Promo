@@ -188,21 +188,22 @@ main {
 
 /* Footer */
 footer {
-  background-color: #111;  /* tmavé neprůhledné pozadí */
-  padding: 1rem 0;
-  text-align: center;
-
-  /* odstraníme šířku 100% a umístíme na střed */
   display: flex;
   justify-content: center;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7); /* jemný vnitřní stín pro oddělení */
+  padding: 1rem 0;
+  background: transparent; /* průhledné pozadí footeru */
+  box-shadow: none;
 }
 .footer-content {
   max-width: 1080px;
   width: 100%;
-  padding: 0 20px; /* trochu odsazení od okrajů */
+  padding: 1rem 20px;
   box-sizing: border-box;
   color: #7ed6df;
+
+  background-color: #111;  /* tmavé neprůhledné pozadí jen kolem textu */
+  border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7); /* jemný vnitřní stín */
 }
 .footer-content a:hover {
   text-decoration: underline;
