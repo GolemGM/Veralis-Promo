@@ -208,8 +208,26 @@ footer {
 
   text-align: center; /* centrování textu */
 }
-.footer-content a:hover {
-  text-decoration: underline;
+.footer-content a {
+  color: #f8c471; /* příjemná žlutá barva, ladí s headerem */
+  background-color: rgba(248, 196, 113, 0.1); /* slabé žluté pozadí */
+  padding: 6px 12px;
+  margin: 0 6px;
+  border-radius: 4px;
+  text-decoration: none; /* odstraníme podtržení */
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+  user-select: none;
+}
+
+.footer-content a:hover,
+.footer-content a:focus {
+  background-color: #f8c471;
+  color: #0e0e1a; /* tmavý kontrastní text při hover */
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
 }
 .small {
   margin-top: 0.5rem;
