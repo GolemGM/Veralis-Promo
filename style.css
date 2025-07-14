@@ -261,3 +261,15 @@ footer {
   margin: 0;
   padding: 0;
 }
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(14, 14, 26, 0.6); /* tmavý poloprůhledný overlay */
+  pointer-events: none; /* aby nepřekážel v interakci */
+  z-index: 0;
+}
+
+body > *:not(.overlay) {
+  position: relative;
+  z-index: 1;
+}
