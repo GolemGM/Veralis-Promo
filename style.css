@@ -9,6 +9,12 @@ body {
   line-height: 1.6;
   background-color: #0e0e1a;
   color: #e0e0f0;
+
+  background-image: url("images/UI Pics/background_mainpage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Hlavička */
