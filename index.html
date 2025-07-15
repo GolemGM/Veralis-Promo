@@ -15,9 +15,20 @@
     </div>
     <div class="top-bar">
       <div class="top-bar-row">
+        <!-- Už bez logo! Jen jazykový přepínač -->
         <div class="language-switcher">
-          <!-- jazykový přepínač -->
-          ...
+          <button id="langBtn">
+            <img src="images/flags/cz.svg" alt="CZ" class="flag-icon" />
+            <span class="lang-text">CZ</span> ▼
+          </button>
+          <ul id="langList" class="hidden">
+            <li data-lang="cs">
+              <img src="images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ
+            </li>
+            <li data-lang="en">
+              <img src="images/flags/gb.svg" alt="EN" class="flag-icon" /> EN
+            </li>
+          </ul>
         </div>
       </div>
       <div class="call-to-arm">Přidej se k budování nového světa</div>
