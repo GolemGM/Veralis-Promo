@@ -8,27 +8,39 @@
 </head>
 <body>
 <header>
-  <div class="top-bar">
-    <div class="top-bar-row">
-      <div class="logo">Velaris</div>
-      <div class="language-switcher">
-        <button id="langBtn">
-          <img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" />
-          <span class="lang-text">CZ</span> ▼
-        </button>
-        <ul id="langList" class="hidden">
-          <li data-lang="cs">
-            <img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ
-          </li>
-          <li data-lang="en">
-            <img src="../images/flags/gb.svg" alt="EN" class="flag-icon" /> EN
-          </li>
-        </ul>
+  <div class="header-container">
+    <!-- Levá část: logo obrázek -->
+    <div class="logo-container">
+      <img src="../images/UI%20Pics/Velaris-logo-transparent.png" alt="Velaris Logo" />
+    </div>
+
+    <!-- Střední část: 3 řádky -->
+    <div class="middle-container">
+      <div class="spacer-row"></div> <!-- 1. řádek prázdný kvůli výšce -->
+      <div class="call-to-arm">Join the creation of a new world</div> <!-- 2. řádek -->
+      <button class="register-btn">Register</button> <!-- 3. řádek -->
+    </div>
+
+    <!-- Pravá část: jazykový přepínač -->
+    <div class="right-container">
+      <div class="top-bar-row">
+        <div class="language-switcher">
+          <button id="langBtn">
+            <img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" />
+            <span class="lang-text">CZ</span> ▼
+          </button>
+          <ul id="langList" class="hidden">
+            <li data-lang="cs">
+              <img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ
+            </li>
+            <li data-lang="en">
+              <img src="../images/flags/gb.svg" alt="EN" class="flag-icon" /> EN
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  <div class="call-to-arm">Join the creation of a new world</div>
-  <button class="register-btn">Register</button>
-</div>
+  </div>
 </header>
 
 <main>
@@ -102,7 +114,7 @@
       langBtn.querySelector('img').src = '../images/flags/cz.svg';
       langBtn.querySelector('.lang-text').textContent = 'CZ';
     }
-    console.log("Aktuální jazyk:", langBtn.querySelector('.lang-text').textContent);
+    console.log("Current language:", langBtn.querySelector('.lang-text').textContent);
   })();
 
   // Otevření / zavření dropdown menu
@@ -129,4 +141,5 @@
     }
   });
 </script>
-  </body>
+</body>
+</html>
