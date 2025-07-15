@@ -1,4 +1,4 @@
-/* Reset */
+/* Reset a základ */
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +6,15 @@
 }
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
   background-color: #0e0e1a;
   color: #e0e0f0;
+
+  background-image: url("../images/UI Pics/background_mainpage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Header */
@@ -21,16 +28,16 @@ header {
   padding: 10px 20px;
 }
 
-/* Kontejner headeru - hlavní flex box */
+/* Header container - flex pro logo a pravou část */
 .header-container {
   max-width: 1080px;
   margin: 0 auto;
   display: flex;
   gap: 20px;
-  align-items: stretch; /* logo i ostatní stejná výška */
+  align-items: stretch; /* aby logo a top-bar měli stejnou výšku */
 }
 
-/* Levá část - logo */
+/* Logo vlevo */
 .logo-container {
   flex-shrink: 0;
   display: flex;
@@ -38,34 +45,45 @@ header {
 }
 
 .logo-container img {
-  height: 120px; /* výška loga dle potřeby */
+  max-height: 120px;
   width: auto;
   display: block;
 }
 
-/* Střední část - flex sloupec s 3 řádky */
-.middle-container {
-  flex-grow: 1;
+/* Pravá část s jazykem, CTA a tlačítkem */
+.top-bar {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertikální zarovnání */
-  gap: 6px;
+  justify-content: space-between; /* rozprostře řádky vertikálně */
+  flex-grow: 1;
+  height: 120px; /* sladit s logem */
 }
 
-/* První řádek ve středu je prázdný, aby se zarovnalo logo */
-.spacer-row {
-  height: 40px; /* přizpůsob dle výšky language switcheru */
+/* Řádky v pravé části */
+.top-bar-row {
+  display: flex;
+  align-items: center;
 }
 
-/* CTA text - 2. řádek */
-.call-to-arm {
+/* Jazykový přepínač nahoře vpravo */
+.language-row {
+  justify-content: flex-end;
+}
+
+/* CTA uprostřed - zarovnané doprava nebo na střed podle potřeby */
+.cta-row {
+  justify-content: center;
   color: #f8c471;
   font-weight: 600;
   font-size: 1rem;
   text-align: center;
 }
 
-/* Registrační tlačítko - 3. řádek */
+/* Registrovací tlačítko dole napravo */
+.register-row {
+  justify-content: flex-end;
+}
+
 .register-btn {
   background-color: #f8c471;
   color: #0e0e1a;
@@ -75,11 +93,11 @@ header {
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
-  align-self: center; /* střed tlačítka */
   display: inline-block;
   text-decoration: none;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
+
 .register-btn:hover {
   background-color: #e0b05c;
   border-color: #e0b05c;
@@ -87,24 +105,7 @@ header {
   text-decoration: none;
 }
 
-/* Pravá část - language switcher */
-.right-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  width: 150px; /* nebo dle potřeby */
-}
-
 /* Jazykový přepínač */
-.top-bar-row {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-}
-
-/* Language switcher styly */
 .language-switcher {
   padding: 5px;
   font-size: 1rem;
@@ -115,18 +116,77 @@ header {
   position: relative;
   display: inline-block;
 }
+
 .flag-icon {
   width: 24px;
   height: auto;
   vertical-align: middle;
   margin-right: 6px;
 }
+
 .hidden {
   display: none;
 }
+
+#langList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 4px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  z-index: 999;
+  min-width: unset;
+  width: 100%;
+}
+
+#langList li {
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+#langList li:hover {
+  background-color: #333;
+}
+
 .visible {
   display: block;
 }
 
-/* Další styly pro lang list apod. dle tvého originálu */
+#langBtn {
+  background-color: #1a1a2e;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: none;
+  outline: none;
+}
 
+#langBtn img.flag-icon {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+#langBtn span.lang-text {
+  margin: 0;
+  padding: 0;
+}
+
+/* ...další CSS jak jsi měl pro hlavní obsah a footer */
