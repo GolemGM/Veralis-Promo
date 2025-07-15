@@ -19,66 +19,87 @@ body {
 
 /* Hlavička */
 header {
-  background: linear-gradient(to right, #1a1a2e, #16213e);
-  border-bottom: 1px solid #333;
   position: sticky;
   top: 0;
   width: 100%;
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+  border-bottom: 1px solid #333;
   z-index: 1000;
-  padding: 10px 20px; /* přidáme padding na header */
+  padding: 10px 20px;
 }
 
+/* Hlavní flex kontejner - logo + top-bar vedle sebe */
 .header-container {
   max-width: 1080px;
   margin: 0 auto;
   display: flex;
-  align-items: stretch; /* aby logo i top-bar byly stejně vysoké */
-  gap: 20px; /* mezera mezi logem a topbarem */
+  align-items: center;   /* Vertikálně vycentrovat */
+  gap: 20px;
 }
 
-/* Logo vlevo - na výšku přes všechny řádky */
+/* Logo vlevo - přizpůsob výšce kontejneru */
 .logo-container {
+  flex-shrink: 0; /* aby se logo nesmršťovalo */
   display: flex;
   align-items: center;
 }
 
+/* Obrázek loga */
 .logo-container img {
-  height: 100%; /* bude ale záležet na rodiči, viz níže */
-  max-height: 120px; /* nastav podle výšky tvého headeru */
+  max-height: 120px;  /* přizpůsob dle potřeby */
+  height: 100%;
   width: auto;
   display: block;
 }
 
-/* Upravit top-bar na flex sloupec */
+/* Pravá část s jazykem, textem a tlačítkem */
 .top-bar {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* zarovná vertikálně uprostřed */
+  justify-content: center;
   flex-grow: 1;
   gap: 6px;
   background: transparent;
-  height: 120px; /* nebo auto, dle potřeby - sladit s logem */
+  height: 120px; /* sladit s max-height loga */
 }
 
-/* top-bar-row už nebude obsahovat logo, jen language-switcher atd. */
+/* Jazykový přepínač nahoře, zarovnaný vlevo nebo vpravo */
 .top-bar-row {
   display: flex;
-  justify-content: flex-end; /* language-switcher napravo */
+  justify-content: flex-end; /* jazyk vpravo */
   align-items: center;
   width: 100%;
 }
 
-/* call-to-arm a register-btn zarovnat doprava, pokud chceš */
+/* Text pod jazykem */
 .call-to-arm {
   color: #f8c471;
   font-weight: 600;
   font-size: 1rem;
-  text-align: right; /* případně center */
+  text-align: right; /* nebo center */
 }
 
-/* registrovací tlačítko bude napravo */
+/* Tlačítko registrovat */
 .register-btn {
-  align-self: flex-end;
+  background-color: #f8c471;
+  color: #0e0e1a;
+  border: 2px solid #f8c471;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  align-self: flex-end; /* tlačítko napravo */
+  display: inline-block;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #e0b05c;
+  border-color: #e0b05c;
+  color: #000;
+  text-decoration: none;
 }
 
 /* Odstup hlavního obsahu pod hlavičkou */
