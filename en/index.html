@@ -9,20 +9,10 @@
 <body>
 <header>
   <div class="header-container">
-    <!-- Levá část: logo obrázek -->
     <div class="logo-container">
-      <img src="../images/UI%20Pics/Velaris-logo-transparent.png" alt="Velaris Logo" />
+      <img src="../images/UI Pics/Velaris-logo-transparent.png" alt="Velaris Logo" />
     </div>
-
-    <!-- Střední část: 3 řádky -->
-    <div class="middle-container">
-      <div class="spacer-row"></div> <!-- 1. řádek prázdný kvůli výšce -->
-      <div class="call-to-arm">Join the creation of a new world</div> <!-- 2. řádek -->
-      <button class="register-btn">Register</button> <!-- 3. řádek -->
-    </div>
-
-    <!-- Pravá část: jazykový přepínač -->
-    <div class="right-container">
+    <div class="top-bar">
       <div class="top-bar-row">
         <div class="language-switcher">
           <button id="langBtn">
@@ -39,6 +29,8 @@
           </ul>
         </div>
       </div>
+      <div class="call-to-arm">Join the creation of a new world</div>
+      <button class="register-btn">Register</button>
     </div>
   </div>
 </header>
@@ -114,7 +106,6 @@
       langBtn.querySelector('img').src = '../images/flags/cz.svg';
       langBtn.querySelector('.lang-text').textContent = 'CZ';
     }
-    console.log("Current language:", langBtn.querySelector('.lang-text').textContent);
   })();
 
   // Otevření / zavření dropdown menu
@@ -140,6 +131,20 @@
       langList.classList.remove('visible');
     }
   });
+
+  // Slider text
+  const lines = [
+    "🌌 Enter a world where survival depends on your choices",
+    "🛰️ Build your own base from the ruins of the last prosperity",
+    "🔬 Explore the secrets of the human subconscious",
+    "⚔️ Choose your path – isolation, trade, or alliance",
+    "🚀 From prototype to city – thanks to your skill and choices"
+  ];
+  let index = 0;
+  setInterval(() => {
+    document.getElementById("slider-text").textContent = lines[index];
+    index = (index + 1) % lines.length;
+  }, 3000);
 </script>
 </body>
 </html>
