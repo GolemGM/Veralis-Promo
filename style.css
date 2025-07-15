@@ -1,4 +1,4 @@
-/* Reset a základ */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,18 +6,11 @@
 }
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
   background-color: #0e0e1a;
   color: #e0e0f0;
-
-  background-image: url("images/UI Pics/background_mainpage.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
-/* Hlavička */
+/* Header */
 header {
   position: sticky;
   top: 0;
@@ -28,58 +21,51 @@ header {
   padding: 10px 20px;
 }
 
-/* Hlavní flex kontejner - logo + top-bar vedle sebe */
+/* Kontejner headeru - hlavní flex box */
 .header-container {
   max-width: 1080px;
   margin: 0 auto;
   display: flex;
-  align-items: center;   /* Vertikálně vycentrovat */
   gap: 20px;
+  align-items: stretch; /* logo i ostatní stejná výška */
 }
 
-/* Logo vlevo - přizpůsob výšce kontejneru */
+/* Levá část - logo */
 .logo-container {
-  flex-shrink: 0; /* aby se logo nesmršťovalo */
+  flex-shrink: 0;
   display: flex;
   align-items: center;
 }
 
-/* Obrázek loga */
 .logo-container img {
-  max-height: 120px;  /* přizpůsob dle potřeby */
-  height: 100%;
+  height: 120px; /* výška loga dle potřeby */
   width: auto;
   display: block;
 }
 
-/* Pravá část s jazykem, textem a tlačítkem */
-.top-bar {
+/* Střední část - flex sloupec s 3 řádky */
+.middle-container {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-grow: 1;
+  justify-content: center; /* vertikální zarovnání */
   gap: 6px;
-  background: transparent;
-  height: 120px; /* sladit s max-height loga */
 }
 
-/* Jazykový přepínač nahoře, zarovnaný vlevo nebo vpravo */
-.top-bar-row {
-  display: flex;
-  justify-content: flex-end; /* jazyk vpravo */
-  align-items: center;
-  width: 100%;
+/* První řádek ve středu je prázdný, aby se zarovnalo logo */
+.spacer-row {
+  height: 40px; /* přizpůsob dle výšky language switcheru */
 }
 
-/* Text pod jazykem */
+/* CTA text - 2. řádek */
 .call-to-arm {
   color: #f8c471;
   font-weight: 600;
   font-size: 1rem;
-  text-align: right; /* nebo center */
+  text-align: center;
 }
 
-/* Tlačítko registrovat */
+/* Registrační tlačítko - 3. řádek */
 .register-btn {
   background-color: #f8c471;
   color: #0e0e1a;
@@ -89,12 +75,11 @@ header {
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
-  align-self: flex-end; /* tlačítko napravo */
+  align-self: center; /* střed tlačítka */
   display: inline-block;
   text-decoration: none;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
-
 .register-btn:hover {
   background-color: #e0b05c;
   border-color: #e0b05c;
@@ -102,155 +87,24 @@ header {
   text-decoration: none;
 }
 
-/* Odstup hlavního obsahu pod hlavičkou */
-main {
-  max-width: 1080px;
-  margin: 30px auto 0 auto; /* zmenšená mezera */
-  padding: 2rem;
-}
-
-/* Sekce kategorií */
-.categories {
+/* Pravá část - language switcher */
+.right-container {
   display: flex;
-  justify-content: space-around;
-  padding: 2rem 0;
-  margin-top: 1rem;
-  background-color: #161a2b;
-  position: relative; /* nezbytné pro pseudo-element */
-  border-radius: 8px;
-  background: rgba(14, 14, 26, 0.5); /* tmavý poloprůhledný podklad */
-  padding: 2rem; /* mírně víc prostoru uvnitř */
-  overflow: hidden; /* aby se nic nevykreslilo mimo rámeček */
-}
-.categories::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(rgba(14,14,26,0.4), rgba(14,14,26,0.7));
-  backdrop-filter: blur(4px); /* jemné rozostření pozadí pod tím */
-  z-index: -1;
-  border-radius: 8px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 150px; /* nebo dle potřeby */
 }
 
-.category {
-  max-width: 25%;
-  text-align: center;
-}
-.category h2 {
-  font-size: 1.5rem;
-  color: #85c1e9;
-  margin-bottom: 0.5rem;
-}
-.category p {
-  font-size: 0.95rem;
-  color: #ccc;
-}
-
-/* Motivační slider */
-.features-slider {
-  padding: 2rem;
-  background: #1b1f33;
-  text-align: center;
-}
-.slider p {
-  font-size: 1.2rem;
-  font-style: italic;
-  color: #fff;
-  transition: opacity 0.3s ease;
-}
-
-/* Popis hry */
-.description,
-.steam-style {
-  padding: 2rem 0;
-}
-.description h2,
-.steam-style h2 {
-  font-size: 1.4rem;
-  color: #74b9ff;
-  margin-bottom: 1rem;
-}
-.description p,
-.steam-style p {
-  margin-bottom: 1rem;
-  color: #ddd;
-}
-.description {
-  position: relative; /* NEZMIŇUJ - pro pseudo-element */
-  z-index: 1;         /* NEZMIŇUJ */
-  padding: 2rem;      /* můžeš upravit podle potřeby */
-  border-radius: 8px; /* zaoblené rohy pro pěkný efekt */
-  /* pokud chceš, můžeš přidat i nějaké další styly */
-}
-
-.description::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(rgba(14,14,26,0.5), rgba(14,14,26,0.7));
-  backdrop-filter: blur(4px); /* jemné rozostření pozadí pod tím */
-  z-index: -1;
-  border-radius: 8px;
-}
-
-/* Footer */
-footer {
+/* Jazykový přepínač */
+.top-bar-row {
   display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-  background: transparent;
-  box-shadow: none;
-}
-.footer-content {
-  max-width: 1080px;
-  width: auto;
-  padding: 1rem 20px;
-  box-sizing: border-box;
-  color: #7ed6df;
-
-  background-color: rgba(14, 14, 26, 0.5);  /* průhledné pozadí jako u categories */
-  border-radius: 8px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7);
-  margin: 0 auto;
-
-  text-align: center; /* centrování textu */
-}
-.footer-content a {
-  color: #7ed6df;            /* původní světle modrá barva */
-  text-decoration: none;     /* žádné podtržení */
-  background-color: transparent; /* bez pozadí */
-  padding: 0;                /* bez vnitřního odsazení */
-  margin: 0 6px;             /* nebo zachovej okraje dle potřeby */
-  font-weight: normal;       /* podle potřeby */
-  transition: none;          /* žádná změna při hoveru */
-  cursor: pointer;           /* aby bylo vidět, že je to klikatelné */
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
 }
 
-.footer-content a:hover,
-.footer-content a:focus {
-  color: #7ed6df;            /* barva zůstane stejná i při hover/focus */
-  text-decoration: none;     /* bez podtržení */
-  background-color: transparent; /* bez změny pozadí */
-  outline: none;             /* odstranění focus rámečku, pokud chceš */
-  cursor: pointer;
-}
-.small {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: #555;
-}
-
-/* Responsivita */
-@media (max-width: 768px) {
-  .categories {
-    flex-direction: column;
-    align-items: center;
-  }
-  .category {
-    max-width: 90%;
-    margin-bottom: 1rem;
-  }
-}
+/* Language switcher styly */
 .language-switcher {
   padding: 5px;
   font-size: 1rem;
@@ -259,7 +113,7 @@ footer {
   background-color: #1a1a2e;
   color: #fff;
   position: relative;
-  display: inline-block; /* přidáno */
+  display: inline-block;
 }
 .flag-icon {
   width: 24px;
@@ -270,69 +124,9 @@ footer {
 .hidden {
   display: none;
 }
-
-#langList {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #1a1a2e;
-  border: 1px solid #444;
-  border-radius: 4px;
-  list-style: none;
-  padding: 5px 0;
-  margin: 0;
-  z-index: 999;
-  min-width: unset;
-  transform: translateX(0);
-  left: 0;
-  width: 100%;
-}
-
-#langList li {
-  padding: 6px 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background 0.2s;
-}
-
-#langList li:hover {
-  background-color: #333;
-}
-
 .visible {
   display: block;
 }
-#langBtn {
-  background-color: #1a1a2e;  /* tmavé pozadí */
-  border: none;
-  color: #fff;                /* světlý text */
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
 
-  display: flex;
-  align-items: center;
-  gap: 6px;
+/* Další styly pro lang list apod. dle tvého originálu */
 
-  /* Odstraníme jakékoliv vnitřní rámečky nebo stíny */
-  box-shadow: none;
-  outline: none;
-}
-
-#langBtn img.flag-icon {
-  /* Žádné rámečky, bez filtrů */
-  border: none;
-  background: transparent;
-  box-shadow: none;
-  filter: none;
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-#langBtn span.lang-text {
-  /* Zajistí, že text nebude mít okraje nebo rámečky */
-  margin: 0;
-  padding: 0;
-}
