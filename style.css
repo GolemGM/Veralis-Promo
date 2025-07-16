@@ -53,47 +53,40 @@ header {
   display: block;
 }
 
-/* ⬅️ UPRAVENO */
 .top-bar {
-  display: flex;
-  flex-direction: column;
+  display: block; /* ZMĚNA: už ne flex */
   flex-grow: 1;
-  justify-content: space-between;
+  width: 100%;
 }
 
-/* ⬅️ UPRAVENO */
-.top-bar-row {
-  width: 100%;
+.top-bar-row-1 {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 6px 0;
 }
 
-/* ⬅️ PŘIDÁNO */
-.top-bar-row-1 {
-  justify-content: flex-end;
+.top-bar-row-2 {
+  text-align: center;
+  padding: 6px 0;
 }
 
-/* ⬅️ PŘIDÁNO */
 .top-bar-row-2 .call-to-arm {
-  text-align: center;
-  color: #f8c471;
+  max-width: 1080px;
+  margin: 0 auto;
   font-weight: 600;
   font-size: 1rem;
-  width: 100%;
+  color: #f8c471;
 }
 
-/* ⬅️ PŘIDÁNO */
 .top-bar-row-3 {
-  justify-content: center;
+  padding: 6px 0;
 }
 
-/* ⬅️ PŘIDÁNO */
 .register-wrapper {
   display: flex;
   justify-content: center;
-  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .register-btn {
