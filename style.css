@@ -97,17 +97,6 @@ header {
   color: #000;
 }
 
-/* Jazykový přepínač */
-.language-switcher {
-  position: relative;
-  display: inline-block;
-  font-size: 1rem;
-  background-color: #1a1a2e;
-  color: #fff;
-  border: 1px solid #444;
-  border-radius: 4px;
-}
-
 .flag-icon {
   width: 24px;
   height: auto;
@@ -124,6 +113,8 @@ header {
   display: flex;
   align-items: center;
   gap: 6px;
+  box-shadow: none;
+  outline: none;
 }
 
 #langList {
@@ -308,14 +299,14 @@ footer {
   }
 }
 .language-switcher {
+  position: relative;
+  display: inline-block;
   padding: 5px;
   font-size: 1rem;
-  border-radius: 4px;
-  border: 1px solid #444;
   background-color: #1a1a2e;
   color: #fff;
-  position: relative;
-  display: inline-block; /* přidáno */
+  border: 1px solid #444;
+  border-radius: 4px;
 }
 .flag-icon {
   width: 24px;
@@ -359,22 +350,6 @@ footer {
 
 .visible {
   display: block;
-}
-#langBtn {
-  background-color: #1a1a2e;  /* tmavé pozadí */
-  border: none;
-  color: #fff;                /* světlý text */
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  /* Odstraníme jakékoliv vnitřní rámečky nebo stíny */
-  box-shadow: none;
-  outline: none;
 }
 
 #langBtn img.flag-icon {
