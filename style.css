@@ -91,7 +91,7 @@ header {
 .language-switcher-container {
   flex-shrink: 0;
   display: flex;
-  align-items: flex-start; /* zarovnat nahoru */
+  align-items: flex-start;
   justify-content: flex-end;
   min-width: 140px;
   position: relative;
@@ -100,7 +100,7 @@ header {
 .language-switcher-container button#langBtn {
   background-color: #1a1a2e;
   color: #fff;
-  border: none;
+  border: 1px solid #444; /* rámeček kolem tlačítka */
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
