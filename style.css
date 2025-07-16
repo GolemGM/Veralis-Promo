@@ -1,10 +1,10 @@
-
 /* Reset a základ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -19,27 +19,30 @@ body {
 
 /* Hlavička */
 header {
-  position: sticky;
-  top: 0;
   width: 100%;
+  height: 140px; /* přidáno pro větší výšku hlavičky */
   background: linear-gradient(to right, #1a1a2e, #16213e);
   border-bottom: 1px solid #333;
-  z-index: 1000;
   padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-container {
   max-width: 1080px;
   margin: 0 auto;
   display: flex;
-  align-items: stretch;
-  gap: 20px;
+  align-items: center; /* vertikální centrování všech prvků */
+  position: relative;
+  gap: 20px; /* mezera mezi bloky */
 }
 
 .logo-container {
   flex-shrink: 0;
+  max-height: 120px;
   display: flex;
-  align-items: center;
+  align-items: center; /* vertikální centrování loga */
 }
 
 .logo-container img {
@@ -49,27 +52,21 @@ header {
   display: block;
 }
 
-.top-bar {
+.middle-container {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
-  background: transparent;
-}
-
-.top-bar-row {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* vycentrovat vertikálně */
+  align-items: center; /* zarovnat na střed horizontálně */
+  gap: 10px; /* mezera mezi CTA a regbtn */
+  padding: 0 20px;
 }
 
 .call-to-arm {
-  text-align: center;
   color: #f8c471;
   font-weight: 600;
-  font-size: 1rem;
-  width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .register-btn {
@@ -81,8 +78,7 @@ header {
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
-  display: inline-block;
-  align-self: flex-end;
+  width: fit-content;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
@@ -92,25 +88,16 @@ header {
   color: #000;
 }
 
-.language-switcher {
+.language-switcher-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start; /* zarovnat nahoru */
+  justify-content: flex-end;
+  min-width: 140px;
   position: relative;
-  display: inline-block;
-  padding: 5px;
-  font-size: 1rem;
-  background-color: #1a1a2e;
-  color: #fff;
-  border: 1px solid #444;
-  border-radius: 4px;
 }
 
-.flag-icon {
-  width: 24px;
-  height: auto;
-  vertical-align: middle;
-  margin-right: 6px;
-}
-
-#langBtn {
+.language-switcher-container button#langBtn {
   background-color: #1a1a2e;
   color: #fff;
   border: none;
@@ -122,39 +109,29 @@ header {
   gap: 6px;
   box-shadow: none;
   outline: none;
+  font-size: 1rem;
 }
 
-#langBtn img.flag-icon {
-  border: none;
-  background: transparent;
-  box-shadow: none;
-  filter: none;
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-#langBtn span.lang-text {
-  margin: 0;
-  padding: 0;
-}
-
-#langList {
+.language-switcher-container ul#langList {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   background-color: #1a1a2e;
   border: 1px solid #444;
   border-radius: 4px;
   list-style: none;
   padding: 5px 0;
   margin: 0;
+  width: 140px;
   z-index: 999;
-  width: 100%;
 }
 
-#langList li {
+.language-switcher-container ul#langList.visible {
+  display: block;
+}
+
+.language-switcher-container ul#langList li {
   padding: 6px 12px;
   cursor: pointer;
   display: flex;
@@ -163,13 +140,18 @@ header {
   transition: background 0.2s;
 }
 
-#langList li:hover {
+.language-switcher-container ul#langList li:hover {
   background-color: #333;
 }
 
-.visible {
-  display: block !important;
+.flag-icon {
+  width: 24px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 6px;
 }
+
+/* Zbytek původního CSS */
 
 main {
   max-width: 1080px;
