@@ -5,9 +5,12 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
+/* Přidáno pro layout celé stránky */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
   background-color: #0e0e1a;
   color: #e0e0f0;
   background-image: url("images/UI Pics/background_mainpage.jpg");
@@ -15,18 +18,21 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
 }
 
 /* Hlavička */
 header {
   width: 100%;
-  height: 140px; /* přidáno pro větší výšku hlavičky */
+  height: 140px; /* pevná výška headeru */
   background: linear-gradient(to right, #1a1a2e, #16213e);
   border-bottom: 1px solid #333;
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  flex-shrink: 0; /* header nemá měnit velikost */
 }
 
 .header-container {
@@ -151,14 +157,21 @@ header {
   margin-right: 6px;
 }
 
-/* Zbytek původního CSS */
-
+/* MAIN - hlavní obsah stránky - upraveno, odstraněno flex centrování */
 main {
-  max-width: 1080px;
-  margin: 30px auto 0 auto;
+  flex-grow: 1;  /* vyplní prostor mezi headerem a footerem */
   padding: 2rem;
+  max-width: 1080px;
+  width: 100%;
+  margin: 30px auto 30px auto;
+  background: rgba(14, 14, 26, 0.5);
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  /* ODSTRANĚNO display:flex, align-items:center, justify-content:center, min-height:100vh */
 }
 
+/* Kategorie na úvodní stránce, zůstává */
 .categories {
   display: flex;
   justify-content: space-around;
@@ -245,6 +258,7 @@ main {
 }
 
 footer {
+  flex-shrink: 0;  /* footer se nesmršťuje */
   display: flex;
   justify-content: center;
   padding: 1rem 0;
@@ -301,18 +315,4 @@ footer {
     max-width: 90%;
     margin-bottom: 1rem;
   }
-  html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-footer {
-  flex-shrink: 0;
-}
 }
