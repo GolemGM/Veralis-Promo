@@ -314,5 +314,66 @@ footer {
   .category {
     max-width: 90%;
     margin-bottom: 1rem;
-  }
+  }.support-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.support-box {
+  background-color: rgba(14, 14, 26, 0.95);
+  color: #e0e0f0;
+  padding: 1.8rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(114, 137, 218, 0.7);
+  text-align: center;
+  margin-top: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.support-box .discord-icon {
+  width: 64px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 2px #7289da);
+}
+
+.support-box h2 {
+  margin-bottom: 1rem;
+  color: #7289da;
+}
+
+.support-box h3 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #85c1e9;
+}
+
+.support-box p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.support-box ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  text-align: left;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.support-box a {
+  color: #7289da;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.support-box a:hover,
+.support-box a:focus {
+  text-decoration: underline;
+}
 }
