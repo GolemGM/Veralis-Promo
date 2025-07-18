@@ -1,113 +1,397 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Veralis | Podpora</title>
-  <link rel="stylesheet" href="style.css" />
-  </head>
-<body>
-  <div class="overlay"></div>
+/* Reset a základ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <header>
-    <div class="header-container">
-      <div class="logo-container">
-        <img src="images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
-      </div>
+/* Přidáno pro layout celé stránky */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #0e0e1a;
+  color: #e0e0f0;
+  background-image: url("images/UI Pics/background_mainpage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
 
-      <div class="middle-container">
-        <div class="call-to-arm hidden-btn">Přidej se k budování nového světa</div>
-        <button class="register-btn hidden-btn" id="registerBtn">Registrace</button>
-      </div>
+/* Hlavička */
+header {
+  width: 100%;
+  height: 140px; /* pevná výška headeru */
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+  border-bottom: 1px solid #333;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-shrink: 0; /* header nemá měnit velikost */
+}
 
-      <script>
-        document.getElementById('registerBtn').addEventListener('click', () => {
-          window.location.href = 'register.html';
-        });
-      </script>
+.header-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center; /* vertikální centrování všech prvků */
+  position: relative;
+  gap: 20px; /* mezera mezi bloky */
+}
 
-      <div class="language-switcher-container">
-        <button id="langBtn">
-          <img src="images/flags/cz.svg" alt="CZ" class="flag-icon" />
-          <span class="lang-text">CZ</span> ▼
-        </button>
-        <ul id="langList" class="hidden">
-          <li data-lang="cs"><img src="images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
-          <li data-lang="en"><img src="images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
-        </ul>
-      </div>
-    </div>
-  </header>
+.logo-container {
+  flex-shrink: 0;
+  max-height: 120px;
+  display: flex;
+  align-items: center; /* vertikální centrování loga */
+}
 
-<!-- Hlavní část support.html v body/main -->
+.logo-container img {
+  max-height: 120px;
+  height: 100%;
+  width: auto;
+  display: block;
+}
 
-<main>
-  <section class="support-section">
-    <h1>🔧 Podpora projektu <span class="highlight">Veralis</span></h1>
-    <p>
-      Máš technický problém, návrh nebo chceš nahlásit chybu? <strong>Doporučujeme primárně využít náš Discord server</strong>, kde ti komunita i tým odpoví nejrychleji.
-    </p>
+.middle-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vycentrovat vertikálně */
+  align-items: center; /* zarovnat na střed horizontálně */
+  gap: 10px; /* mezera mezi CTA a regbtn */
+  padding: 0 20px;
+}
 
-    <a href="https://discord.gg/tvůj-odkaz" target="_blank" class="support-button discord-button">
-      <img src="images/flags/discord_logo.svg" alt="Discord logo" class="discord-icon" />
-      Kontakt přes Discord
-    </a>
+.call-to-arm {
+  color: #f8c471;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+}
 
-    <h2 class="highlight">Jednosměrné hlášení formulářem:</h2>
-    <form class="support-form" action="#" method="post">
-      <label for="message">Zpráva:</label>
-      <textarea id="message" name="message" rows="5" placeholder="Popiš svůj problém, návrh nebo hlášení chyby..." required></textarea>
-      <button type="submit">Odeslat</button>
-    </form>
-  </section>
-</main>
+.register-btn {
+  background-color: #f8c471;
+  color: #0e0e1a;
+  border: 2px solid #f8c471;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  width: fit-content;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
 
-  <footer>
-    <div class="footer-content">
-      <a href="index.html">O hře</a> |
-      <a href="register.html">Registrace</a> |
-      <a href="login.html">Přihlášení</a> |
-      <a href="support.html">Podpora</a>
-      <p class="small">© 2025 Projekt Veralis</p>
-    </div>
-  </footer>
+.register-btn:hover {
+  background-color: #e0b05c;
+  border-color: #e0b05c;
+  color: #000;
+}
 
-  <!-- Ponecháváme stejný jazykový přepínač -->
-  <script>
-    const langBtn = document.getElementById('langBtn');
-    const langList = document.getElementById('langList');
+.language-switcher-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-width: 140px;
+  position: relative;
+}
 
-    (() => {
-      const path = window.location.pathname;
-      if (path.includes('/en/')) {
-        langBtn.querySelector('img').src = '../images/flags/gb.svg';
-        langBtn.querySelector('.lang-text').textContent = 'EN';
-      } else {
-        langBtn.querySelector('img').src = 'images/flags/cz.svg';
-        langBtn.querySelector('.lang-text').textContent = 'CZ';
-      }
-    })();
+.language-switcher-container button#langBtn {
+  background-color: #1a1a2e;
+  color: #fff;
+  border: 1px solid #444; /* rámeček kolem tlačítka */
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: none;
+  outline: none;
+  font-size: 1rem;
+}
 
-    langBtn.addEventListener('click', () => {
-      langList.classList.toggle('visible');
-    });
+.language-switcher-container ul#langList {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 4px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  width: 140px;
+  z-index: 999;
+}
 
-    langList.querySelectorAll('li').forEach(li => {
-      li.addEventListener('click', () => {
-        const selectedLang = li.getAttribute('data-lang');
-        if (selectedLang === 'en') {
-          window.location.href = 'en/index.html';
-        } else if (selectedLang === 'cs') {
-          window.location.href = './index.html';
-        }
-      });
-    });
+.language-switcher-container ul#langList.visible {
+  display: block;
+}
 
-    document.addEventListener('click', (e) => {
-      if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
-        langList.classList.remove('visible');
-      }
-    });
-  </script>
-</body>
-</html>
+.language-switcher-container ul#langList li {
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.language-switcher-container ul#langList li:hover {
+  background-color: #333;
+}
+
+.flag-icon {
+  width: 24px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* MAIN - hlavní obsah stránky - upraveno, odstraněno flex centrování */
+main {
+  flex-grow: 1;  /* vyplní prostor mezi headerem a footerem */
+  padding: 2rem;
+  max-width: 1080px;
+  width: 100%;
+  margin: 30px auto 30px auto;
+  background: rgba(14, 14, 26, 0.5);
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  /* ODSTRANĚNO display:flex, align-items:center, justify-content:center, min-height:100vh */
+}
+
+/* Kategorie na úvodní stránce, zůstává */
+.categories {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  position: relative;
+  border-radius: 8px;
+  background: rgba(14, 14, 26, 0.5);
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.categories::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(14,14,26,0.4), rgba(14,14,26,0.7));
+  backdrop-filter: blur(4px);
+  z-index: -1;
+  border-radius: 8px;
+}
+
+.category {
+  max-width: 25%;
+  text-align: center;
+}
+
+.category h2 {
+  font-size: 1.5rem;
+  color: #85c1e9;
+  margin-bottom: 0.5rem;
+}
+
+.category p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.features-slider {
+  padding: 2rem;
+  background: #1b1f33;
+  text-align: center;
+}
+
+.slider p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+
+.description,
+.steam-style {
+  padding: 2rem 0;
+}
+
+.description h2,
+.steam-style h2 {
+  font-size: 1.4rem;
+  color: #74b9ff;
+  margin-bottom: 1rem;
+}
+
+.description p,
+.steam-style p {
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+.description {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.description::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(14,14,26,0.5), rgba(14,14,26,0.7));
+  backdrop-filter: blur(4px);
+  z-index: -1;
+  border-radius: 8px;
+}
+
+footer {
+  flex-shrink: 0;  /* footer se nesmršťuje */
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.footer-content {
+  max-width: 1080px;
+  width: auto;
+  padding: 1rem 20px;
+  box-sizing: border-box;
+  color: #7ed6df;
+  background-color: rgba(14, 14, 26, 0.5);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-content a {
+  color: #7ed6df;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0 6px;
+  font-weight: normal;
+  transition: none;
+  cursor: pointer;
+}
+
+.footer-content a:hover,
+.footer-content a:focus {
+  color: #7ed6df;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.small {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category {
+    max-width: 90%;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Podpora - mimo media query */
+.support-section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #ccc;
+}
+
+.support-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.support-section .highlight {
+  color: #00ffff; /* stejné jako u tlačítka v indexu */
+}
+
+.support-section p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.support-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: background 0.3s, border 0.3s;
+}
+
+.discord-button {
+  color: #00ffff; /* text barva jako v indexu */
+  background-color: #111; /* tmavé pozadí */
+  border: 1px solid #00ffff; /* tenký rámeček */
+}
+
+.discord-button:hover {
+  background-color: #222;
+}
+
+.discord-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.support-form textarea {
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  color: #eee;
+  padding: 1rem;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.support-form button {
+  align-self: flex-start;
+  background-color: #00ffff;
+  color: #000;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.support-form button:hover {
+  background-color: #00dddd;
+}
