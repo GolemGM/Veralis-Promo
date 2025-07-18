@@ -314,7 +314,11 @@ footer {
   .category {
     max-width: 90%;
     margin-bottom: 1rem;
-  }.support-wrapper {
+  }
+}
+
+/* Podpora - mimo media query */
+.support-wrapper {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 2rem;
   border-radius: 1rem;
