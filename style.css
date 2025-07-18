@@ -380,4 +380,11 @@ footer {
 .support-box a:focus {
   text-decoration: underline;
 }
+.discord-blue {
+  color: #7289da;
+  font-weight: 600;
+}
+.title-blue {
+  color: #85c1e9;
+}
 }
