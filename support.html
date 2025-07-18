@@ -42,33 +42,24 @@
 <!-- Hlavní část support.html v body/main -->
 
 <main>
-  <div class="support-wrapper">
-    <h1>Podpora projektu Veralis</h1>
-    <p>Jsme stále ve fázi vývoje. Omlouváme se za možné nedostatky a chyby.</p>
-    <p>Pokud potřebujete pomoc, máte dotaz nebo jen nahlásit chybu, využijte níže uvedené možnosti.</p>
+  <section class="support-section">
+    <h1>🔧 Podpora projektu <span class="highlight">Veralis</span></h1>
+    <p>
+      Máš technický problém, návrh nebo chceš nahlásit chybu? <strong>Doporučujeme primárně využít náš Discord server</strong>, kde ti komunita i tým odpoví nejrychleji.
+    </p>
 
-    <div class="support-box">
+    <a href="https://discord.gg/tvůj-odkaz" target="_blank" class="support-button discord-button">
       <img src="images/flags/discord_logo.svg" alt="Discord logo" class="discord-icon" />
-      <h2>Kontakt přes Discord</h2>
-      <p>
-        Připojte se k našemu
-        <a href="https://discord.gg/TVUJ_DISCORD_ODKAZ" target="_blank" rel="noopener noreferrer" class="support-btn">
-          Discord serveru
-        </a>, kde můžete komunikovat s komunitou a vývojáři.
-      </p>
+      Kontakt přes Discord
+    </a>
 
-      <h3>Podpora skrz formuláře:</h3>
-      <ul>
-        <li><strong>Potřebuji poradit:</strong> Očekáváte odpověď, budeme vás kontaktovat.</li>
-        <li><strong>Nahlásit problém:</strong> Jednosměrný report bez odpovědi.</li>
-      </ul>
-
-      <p>
-        <a href="formular_poradi.html" class="support-btn">Potřebuji poradit</a>
-        <a href="formular_bug.html" class="support-btn">Nahlásit problém</a>
-      </p>
-    </div>
-  </div>
+    <h2 class="highlight">Jednosměrné hlášení formulářem:</h2>
+    <form class="support-form" action="#" method="post">
+      <label for="message">Zpráva:</label>
+      <textarea id="message" name="message" rows="5" placeholder="Popiš svůj problém, návrh nebo hlášení chyby..." required></textarea>
+      <button type="submit">Odeslat</button>
+    </form>
+  </section>
 </main>
 
   <footer>
