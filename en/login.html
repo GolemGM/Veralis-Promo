@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Veralis</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo-container">
+      <img src="../images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
+    </a>
+
+    <div class="middle-container">
+      <div class="call-to-arm hidden-btn">Join the creation of a new world</div>
+      <button class="register-btn hidden-btn" id="registerBtn">Register</button>
+    </div>
+
+    <div class="language-switcher-container">
+      <button id="langBtn">
+        <img src="../images/flags/gb.svg" alt="EN" class="flag-icon" />
+        <span class="lang-text">EN</span> ▼
+      </button>
+      <ul id="langList" class="hidden">
+        <li data-lang="cs"><img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
+        <li data-lang="en"><img src="../images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+  <main>
+    <div class="register-wrapper">
+      <p class="register-info">
+        Welcome back, adventurer. Enter your credentials to begin your journey.
+      </p>
+      <div class="register-box">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" name="username" required>
+
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required>
+
+          <button type="submit">Log In</button>
+
+          <p style="text-align: center; margin-top: 1rem;">
+            <a href="forgot-password.html" style="color: #85c1e9; text-decoration: none;">Forgot your password?</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html">About</a> |
+      <a href="register.html">Register</a> |
+      <a href="login.html">Login</a> |
+      <a href="support.html">Support</a>
+      <p class="small">© 2025 Project Veralis</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('registerBtn').addEventListener('click', () => {
+      window.location.href = 'register.html';
+    });
+
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert("Form submitted. (No backend yet)");
+    });
+
+    const langBtn = document.getElementById('langBtn');
+    const langList = document.getElementById('langList');
+
+    (() => {
+      const path = window.location.pathname;
+      if (path.includes('/en/')) {
+        langBtn.querySelector('img').src = '../images/flags/gb.svg';
+        langBtn.querySelector('.lang-text').textContent = 'EN';
+      } else {
+        langBtn.querySelector('img').src = '../images/flags/cz.svg';
+        langBtn.querySelector('.lang-text').textContent = 'CZ';
+      }
+    })();
+
+    langBtn.addEventListener('click', () => {
+      langList.classList.toggle('visible');
+    });
+
+    langList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const selectedLang = li.getAttribute('data-lang');
+        if (selectedLang === 'en') {
+          window.location.href = './login.html';
+        } else if (selectedLang === 'cs') {
+          window.location.href = '../login.html';
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
+        langList.classList.remove('visible');
+      }
+    });
+  </script>
+</body>
+</html>
