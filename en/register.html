@@ -14,10 +14,10 @@
       <img src="../images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
     </a>
 
- <div class="middle-container">
-  <div class="call-to-arm hidden-btn">Already have an account?</div>
-  <button class="register-btn hidden-btn" id="loginRedirectBtn">Log In</button>
-</div>
+    <div class="middle-container">
+      <div class="call-to-arm hidden-btn">Already have an account?</div>
+      <a href="login.html" class="register-btn">Log In</a>
+    </div>
 
     <div class="language-switcher-container">
       <button id="langBtn">
@@ -113,10 +113,6 @@
         langList.classList.remove('visible');
       }
     });
-    
-  document.getElementById('registerBtn').addEventListener('click', function () {
-    window.location.href = 'login.html'; // uprav cestu, pokud je jiná
-  });
   </script>
 </body>
 </html>
