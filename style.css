@@ -396,9 +396,6 @@ footer {
   margin: auto;
   box-sizing: border-box;
 }
-.hidden-btn {
-  display: none !important;
-}
 .register-box {
   background-color: rgba(20, 20, 30, 0.85); /* tmavý průsvitný */
   border: 1px solid rgba(255, 255, 255, 0.1); /* jemný rámeček */
@@ -442,7 +439,7 @@ footer {
 .register-box button {
   width: 100%;
   padding: 0.75rem;
-  background: linear-gradient(to right, #00bcd4, #4caf50);
+  background: linear-gradient(to right, #16213e, #1a1a2e);
   border: none;
   color: white;
   font-weight: bold;
@@ -452,6 +449,17 @@ footer {
 }
 
 .register-box button:hover {
-  background: linear-gradient(to right, #4caf50, #00bcd4);
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+}
+.checkbox-label {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  color: #e0e0f0;
+}
+
+.checkbox-box input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 }
