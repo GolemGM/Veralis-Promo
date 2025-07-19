@@ -462,4 +462,13 @@ footer {
   height: 20px;
   cursor: pointer;
 }
+.register-info {
+  max-width: 400px;
+  margin: 1rem auto 2rem auto;
+  text-align: center;
+  font-size: 1rem;
+  color: #cfd8dc;
+  font-style: italic;
+  line-height: 1.4;
+}
 }
