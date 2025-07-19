@@ -399,4 +399,59 @@ footer {
 .hidden-btn {
   display: none !important;
 }
+.register-box {
+  background-color: rgba(20, 20, 30, 0.85); /* tmavý průsvitný */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* jemný rámeček */
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  margin: 4rem auto;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  color: #e0e0e0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.register-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.register-box input[type="text"],
+.register-box input[type="email"],
+.register-box input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.register-box input[type="text"]:focus,
+.register-box input[type="email"]:focus,
+.register-box input[type="password"]:focus {
+  border-color: #00bcd4;
+  outline: none;
+}
+
+.register-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(to right, #00bcd4, #4caf50);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-box button:hover {
+  background: linear-gradient(to right, #4caf50, #00bcd4);
+}
 }
