@@ -15,10 +15,10 @@
         <img src="images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
       </div>
 
-      <div class="middle-container">
-        <div class="call-to-arm hidden-btn">Přidej se k budování nového světa</div>
-        <button class="register-btn hidden-btn" id="registerBtn">Registrace</button>
-      </div>
+     <div class="middle-container">
+  <div class="call-to-arm hidden-btn">Už máte účet?</div>
+  <button class="register-btn hidden-btn" id="registerBtn">Přihlásit se</button>
+</div>
 
       <div class="language-switcher-container">
         <button id="langBtn">
@@ -44,24 +44,18 @@
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
-        <label for="password">Heslo</label>
-        <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[A-Z]).{8,}" title="Musí obsahovat alespoň 8 znaků, jedno velké písmeno a číslici">
+<div class="checkbox-row">
+  <div class="checkbox-label">Souhlasím s <a href="tos.html" target="_blank">podmínkami použití</a></div>
+  <div class="checkbox-box"><input type="checkbox" required></div>
+</div>
 
-        <label>
-          <input type="checkbox" required>
-          Souhlasím s <a href="tos.html" target="_blank">podmínkami použití</a>
-        </label>
-
-        <label>
-          <input type="checkbox" required>
-          Souhlasím s <a href="rules.html" target="_blank">komunitními pravidly</a>
-        </label>
+<div class="checkbox-row">
+  <div class="checkbox-label">Souhlasím s <a href="rules.html" target="_blank">komunitními pravidly</a></div>
+  <div class="checkbox-box"><input type="checkbox" required></div>
+</div>
 
         <button type="submit">Registrovat</button>
-        <div class="small-text">
-          Už máte účet? <a href="login.html">Přihlásit se</a>
         </div>
-      </div>
     </div>
   </main>
 
