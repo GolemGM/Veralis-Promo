@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veralis | Registrace</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrace - Veralis</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="overlay"></div>
@@ -19,12 +19,6 @@
         <div class="call-to-arm hidden-btn">Přidej se k budování nového světa</div>
         <button class="register-btn hidden-btn" id="registerBtn">Registrace</button>
       </div>
-
-      <script>
-        document.getElementById('registerBtn').addEventListener('click', () => {
-          window.location.href = 'register.html';
-        });
-      </script>
 
       <div class="language-switcher-container">
         <button id="langBtn">
@@ -41,17 +35,88 @@
 
   <main>
     <div class="register-wrapper">
-      <h1>Registrace</h1>
-      <form id="registrationForm">
-        <label for="username">Uživatelské jméno</label>
-        <input type="text" id="username" name="username" required>
+      <div class="container">
+        <h1>Registrace</h1>
+        <form id="registrationForm">
+          <label for="username">Uživatelské jméno</label>
+          <input type="text" id="username" name="username" required>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
 
-        <label for="password">Heslo</label>
-        <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[A-Z]).{8,}" title="Musí obsahovat alespoň 8 znaků, jedno velké písmeno a číslici">
+          <label for="password">Heslo</label>
+          <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[A-Z]).{8,}" title="Musí obsahovat alespoň 8 znaků, jedno velké písmeno a číslici">
 
-        <label>
-          <input type="checkbox" required>
-         
+          <label>
+            <input type="checkbox" required>
+            Souhlasím s <a href="tos.html" target="_blank">podmínkami použití</a>
+          </label>
+
+          <label>
+            <input type="checkbox" required>
+            Souhlasím s <a href="rules.html" target="_blank">komunitními pravidly</a>
+          </label>
+
+          <button type="submit">Registrovat</button>
+          <div class="small-text">
+            Už máte účet? <a href="login.html">Přihlásit se</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html">O hře</a> |
+      <a href="register.html">Registrace</a> |
+      <a href="login.html">Přihlášení</a> |
+      <a href="support.html">Podpora</a>
+      <p class="small">© 2025 Projekt Veralis</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert("Formulář odeslán. (Zatím bez backendu)");
+    });
+
+    const langBtn = document.getElementById('langBtn');
+    const langList = document.getElementById('langList');
+
+    (() => {
+      const path = window.location.pathname;
+      if (path.includes('/en/')) {
+        langBtn.querySelector('img').src = '../images/flags/gb.svg';
+        langBtn.querySelector('.lang-text').textContent = 'EN';
+      } else {
+        langBtn.querySelector('img').src = 'images/flags/cz.svg';
+        langBtn.querySelector('.lang-text').textContent = 'CZ';
+      }
+    })();
+
+    langBtn.addEventListener('click', () => {
+      langList.classList.toggle('visible');
+    });
+
+    langList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const selectedLang = li.getAttribute('data-lang');
+        if (selectedLang === 'en') {
+          window.location.href = 'en/index.html';
+        } else if (selectedLang === 'cs') {
+          window.location.href = './index.html';
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
+        langList.classList.remove('visible');
+      }
+    });
+  </script>
+</body>
+</html>
