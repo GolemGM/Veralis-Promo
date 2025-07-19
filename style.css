@@ -387,4 +387,16 @@ footer {
 .title-blue {
   color: #85c1e9;
 }
+.register-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+.hidden-btn {
+  display: none !important;
+}
 }
