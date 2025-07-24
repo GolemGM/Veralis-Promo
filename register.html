@@ -3,150 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registrace - Veralis</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Registrace – Veralis</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="overlay"></div>
-
-<header>
-  <div class="header-container">
-    <a href="index.html" class="logo-container">
-      <img src="images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
-    </a>
-     <div class="middle-container">
-  <div class="call-to-arm hidden-btn">Už máte účet?</div>
-  <button class="register-btn hidden-btn" id="registerBtn">Přihlásit se</button>
-</div>
-
-      <div class="language-switcher-container">
-        <button id="langBtn">
-          <img src="images/flags/cz.svg" alt="CZ" class="flag-icon" />
-          <span class="lang-text">CZ</span> ▼
-        </button>
-        <ul id="langList" class="hidden">
-          <li data-lang="cs"><img src="images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
-          <li data-lang="en"><img src="images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
-        </ul>
-      </div>
+  <header>
+    <div class="header-row">
+      <img src="images/Velaris-logo-transparent.png" alt="Veralis Logo" class="logo" />
+    </div>
+    <div class="header-row center">
+      <h1 class="header-title">Vstup do světa Veralis</h1>
+    </div>
+    <div class="header-row right">
+      <a href="register.html" class="lang-button">EN</a>
     </div>
   </header>
 
-<main>
-  <div class="register-wrapper">
-    <p class="register-info">
-      Vyplňte prosím své uživatelské jméno a e-mail. Na e-mail vám přijde potvrzení a dočasné heslo, které si pak můžete změnit.
-    </p>
-    <div class="register-box">
-      <h2>Registrace</h2>
-      <form id="registrationForm">
-        <label for="username">Uživatelské jméno</label>
-        <input type="text" id="username" name="username" required>
+  <!-- ✅ STAVOVÝ HLÁŠENÍ POD HEADEREM -->
+  <div id="status-bar" class="status-bar"></div>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+  <main class="main-container">
+    <section class="register-box">
+      <h2 class="register-title">Registrace</h2>
 
-        <div class="checkbox-row">
-  <div class="checkbox-label">
-    Souhlasím s <a href="tos.html" target="_blank">podmínkami použití</a>
-  </div>
-  <div class="checkbox-box">
-    <input type="checkbox" name="termsAccepted" required>
-  </div>
-</div>
+      <form id="registerForm" method="POST" action="/register">
+        <div class="form-group">
+          <label for="username">Uživatelské jméno</label>
+          <input type="text" id="username" name="username" required />
+        </div>
 
-<div class="checkbox-row">
-  <div class="checkbox-label">
-    Souhlasím s <a href="rules.html" target="_blank">komunitními pravidly</a>
-  </div>
-  <div class="checkbox-box">
-    <input type="checkbox" name="rulesAccepted" required>
-  </div>
-</div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required />
+        </div>
 
-        <input type="hidden" name="lang" value="cs"> <!-- nebo "en" dynamicky -->
+        <!-- ✅ POTVRZENÍ E-MAILU -->
+        <div class="form-group">
+          <label for="confirmEmail">Potvrďte e-mail</label>
+          <input type="email" id="confirmEmail" name="confirmEmail" required />
+        </div>
 
-        <button type="submit">Registrovat</button>
+        <div class="form-group">
+          <label for="password">Heslo</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <div class="form-group checkbox">
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms">
+            Souhlasím s
+            <a href="terms.html" class="terms-link">podmínkami použití</a>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="cta-button">Registrovat</button>
+        </div>
       </form>
-    </div>
-  </div>
-</main>
-
+    </section>
+  </main>
 
   <footer>
-    <div class="footer-content">
-      <a href="index.html">O hře</a> |
-      <a href="register.html">Registrace</a> |
-      <a href="login.html">Přihlášení</a> |
-      <a href="support.html">Podpora</a>
-      <p class="small">© 2025 Projekt Veralis</p>
-    </div>
+    <p>&copy; 2025 Veralis. Všechna práva vyhrazena.</p>
   </footer>
 
-<script>
-  const form = document.getElementById('registrationForm');    
-  const langBtn = document.getElementById('langBtn');
-  const langList = document.getElementById('langList');
+  <script>
+    // ✅ Validace potvrzení e-mailu
+    const form = document.getElementById("registerForm");
+    const statusBar = document.getElementById("status-bar");
 
-  (() => {
-    const path = window.location.pathname;
-    if (path.includes('/en/')) {
-      langBtn.querySelector('img').src = '../images/flags/gb.svg';
-      langBtn.querySelector('.lang-text').textContent = 'EN';
-    } else {
-      langBtn.querySelector('img').src = 'images/flags/cz.svg';
-      langBtn.querySelector('.lang-text').textContent = 'CZ';
-    }
-  })();
+    form.addEventListener("submit", function (e) {
+      const email = document.getElementById("email").value;
+      const confirmEmail = document.getElementById("confirmEmail").value;
 
-  langBtn.addEventListener('click', () => {
-    langList.classList.toggle('visible');
-  });
-
-  langList.querySelectorAll('li').forEach(li => {
-    li.addEventListener('click', () => {
-      const selectedLang = li.getAttribute('data-lang');
-      if (selectedLang === 'en') {
-        window.location.href = 'en/index.html';
-      } else if (selectedLang === 'cs') {
-        window.location.href = './index.html';
+      if (email !== confirmEmail) {
+        e.preventDefault();
+        showStatus("E-maily se neshodují.", "error");
       }
     });
-  });
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
+    // ✅ Funkce pro stavový řádek
+    function showStatus(message, type) {
+      statusBar.textContent = message;
+      statusBar.className = "status-bar " + (type === "error" ? "error" : "success");
+      statusBar.style.display = "block";
 
-    const formData = {
-      username: document.getElementById('username').value,
-      email: document.getElementById('email').value,
-      termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
-      rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
-      lang: form.querySelector('input[name="lang"]').value || 'cs',
-    };
-
-    try {
-      const response = await fetch('https://veralis-backend-production.up.railway.app/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert(result.message || 'Registrace proběhla úspěšně. Zkontrolujte svůj email.');
-        form.reset();
-      } else {
-        alert(result.error || 'Došlo k chybě při registraci.');
-      }
-    } catch (error) {
-      alert('Nepodařilo se odeslat registraci. Zkuste to prosím později.');
-      console.error('Chyba:', error);
+      setTimeout(() => {
+        statusBar.style.display = "none";
+      }, 5000);
     }
-  });
-</script>
+  </script>
 </body>
 </html>
