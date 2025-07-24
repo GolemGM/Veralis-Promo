@@ -471,4 +471,22 @@ footer {
   font-style: italic;
   line-height: 1.4;
 }
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem; /* mezera mezi řádky */
+}
+
+.checkbox-label {
+  margin: 0;  /* odstranit margin-bottom z předchozí definice */
+  font-size: 1rem;
+  color: #e0e0f0;
+  /* aby text nebral celou šířku */
+  flex: 1; 
+}
+
+.checkbox-box {
+  flex-shrink: 0; /* checkbox zabírá přesně tolik místa, kolik potřebuje */
+}
 }
