@@ -46,17 +46,13 @@
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
-        <div class="checkbox-row">
-          <div class="checkbox-label">Souhlasím s <a href="tos.html" target="_blank">podmínkami použití</a></div>
-          <div class="checkbox-box"><input type="checkbox" required></div>
-        </div>
-
-        <div class="checkbox-row">
-          <div class="checkbox-label">Souhlasím s <a href="rules.html" target="_blank">komunitními pravidly</a></div>
-          <div class="checkbox-box"><input type="checkbox" required></div>
-        </div>
-
-        <button type="submit">Registrovat</button>
+        <label><input type="checkbox" name="termsAccepted" required> Souhlasím s <a href="tos.html" target="_blank">podmínkami použití</a></label>
+  
+       <label><input type="checkbox" name="rulesAccepted" required> Souhlasím s <a href="rules.html" target="_blank">komunitními pravidly</a></label>
+  
+       <input type="hidden" name="lang" value="cs"> <!-- nebo "en" pro anglickou verzi -->
+  
+       <button type="submit">Registrovat</button>
       </form>
     </div>
   </div>
