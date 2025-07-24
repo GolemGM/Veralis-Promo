@@ -1,97 +1,52 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Registrace – Veralis</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <header>
     <div class="header-row">
-      <img src="images/Velaris-logo-transparent.png" alt="Veralis Logo" class="logo" />
-    </div>
-    <div class="header-row center">
-      <h1 class="header-title">Vstup do světa Veralis</h1>
-    </div>
-    <div class="header-row right">
-      <a href="register.html" class="lang-button">EN</a>
+      <div class="logo"><img src="images/logo.png" alt="Veralis Logo" /></div>
+      <div class="header-center">Vstup do světa Veralis</div>
+      <div class="header-right"><a href="register_en.html">EN</a></div>
     </div>
   </header>
 
-  <!-- ✅ STAVOVÝ HLÁŠENÍ POD HEADEREM -->
-  <div id="status-bar" class="status-bar"></div>
+  <!-- STATUS MESSAGE -->
+  <div id="status-message"></div>
 
-  <main class="main-container">
-    <section class="register-box">
-      <h2 class="register-title">Registrace</h2>
+  <main class="form-container">
+    <h1 class="blue-text">Registrace</h1>
 
-      <form id="registerForm" method="POST" action="/register">
-        <div class="form-group">
-          <label for="username">Uživatelské jméno</label>
-          <input type="text" id="username" name="username" required />
-        </div>
+    <form id="register-form" method="POST">
+      <label for="username">Uživatelské jméno</label>
+      <input type="text" id="username" name="username" required>
 
-        <div class="form-group">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" required />
-        </div>
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required>
 
-        <!-- ✅ POTVRZENÍ E-MAILU -->
-        <div class="form-group">
-          <label for="confirmEmail">Potvrďte e-mail</label>
-          <input type="email" id="confirmEmail" name="confirmEmail" required />
-        </div>
+      <label for="confirm-email">Potvrďte e-mail</label>
+      <input type="email" id="confirm-email" name="confirm-email" required>
 
-        <div class="form-group">
-          <label for="password">Heslo</label>
-          <input type="password" id="password" name="password" required />
-        </div>
+      <label for="password">Heslo</label>
+      <input type="password" id="password" name="password" required>
 
-        <div class="form-group checkbox">
-          <input type="checkbox" id="terms" name="terms" required />
-          <label for="terms">
-            Souhlasím s
-            <a href="terms.html" class="terms-link">podmínkami použití</a>
-          </label>
-        </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="terms" name="terms" required> Souhlasím s podmínkami použití</label>
+        <label><input type="checkbox" id="gdpr" name="gdpr" required> Souhlasím se zpracováním osobních údajů</label>
+      </div>
 
-        <div class="form-group">
-          <button type="submit" class="cta-button">Registrovat</button>
-        </div>
-      </form>
-    </section>
+      <button type="submit" class="cta-button">Registrovat</button>
+    </form>
   </main>
 
   <footer>
-    <p>&copy; 2025 Veralis. Všechna práva vyhrazena.</p>
+    <p>© 2025 Veralis. Všechna práva vyhrazena.</p>
   </footer>
 
-  <script>
-    // ✅ Validace potvrzení e-mailu
-    const form = document.getElementById("registerForm");
-    const statusBar = document.getElementById("status-bar");
-
-    form.addEventListener("submit", function (e) {
-      const email = document.getElementById("email").value;
-      const confirmEmail = document.getElementById("confirmEmail").value;
-
-      if (email !== confirmEmail) {
-        e.preventDefault();
-        showStatus("E-maily se neshodují.", "error");
-      }
-    });
-
-    // ✅ Funkce pro stavový řádek
-    function showStatus(message, type) {
-      statusBar.textContent = message;
-      statusBar.className = "status-bar " + (type === "error" ? "error" : "success");
-      statusBar.style.display = "block";
-
-      setTimeout(() => {
-        statusBar.style.display = "none";
-      }, 5000);
-    }
-  </script>
+  <script src="register.js"></script>
 </body>
 </html>
