@@ -119,39 +119,50 @@
     });
   });
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-    const formData = {
-      username: document.getElementById('username').value,
-      email: document.getElementById('email').value,
-      termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
-      rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
-      lang: form.querySelector('input[name="lang"]').value || 'cs',
-    };
+  const formData = {
+    username: document.getElementById('username').value,
+    email: document.getElementById('email').value,
+    termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
+    rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
+    lang: form.querySelector('input[name="lang"]').value || 'cs',
+  };
 
-    try {
-      const response = await fetch('https://veralis-backend-production.up.railway.app/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const response = await fetch('https://veralis-backend-production.up.railway.app/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
 
-      const result = await response.json();
+    const result = await response.json();
 
-      if (response.ok) {
-        alert(result.message || 'Registrace proběhla úspěšně. Zkontrolujte svůj email.');
-        form.reset();
-      } else {
-        alert(result.error || 'Došlo k chybě při registraci.');
-      }
-    } catch (error) {
-      alert('Nepodařilo se odeslat registraci. Zkuste to prosím později.');
-      console.error('Chyba:', error);
+    if (response.ok) {
+      // místo alertu zobraz status bar s úspěšnou zprávou
+      statusBar.textContent = result.message || 'Registrace proběhla úspěšně. Zkontrolujte svůj email.';
+      statusBar.classList.remove('hidden');
+      statusBar.classList.remove('error');
+      statusBar.classList.add('success');
+      form.reset();
+    } else {
+      // zobraz status bar s chybovou zprávou
+      statusBar.textContent = result.error || 'Došlo k chybě při registraci.';
+      statusBar.classList.remove('hidden');
+      statusBar.classList.remove('success');
+      statusBar.classList.add('error');
     }
-  }); // ← tady se uzavírá event listener
+  } catch (error) {
+    statusBar.textContent = 'Nepodařilo se odeslat registraci. Zkuste to prosím později.';
+    statusBar.classList.remove('hidden');
+    statusBar.classList.remove('success');
+    statusBar.classList.add('error');
+    console.error('Chyba:', error);
+  }
+}); // ← tady se uzavírá event listener
 
   // Načtení zprávy ze sessionStorage a zobrazení
   const message = sessionStorage.getItem('statusMessage');
