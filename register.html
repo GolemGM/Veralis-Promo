@@ -122,13 +122,24 @@
       }
     });
   });
+  
+// Funkce pro zobrazení statusu
+function showStatus(message, isSuccess = true) {
+  const wrapper = document.getElementById('status-bar-wrapper');
+  const bar = document.getElementById('status-bar');
+  const text = document.getElementById('status-text');
 
-  // Funkce pro zobrazení status zprávy
-  function showStatus(message, isSuccess = true) {
-    statusBar.textContent = message;
-    statusBar.classList.remove('error', 'success', 'hidden');
-    statusBar.classList.add(isSuccess ? 'success' : 'error');
-  }
+  wrapper.style.display = 'block';
+  bar.classList.remove('success', 'error');
+  bar.classList.add(isSuccess ? 'success' : 'error');
+  text.textContent = message;
+}
+
+// Zavření status baru tlačítkem
+document.getElementById('status-close').addEventListener('click', () => {
+  document.getElementById('status-bar-wrapper').style.display = 'none';
+});
+
 
   // Zpracování odeslání formuláře registrace
   form.addEventListener('submit', async function (e) {
