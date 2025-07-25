@@ -540,43 +540,72 @@ footer {
   text-decoration: none;
 }
 
-/* STATUS BAR */
-.status-bar {
-  position: fixed;
-  top: 140px; /* výška headeru */
+/* Wrapper s průhledným rámečkem – drží pozici a maximální šířku */
+#status-bar-wrapper {
+  position: absolute;
+  top: 140px;
   left: 50%;
   transform: translate(-50%, -100%);
-  max-width: 800px;
-  width: 80%;
-  padding: 12px 20px;
-  font-weight: 600;
-  border-radius: 0 0 8px 8px;
-  backdrop-filter: blur(6px);
-  background-color: rgba(20, 20, 20, 0.9);
+  max-width: 1300px; /* přizpůsob max šíři mainu */
+  width: 100%;
+  padding: 0 20px;
+  display: none;
+  z-index: 9999;
+}
+
+/* Průhledný vnější rámeček */
+#status-bar-wrapper::before {
+  content: '';
+  display: block;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* průhledný */
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -8px; /* aby byl trochu níže než výplň */
+  z-index: -1;
+}
+
+/* Vnitřní alert výplň */
+#status-bar {
+  background-color: rgba(220, 20, 60, 0.95); /* crimson alert styl */
   color: white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  z-index: 1100;
-  transition: transform 0.4s ease;
-  pointer-events: none; /* aby neblokoval kliknutí když skrytý */
+  padding: 16px 48px 16px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Viditelný stav */
-.status-bar.visible {
-  transform: translate(-50%, 0);
-  pointer-events: auto;
+/* Text */
+#status-text {
+  display: block;
+  max-width: calc(100% - 40px);
+  word-wrap: break-word;
 }
 
-/* Stav úspěchu */
-.status-bar.success {
-  border: 2px solid #4CAF50;
-  background-color: rgba(76, 175, 80, 0.9);
-  color: #fff;
+/* Zavírací tlačítko */
+#status-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
 }
 
-/* Stav chyby */
-.status-bar.error {
-  border: 2px solid #f44336;
-  background-color: rgba(244, 67, 54, 0.9);
-  color: #fff;
+/* Skrytý stav pro animaci zavření */
+#status-bar.closing {
+  opacity: 0;
+  transform: translateY(-10px);
 }
+
 }
