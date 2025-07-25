@@ -25,30 +25,30 @@ html, body {
 /* Hlavička */
 header {
   width: 100%;
-  height: 140px; /* pevná výška headeru */
+  height: 140px;
   background: linear-gradient(to right, #1a1a2e, #16213e);
   border-bottom: 1px solid #333;
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  flex-shrink: 0; /* header nemá měnit velikost */
+  flex-shrink: 0;
 }
 
 .header-container {
   max-width: 1080px;
   margin: 0 auto;
   display: flex;
-  align-items: center; /* vertikální centrování všech prvků */
+  align-items: center;
   position: relative;
-  gap: 20px; /* mezera mezi bloky */
+  gap: 20px;
 }
 
 .logo-container {
   flex-shrink: 0;
   max-height: 120px;
   display: flex;
-  align-items: center; /* vertikální centrování loga */
+  align-items: center;
 }
 
 .logo-container img {
@@ -62,9 +62,9 @@ header {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vycentrovat vertikálně */
-  align-items: center; /* zarovnat na střed horizontálně */
-  gap: 10px; /* mezera mezi CTA a regbtn */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   padding: 0 20px;
 }
 
@@ -86,7 +86,7 @@ header {
   cursor: pointer;
   font-size: 1rem;
   width: fit-content;
-  text-decoration: none; /* žádné podtržení */
+  text-decoration: none;
   display: inline-block;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
@@ -97,7 +97,6 @@ header {
   color: #000;
   text-decoration: none;
 }
-
 
 .language-switcher-container {
   flex-shrink: 0;
@@ -111,7 +110,7 @@ header {
 .language-switcher-container button#langBtn {
   background-color: #1a1a2e;
   color: #fff;
-  border: 1px solid #444; /* rámeček kolem tlačítka */
+  border: 1px solid #444;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
@@ -162,21 +161,17 @@ header {
   margin-right: 6px;
 }
 
-/* MAIN - hlavní obsah stránky - upraveno, odstraněno flex centrování */
+/* MAIN - hlavní obsah */
 main {
-  flex-grow: 1;  /* vyplní prostor mezi headerem a footerem */
+  flex-grow: 1;
   padding: 2rem;
   max-width: 1080px;
   width: 100%;
-  margin: 30px auto 30px auto;
+  margin: 30px auto;
   background: rgba(14, 14, 26, 0.5);
   border-radius: 8px;
   box-sizing: border-box;
-
-  /* ODSTRANĚNO display:flex, align-items:center, justify-content:center, min-height:100vh */
 }
-
-/* Kategorie na úvodní stránce, zůstává */
 .categories {
   display: flex;
   justify-content: space-around;
@@ -263,7 +258,7 @@ main {
 }
 
 footer {
-  flex-shrink: 0;  /* footer se nesmršťuje */
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   padding: 1rem 0;
@@ -288,11 +283,7 @@ footer {
   color: #7ed6df;
   text-decoration: none;
   background-color: transparent;
-  padding: 0;
   margin: 0 6px;
-  font-weight: normal;
-  transition: none;
-  cursor: pointer;
 }
 
 .footer-content a:hover,
@@ -322,13 +313,11 @@ footer {
   }
 }
 
-/* Podpora - mimo media query */
 .support-wrapper {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 2rem;
   border-radius: 1rem;
   max-width: 800px;
-  width: 100%;
   margin: auto;
   box-sizing: border-box;
 }
@@ -341,30 +330,16 @@ footer {
   box-shadow: 0 0 20px rgba(114, 137, 218, 0.7);
   text-align: center;
   margin-top: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .support-box .discord-icon {
   width: 64px;
-  height: auto;
   margin-bottom: 1rem;
   filter: drop-shadow(0 0 2px #7289da);
 }
 
-.support-box h2 {
-  margin-bottom: 1rem;
+.support-box h2, .support-box h3 {
   color: #85c1e9;
-}
-
-.support-box h3 {
-  margin-top: 1.8rem;
-  margin-bottom: 0.8rem;
-  color: #85c1e9;
-}
-
-.support-box p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
 }
 
 .support-box ul {
@@ -385,266 +360,11 @@ footer {
 .support-box a:focus {
   text-decoration: underline;
 }
+
 .discord-blue {
   color: #7289da;
   font-weight: 600;
 }
 .title-blue {
   color: #85c1e9;
-}
-.register-wrapper {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 800px;
-  width: 100%;
-  margin: auto;
-  box-sizing: border-box;
-}
-.register-box {
-  background-color: rgba(20, 20, 30, 0.85); /* tmavý průsvitný */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* jemný rámeček */
-  border-radius: 16px;
-  padding: 2rem;
-  max-width: 400px;
-  margin: 4rem auto;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-  color: #e0e0e0;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.register-box h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
-  text-align: center;
-}
-
-.register-box input[type="text"],
-.register-box input[type="email"],
-.register-box input[type="password"] {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  border-radius: 8px;
-  transition: border-color 0.2s ease;
-}
-
-.register-box input[type="text"]:focus,
-.register-box input[type="email"]:focus,
-.register-box input[type="password"]:focus {
-  border-color: #00bcd4;
-  outline: none;
-}
-
-.register-box button {
-  width: 100%;
-  padding: 0.75rem;
-  background: linear-gradient(to right, #16213e, #1a1a2e);
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.register-box button:hover {
-  background: linear-gradient(to right, #1a1a2e, #16213e);
-}
-.checkbox-label {
-  margin-bottom: 0.3rem;
-  font-size: 1rem;
-  color: #e0e0f0;
-}
-
-.checkbox-box input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-.register-info {
-  max-width: 400px;
-  margin: 1rem auto 2rem auto;
-  text-align: center;
-  font-size: 1rem;
-  color: #cfd8dc;
-  font-style: italic;
-  line-height: 1.4;
-}
-.checkbox-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem; /* mezera mezi řádky */
-}
-
-.checkbox-label {
-  margin: 0;  /* odstranit margin-bottom z předchozí definice */
-  font-size: 1rem;
-  color: #e0e0f0;
-  /* aby text nebral celou šířku */
-  flex: 1; 
-}
-
-.checkbox-box {
-  flex-shrink: 0; /* checkbox zabírá přesně tolik místa, kolik potřebuje */
-}
-#status-bar-wrapper {
-  position: fixed;
-  top: 140px;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 1300px;
-  width: 100%;
-  padding: 0 20px;
-  display: none;
-  z-index: 9999;
-}
-
-#status-bar-wrapper::before {
-  content: '';
-  display: block;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: -8px;
-  z-index: -1;
-}
-
-#status-bar {
-  background-color: rgba(76, 175, 80, 0.95);
-  color: white;
-  padding: 16px 48px 16px 20px;
-  border-radius: 8px;
-  font-size: 15px;
-  line-height: 1.4;
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-#status-bar.success {
-  background-color: rgba(76, 175, 80, 0.95);
-  color: white;
-}
-
-#status-bar.error {
-  background-color: rgba(244, 67, 54, 0.95);
-  color: white;
-}
-
-#status-text {
-  display: block;
-  max-width: calc(100% - 40px);
-  word-wrap: break-word;
-}
-
-#status-close {
-  position: absolute;
-  top: 10px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-}
-
-#status-bar.closing {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-/* ✅ Barva nadpisu registrace */
-.register-title {
-  color: #4db8ff; /* blankytně modrá */
-  font-size: 2rem;
-  text-align: center;
-}
-
-/* ✅ Odkaz na podmínky – žádné podtržení, jen barva */
-.terms-link {
-  color: #4db8ff;
-  text-decoration: none;
-}
-
-/* Wrapper s průhledným rámečkem – drží pozici a maximální šířku */
-#status-bar-wrapper {
-  position: absolute;
-  top: 140px;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  max-width: 1300px; /* přizpůsob max šíři mainu */
-  width: 100%;
-  padding: 0 20px;
-  display: none;
-  z-index: 9999;
-}
-
-/* Průhledný vnější rámeček */
-#status-bar-wrapper::before {
-  content: '';
-  display: block;
-  border: 2px solid rgba(255, 255, 255, 0.2); /* průhledný */
-  border-radius: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: -8px; /* aby byl trochu níže než výplň */
-  z-index: -1;
-}
-
-/* Vnitřní alert výplň */
-#status-bar {
-  background-color: rgba(220, 20, 60, 0.95); /* crimson alert styl */
-  color: white;
-  padding: 16px 48px 16px 20px;
-  border-radius: 8px;
-  font-size: 15px;
-  line-height: 1.4;
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-/* Text */
-#status-text {
-  display: block;
-  max-width: calc(100% - 40px);
-  word-wrap: break-word;
-}
-
-/* Zavírací tlačítko */
-#status-close {
-  position: absolute;
-  top: 10px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-}
-
-/* Skrytý stav pro animaci zavření */
-#status-bar.closing {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
 }
