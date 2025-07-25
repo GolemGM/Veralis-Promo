@@ -85,10 +85,13 @@
     </div>
   </footer>
 
+ // ZAČÁTEK SCRIPTŮ
+  
 <script>
   const form = document.getElementById('registrationForm');    
   const langBtn = document.getElementById('langBtn');
   const langList = document.getElementById('langList');
+  const statusBar = document.getElementById('status-bar');
 
   (() => {
     const path = window.location.pathname;
@@ -148,10 +151,9 @@
       alert('Nepodařilo se odeslat registraci. Zkuste to prosím později.');
       console.error('Chyba:', error);
     }
-  
-  <script>
+  }); // ← tady se uzavírá event listener
+
   // Načtení zprávy ze sessionStorage a zobrazení
-  const statusBar = document.getElementById('status-bar');
   const message = sessionStorage.getItem('statusMessage');
 
   if (message) {
@@ -159,7 +161,6 @@
     statusBar.classList.remove('hidden');
     sessionStorage.removeItem('statusMessage'); // Zpráva jen pro jednorázové zobrazení
   }
-  });
 </script>
 </body>
 </html>
