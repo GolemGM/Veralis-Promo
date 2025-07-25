@@ -368,3 +368,177 @@ footer {
 .title-blue {
   color: #85c1e9;
 }
+.register-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.register-box {
+  background-color: rgba(20, 20, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  margin: 4rem auto;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  color: #e0e0e0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.register-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.register-box input[type="text"],
+.register-box input[type="email"],
+.register-box input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.register-box input[type="text"]:focus,
+.register-box input[type="email"]:focus,
+.register-box input[type="password"]:focus {
+  border-color: #00bcd4;
+  outline: none;
+}
+
+.register-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(to right, #16213e, #1a1a2e);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-box button:hover {
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.checkbox-label {
+  font-size: 1rem;
+  color: #e0e0f0;
+  flex: 1;
+}
+
+.checkbox-box {
+  flex-shrink: 0;
+}
+
+.register-info {
+  max-width: 400px;
+  margin: 1rem auto 2rem auto;
+  text-align: center;
+  font-size: 1rem;
+  color: #cfd8dc;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.terms-link {
+  color: #4db8ff;
+  text-decoration: none;
+}
+
+.register-title {
+  color: #4db8ff;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* ✅ STATUS BAR – sjednocená verze podle návrhu */
+#status-bar-wrapper {
+  position: fixed;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1000px;
+  width: calc(100% - 40px);
+  padding: 0;
+  display: none;
+  z-index: 1100;
+}
+
+#status-bar-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+#status-bar {
+  background-color: rgba(76, 175, 80, 0.95);
+  color: white;
+  padding: 16px 48px 16px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#status-bar.success {
+  background-color: rgba(76, 175, 80, 0.95);
+  color: white;
+}
+
+#status-bar.error {
+  background-color: rgba(244, 67, 54, 0.95);
+  color: white;
+}
+
+#status-bar.closing {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+#status-text {
+  display: block;
+  max-width: calc(100% - 40px);
+  word-wrap: break-word;
+}
+
+#status-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
