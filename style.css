@@ -529,4 +529,19 @@ footer {
   color: #4db8ff;
   text-decoration: none;
 }
+
+.status-bar {
+  background-color: #2e8b57;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-bottom: 2px solid #1c5e3a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.status-bar.hidden {
+  display: none;
+}
 }
