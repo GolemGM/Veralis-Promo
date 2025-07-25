@@ -496,7 +496,7 @@ footer {
 }
 /* ✅ Status bar pod headerem */
 .status-bar {
-  display: none;
+  display: visible;
   margin: 20px auto -20px auto;
   padding: 10px 20px;
   width: 80%;
