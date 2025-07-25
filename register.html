@@ -32,7 +32,7 @@
     </div>
   </header>
   
-   <div id="status-bar" class="status-bar hidden"></div>
+<div id="status-bar" class="status-bar">Testovací hláška - vidíš mě?</div>
   
 <main>
   <div class="register-wrapper">
@@ -118,9 +118,12 @@
   });
 
 function showStatus(message, isSuccess = true) {
+  console.log('showStatus voláno s:', message, isSuccess);
   statusBar.textContent = message;
-  statusBar.classList.remove('error', 'success', 'hidden'); // ukáže
-  statusBar.classList.add(isSuccess ? 'success' : 'error');
+  statusBar.style.display = 'block';  // natvrdo zobrazit
+  statusBar.style.backgroundColor = isSuccess ? '#4caf50' : '#f44336';
+  statusBar.style.color = '#fff';
+  statusBar.style.padding = '10px';
 }
 
   form.addEventListener('submit', async function (e) {
