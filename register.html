@@ -96,6 +96,7 @@
   const langList = document.getElementById('langList');
   const statusBar = document.getElementById('status-bar');
 
+  // Nastavení jazyka podle URL (jazykový přepínač)
   (() => {
     const path = window.location.pathname;
     if (path.includes('/en/')) {
@@ -122,91 +123,71 @@
     });
   });
 
-function showStatus(message, isSuccess = true) {
-  let statusBar = document.getElementById('status-bar');
-
-  if (!statusBar) {
-    // Vytvoříme prvek, pokud ještě neexistuje
-    statusBar = document.createElement('div');
-    statusBar.id = 'status-bar';
-    statusBar.style.position = 'fixed';
-    statusBar.style.top = '20px';
-    statusBar.style.left = '50%';
-    statusBar.style.transform = 'translateX(-50%)';
-    statusBar.style.zIndex = '1000';
-    statusBar.style.maxWidth = '90%';
-    statusBar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
-    statusBar.style.borderRadius = '8px';
-    statusBar.style.fontFamily = 'sans-serif';
-    statusBar.style.fontSize = '15px';
-    statusBar.style.opacity = '0';
-    statusBar.style.pointerEvents = 'auto';
-    statusBar.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-
-    const closeBtn = document.createElement('span');
-    closeBtn.innerHTML = '&times;';
-    closeBtn.style.float = 'right';
-    closeBtn.style.marginLeft = '12px';
-    closeBtn.style.cursor = 'pointer';
-    closeBtn.style.fontSize = '20px';
-    closeBtn.style.lineHeight = '1';
-
-    closeBtn.addEventListener('click', () => {
-      statusBar.style.opacity = '0';
-      statusBar.style.transform = 'translateX(-50%) translateY(-20px)';
-      setTimeout(() => statusBar.remove(), 400);
-    });
-
-    statusBar.appendChild(closeBtn);
-    document.body.appendChild(statusBar);
-  } else {
-    // Pokud už existuje, smaž starou zprávu a přidáme novou
-    statusBar.innerHTML = '';
-    const closeBtn = document.createElement('span');
-    closeBtn.innerHTML = '&times;';
-    closeBtn.style.float = 'right';
-    closeBtn.style.marginLeft = '12px';
-    closeBtn.style.cursor = 'pointer';
-    closeBtn.style.fontSize = '20px';
-    closeBtn.style.lineHeight = '1';
-
-    closeBtn.addEventListener('click', () => {
-      statusBar.style.opacity = '0';
-      statusBar.style.transform = 'translateX(-50%) translateY(-20px)';
-      setTimeout(() => statusBar.remove(), 400);
-    });
-
-    statusBar.appendChild(closeBtn);
+  // Funkce pro zobrazení status zprávy
+  function showStatus(message, isSuccess = true) {
+    statusBar.textContent = message;
+    statusBar.classList.remove('error', 'success', 'hidden');
+    statusBar.classList.add(isSuccess ? 'success' : 'error');
   }
 
-  statusBar.style.backgroundColor = isSuccess ? '#4caf50' : '#f44336';
-  statusBar.style.color = '#fff';
-  statusBar.style.padding = '12px 16px';
-  statusBar.textContent = message;
+  // Zpracování odeslání formuláře registrace
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-  // Přidáme tlačítko znovu (přepsalo se textContentem)
-  const closeBtn = document.createElement('span');
-  closeBtn.innerHTML = '&times;';
-  closeBtn.style.float = 'right';
-  closeBtn.style.marginLeft = '12px';
-  closeBtn.style.cursor = 'pointer';
-  closeBtn.style.fontSize = '20px';
-  closeBtn.style.lineHeight = '1';
+    // Připrav data z formuláře
+    const formData = {
+      username: document.getElementById('username').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
+      rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
+      lang: form.querySelector('input[name="lang"]').value || 'cs',
+    };
 
-  closeBtn.addEventListener('click', () => {
-    statusBar.style.opacity = '0';
-    statusBar.style.transform = 'translateX(-50%) translateY(-20px)';
-    setTimeout(() => statusBar.remove(), 400);
+    // Jednoduchá validace na frontend (doporučuji)
+    if (!formData.username) {
+      showStatus('Zadejte uživatelské jméno.', false);
+      return;
+    }
+    if (!formData.email) {
+      showStatus('Zadejte email.', false);
+      return;
+    }
+    if (!formData.termsAccepted || !formData.rulesAccepted) {
+      showStatus('Musíte souhlasit s podmínkami a pravidly.', false);
+      return;
+    }
+
+    try {
+      // Odeslání na backend
+      const response = await fetch('https://veralis-backend-production.up.railway.app/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        showStatus(result.message || 'Registrace proběhla úspěšně. Zkontrolujte svůj email.', true);
+        form.reset();
+      } else {
+        showStatus(result.error || 'Došlo k chybě při registraci.', false);
+      }
+    } catch (error) {
+      showStatus('Nepodařilo se odeslat registraci. Zkuste to prosím později.', false);
+      console.error('Chyba:', error);
+    }
   });
 
-  statusBar.appendChild(closeBtn);
-
-  // Zobrazí s animací
-  setTimeout(() => {
-    statusBar.style.opacity = '1';
-    statusBar.style.transform = 'translateX(-50%) translateY(0)';
-  }, 50);
-}
+  // Načtení zprávy ze sessionStorage a zobrazení (pokud nějaká je)
+  const message = sessionStorage.getItem('statusMessage');
+  if (message) {
+    showStatus(message, true);
+    sessionStorage.removeItem('statusMessage'); // jednorázové zobrazení
+  }
 </script>
+
 </body>
 </html>
