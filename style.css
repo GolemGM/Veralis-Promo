@@ -351,19 +351,17 @@ main {
   .register-box {
     margin: 2rem auto;
   }
-  .terms-link {
-  color: #7ed6df;
+.terms-link {
+  color: #4db8ff;
   text-decoration: none;
   font-weight: 500;
 }
 
-.terms-link:visited {
-  color: #7ed6df;
-}
-
+.terms-link:visited,
 .terms-link:hover,
 .terms-link:focus {
-  text-decoration: underline;
+  color: #4db8ff;
+  text-decoration: none;
 }
 footer {
   flex-shrink: 0;  /* footer se nesmršťuje */
