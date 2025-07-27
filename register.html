@@ -120,11 +120,7 @@ langBtn.addEventListener('click', () => {
 langList.querySelectorAll('li').forEach(li => {
   li.addEventListener('click', () => {
     const selectedLang = li.getAttribute('data-lang');
-    if (selectedLang === 'en') {
-      window.location.href = 'en/index.html';
-    } else if (selectedLang === 'cs') {
-      window.location.href = './index.html';
-    }
+    window.location.href = selectedLang === 'en' ? 'en/index.html' : './index.html';
   });
 });
 
@@ -145,27 +141,27 @@ document.getElementById('status-close').addEventListener('click', () => {
 form.addEventListener('submit', async function (e) {
   e.preventDefault();
 
-// Získej reCAPTCHA token
-const captchaToken = grecaptcha.getResponse();
-if (!captchaToken) {
-  showStatus('Potvrďte, že nejste robot.', false);
-  return;
-}
+  // Získej reCAPTCHA token
+  const captchaToken = grecaptcha.getResponse();
+  if (!captchaToken) {
+    showStatus('Potvrďte, že nejste robot.', false);
+    return;
+  }
 
-const formData = {
-  username: document.getElementById('username').value.trim(),
-  email: document.getElementById('email').value.trim(),
-  termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
-  rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
-  lang: form.querySelector('input[name="lang"]').value || 'cs',
-  captcha: captchaToken, // Přidáme token
-};
+  const formData = {
+    username: document.getElementById('username').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    emailConfirm: document.getElementById('emailConfirm').value.trim(), // <-- doplněno!
+    termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
+    rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
+    lang: form.querySelector('input[name="lang"]').value || 'cs',
+    captcha: captchaToken
+  };
 
   if (!formData.username) return showStatus('Zadejte uživatelské jméno.', false);
   if (!formData.email) return showStatus('Zadejte email.', false);
   if (formData.email !== formData.emailConfirm) return showStatus('E-maily se neshodují.', false);
   if (!formData.termsAccepted || !formData.rulesAccepted) return showStatus('Musíte souhlasit s podmínkami a pravidly.', false);
-  if (!formData.fakeCaptcha) return showStatus('Ověřte, že nejste robot.', false);
 
   try {
     const response = await fetch('https://veralis-backend-production.up.railway.app/api/register', {
@@ -176,7 +172,7 @@ const formData = {
 
     const result = await response.json();
     if (response.ok) {
-      showStatus(result.message || 'Registrace proběhla úěspěšně. Zkontrolujte svůj email.', true);
+      showStatus(result.message || 'Registrace proběhla úspěšně. Zkontrolujte svůj email.', true);
       form.reset();
     } else {
       showStatus(result.error || 'Došlo k chybě při registraci.', false);
