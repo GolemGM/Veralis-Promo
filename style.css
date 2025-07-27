@@ -5,10 +5,8 @@
   box-sizing: border-box;
 }
 
-/* Přidáno pro layout celé stránky */
 html, body {
   height: 100%;
-  margin: 0;
   display: flex;
   flex-direction: column;
   background-color: #0e0e1a;
@@ -85,7 +83,6 @@ header {
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
-  width: fit-content;
   text-decoration: none;
   display: inline-block;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
@@ -95,7 +92,6 @@ header {
   background-color: #e0b05c;
   border-color: #e0b05c;
   color: #000;
-  text-decoration: none;
 }
 
 .language-switcher-container {
@@ -117,8 +113,6 @@ header {
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: none;
-  outline: none;
   font-size: 1rem;
 }
 
@@ -157,224 +151,27 @@ header {
 .flag-icon {
   width: 24px;
   height: auto;
-  vertical-align: middle;
   margin-right: 6px;
 }
 
-/* MAIN - hlavní obsah */
+/* MAIN */
 main {
   flex-grow: 1;
   padding: 2rem;
   max-width: 1080px;
-  width: 100%;
   margin: 30px auto;
   background: rgba(14, 14, 26, 0.5);
   border-radius: 8px;
   box-sizing: border-box;
 }
-.categories {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1rem;
-  position: relative;
-  border-radius: 8px;
-  background: rgba(14, 14, 26, 0.5);
-  padding: 2rem;
-  overflow: hidden;
-}
 
-.categories::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(rgba(14,14,26,0.4), rgba(14,14,26,0.7));
-  backdrop-filter: blur(4px);
-  z-index: -1;
-  border-radius: 8px;
-}
-
-.category {
-  max-width: 25%;
-  text-align: center;
-}
-
-.category h2 {
-  font-size: 1.5rem;
-  color: #85c1e9;
-  margin-bottom: 0.5rem;
-}
-
-.category p {
-  font-size: 0.95rem;
-  color: #ccc;
-}
-
-.features-slider {
-  padding: 2rem;
-  background: #1b1f33;
-  text-align: center;
-}
-
-.slider p {
-  font-size: 1.2rem;
-  font-style: italic;
-  color: #fff;
-  transition: opacity 0.3s ease;
-}
-
-.description,
-.steam-style {
-  padding: 2rem 0;
-}
-
-.description h2,
-.steam-style h2 {
-  font-size: 1.4rem;
-  color: #74b9ff;
-  margin-bottom: 1rem;
-}
-
-.description p,
-.steam-style p {
-  margin-bottom: 1rem;
-  color: #ddd;
-}
-
-.description {
-  position: relative;
-  z-index: 1;
-  padding: 2rem;
-  border-radius: 8px;
-}
-
-.description::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(rgba(14,14,26,0.5), rgba(14,14,26,0.7));
-  backdrop-filter: blur(4px);
-  z-index: -1;
-  border-radius: 8px;
-}
-
-footer {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.footer-content {
-  max-width: 1080px;
-  width: auto;
-  padding: 1rem 20px;
-  box-sizing: border-box;
-  color: #7ed6df;
-  background-color: rgba(14, 14, 26, 0.5);
-  border-radius: 8px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer-content a {
-  color: #7ed6df;
-  text-decoration: none;
-  background-color: transparent;
-  margin: 0 6px;
-}
-
-.footer-content a:hover,
-.footer-content a:focus {
-  color: #7ed6df;
-  text-decoration: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-}
-
-.small {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: #555;
-}
-
-@media (max-width: 768px) {
-  .categories {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .category {
-    max-width: 90%;
-    margin-bottom: 1rem;
-  }
-}
-
-.support-wrapper {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 800px;
-  margin: auto;
-  box-sizing: border-box;
-}
-
-.support-box {
-  background-color: rgba(14, 14, 26, 0.95);
-  color: #e0e0f0;
-  padding: 1.8rem 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(114, 137, 218, 0.7);
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.support-box .discord-icon {
-  width: 64px;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 2px #7289da);
-}
-
-.support-box h2, .support-box h3 {
-  color: #85c1e9;
-}
-
-.support-box ul {
-  list-style-type: disc;
-  margin-left: 1.5rem;
-  text-align: left;
-  margin-bottom: 1rem;
-  color: #ccc;
-}
-
-.support-box a {
-  color: #85c1e9;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.support-box a:hover,
-.support-box a:focus {
-  text-decoration: underline;
-}
-
-.discord-blue {
-  color: #7289da;
-  font-weight: 600;
-}
-.title-blue {
-  color: #85c1e9;
-}
+/* Register box */
 .register-wrapper {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 2rem;
   border-radius: 1rem;
   max-width: 800px;
   margin: auto;
-  box-sizing: border-box;
 }
 
 .register-box {
@@ -387,14 +184,19 @@ footer {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
   color: #e0e0e0;
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 .register-box h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  color: #4db8ff;
   text-align: center;
+  background-color: rgba(0,0,0,0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px #000;
 }
 
 .register-box input[type="text"],
@@ -410,9 +212,7 @@ footer {
   transition: border-color 0.2s ease;
 }
 
-.register-box input[type="text"]:focus,
-.register-box input[type="email"]:focus,
-.register-box input[type="password"]:focus {
+.register-box input:focus {
   border-color: #00bcd4;
   outline: none;
 }
@@ -442,8 +242,17 @@ footer {
 
 .checkbox-label {
   font-size: 1rem;
-  color: #e0e0f0;
+  color: #4db8ff;
   flex: 1;
+}
+
+.checkbox-label a {
+  color: #4db8ff;
+  text-decoration: none;
+}
+
+.checkbox-label a:hover {
+  text-decoration: none;
 }
 
 .checkbox-box {
@@ -460,18 +269,14 @@ footer {
   line-height: 1.4;
 }
 
-.terms-link {
-  color: #4db8ff;
-  text-decoration: none;
+/* Captcha */
+.captcha-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
 }
 
-.register-title {
-  color: #4db8ff;
-  font-size: 2rem;
-  text-align: center;
-}
-
-/* ✅ STATUS BAR – sjednocená verze podle návrhu */
+/* Status bar */
 #status-bar-wrapper {
   position: fixed;
   top: 140px;
@@ -511,12 +316,10 @@ footer {
 
 #status-bar.success {
   background-color: rgba(76, 175, 80, 0.95);
-  color: white;
 }
 
 #status-bar.error {
   background-color: rgba(244, 67, 54, 0.95);
-  color: white;
 }
 
 #status-bar.closing {
@@ -541,4 +344,11 @@ footer {
   cursor: pointer;
   line-height: 1;
   padding: 0;
+}
+
+/* Responsivita */
+@media (max-width: 768px) {
+  .register-box {
+    margin: 2rem auto;
+  }
 }
