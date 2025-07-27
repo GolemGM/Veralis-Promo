@@ -83,6 +83,10 @@
 
         <input type="hidden" name="lang" value="cs">
 
+        <div class="captcha-container">
+  <div class="g-recaptcha" data-sitekey="6Lfpa5ArAAAAAO20apfb1gRsN4K_lPCElnplo_EE"></div>
+</div>
+        
         <button type="submit">Registrovat</button>
       </form>
     </div>
@@ -190,6 +194,6 @@ if (message) {
   sessionStorage.removeItem('statusMessage');
 }
 </script>
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
