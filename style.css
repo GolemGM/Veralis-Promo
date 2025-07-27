@@ -8,6 +8,7 @@
 /* Přidáno pro layout celé stránky */
 html, body {
   height: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
   background-color: #0e0e1a;
@@ -24,30 +25,30 @@ html, body {
 /* Hlavička */
 header {
   width: 100%;
-  height: 140px;
+  height: 140px; /* pevná výška headeru */
   background: linear-gradient(to right, #1a1a2e, #16213e);
   border-bottom: 1px solid #333;
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  flex-shrink: 0;
+  flex-shrink: 0; /* header nemá měnit velikost */
 }
 
 .header-container {
   max-width: 1080px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: center; /* vertikální centrování všech prvků */
   position: relative;
-  gap: 20px;
+  gap: 20px; /* mezera mezi bloky */
 }
 
 .logo-container {
   flex-shrink: 0;
   max-height: 120px;
   display: flex;
-  align-items: center;
+  align-items: center; /* vertikální centrování loga */
 }
 
 .logo-container img {
@@ -61,9 +62,9 @@ header {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+  justify-content: center; /* vycentrovat vertikálně */
+  align-items: center; /* zarovnat na střed horizontálně */
+  gap: 10px; /* mezera mezi CTA a regbtn */
   padding: 0 20px;
 }
 
@@ -83,8 +84,7 @@ header {
   font-weight: 600;
   cursor: pointer;
   font-size: 1rem;
-  text-decoration: none;
-  display: inline-block;
+  width: fit-content;
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
@@ -94,4 +94,587 @@ header {
   color: #000;
 }
 
-/* ... další části zůstávají beze změny, následuje generování celého obsahu */
+.language-switcher-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-width: 140px;
+  position: relative;
+}
+
+.language-switcher-container button#langBtn {
+  background-color: #1a1a2e;
+  color: #fff;
+  border: 1px solid #444; /* rámeček kolem tlačítka */
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.language-switcher-container ul#langList {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 4px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  width: 140px;
+  z-index: 999;
+}
+
+.language-switcher-container ul#langList.visible {
+  display: block;
+}
+
+.language-switcher-container ul#langList li {
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.language-switcher-container ul#langList li:hover {
+  background-color: #333;
+}
+
+.flag-icon {
+  width: 24px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* MAIN - hlavní obsah stránky - upraveno, odstraněno flex centrování */
+main {
+  flex-grow: 1;  /* vyplní prostor mezi headerem a footerem */
+  padding: 2rem;
+  max-width: 1080px;
+  width: 100%;
+  margin: 30px auto 30px auto;
+  background: rgba(14, 14, 26, 0.5);
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  /* ODSTRANĚNO display:flex, align-items:center, justify-content:center, min-height:100vh */
+}
+
+/* Kategorie na úvodní stránce, zůstává */
+.categories {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  position: relative;
+  border-radius: 8px;
+  background: rgba(14, 14, 26, 0.5);
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.categories::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(14,14,26,0.4), rgba(14,14,26,0.7));
+  backdrop-filter: blur(4px);
+  z-index: -1;
+  border-radius: 8px;
+}
+
+.category {
+  max-width: 25%;
+  text-align: center;
+}
+
+.category h2 {
+  font-size: 1.5rem;
+  color: #85c1e9;
+  margin-bottom: 0.5rem;
+}
+
+.category p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.features-slider {
+  padding: 2rem;
+  background: #1b1f33;
+  text-align: center;
+}
+
+.slider p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+
+.description,
+.steam-style {
+  padding: 2rem 0;
+}
+
+.description h2,
+.steam-style h2 {
+  font-size: 1.4rem;
+  color: #74b9ff;
+  margin-bottom: 1rem;
+}
+
+.description p,
+.steam-style p {
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+.description {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.description::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(14,14,26,0.5), rgba(14,14,26,0.7));
+  backdrop-filter: blur(4px);
+  z-index: -1;
+  border-radius: 8px;
+}
+
+footer {
+  flex-shrink: 0;  /* footer se nesmršťuje */
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.footer-content {
+  max-width: 1080px;
+  width: auto;
+  padding: 1rem 20px;
+  box-sizing: border-box;
+  color: #7ed6df;
+  background-color: rgba(14, 14, 26, 0.5);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-content a {
+  color: #7ed6df;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0 6px;
+  font-weight: normal;
+  transition: none;
+  cursor: pointer;
+}
+
+.footer-content a:hover,
+.footer-content a:focus {
+  color: #7ed6df;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.small {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category {
+    max-width: 90%;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Podpora - mimo media query */
+.support-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.support-box {
+  background-color: rgba(14, 14, 26, 0.95);
+  color: #e0e0f0;
+  padding: 1.8rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(114, 137, 218, 0.7);
+  text-align: center;
+  margin-top: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.support-box .discord-icon {
+  width: 64px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 2px #7289da);
+}
+
+.support-box h2 {
+  margin-bottom: 1rem;
+  color: #85c1e9;
+}
+
+.support-box h3 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #85c1e9;
+}
+
+.support-box p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.support-box ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  text-align: left;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.support-box a {
+  color: #85c1e9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.support-box a:hover,
+.support-box a:focus {
+  text-decoration: underline;
+}
+.discord-blue {
+  color: #7289da;
+  font-weight: 600;
+}
+.title-blue {
+  color: #85c1e9;
+}
+.register-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+.register-box {
+  background-color: rgba(20, 20, 30, 0.85); /* tmavý průsvitný */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* jemný rámeček */
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  margin: 4rem auto;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  color: #e0e0e0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.register-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.register-box input[type="text"],
+.register-box input[type="email"],
+.register-box input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.register-box input[type="text"]:focus,
+.register-box input[type="email"]:focus,
+.register-box input[type="password"]:focus {
+  border-color: #00bcd4;
+  outline: none;
+}
+
+.register-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(to right, #16213e, #1a1a2e);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-box button:hover {
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+}
+.checkbox-label {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  color: #e0e0f0;
+}
+
+.checkbox-box input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.register-info {
+  max-width: 400px;
+  margin: 1rem auto 2rem auto;
+  text-align: center;
+  font-size: 1rem;
+  color: #cfd8dc;
+  font-style: italic;
+  line-height: 1.4;
+}
+}
+
+
+/* === Nové části z registrace a status baru === */
+
+.register-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.register-box {
+  background-color: rgba(20, 20, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  margin: 4rem auto;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  color: #e0e0e0;
+  backdrop-filter: blur(8px);
+}
+
+.register-box {
+    margin: 2rem auto;
+  }
+
+.register-box h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  color: #4db8ff;
+  text-align: center;
+  background-color: rgba(0,0,0,0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.register-box input:focus {
+  border-color: #00bcd4;
+  outline: none;
+}
+
+.register-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(to right, #16213e, #1a1a2e);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-box button:hover {
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+}
+
+.register-info {
+  max-width: 400px;
+  margin: 1rem auto 2rem auto;
+  text-align: center;
+  font-size: 1rem;
+  color: #cfd8dc;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.checkbox-label {
+  font-size: 1rem;
+  color: #4db8ff;
+  flex: 1;
+}
+
+.checkbox-label {
+  color: white; /* reset na bílou */
+}
+
+.checkbox-box {
+  flex-shrink: 0;
+}
+
+.captcha-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#status-bar-wrapper {
+  position: fixed;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1000px;
+  width: calc(100% - 40px);
+  padding: 0;
+  display: none;
+  z-index: 1100;
+}
+
+#status-bar-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+#status-bar {
+  background-color: rgba(76, 175, 80, 0.95);
+  color: white;
+  padding: 16px 48px 16px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#status-bar.success {
+  background-color: rgba(76, 175, 80, 0.95);
+}
+
+#status-bar.error {
+  background-color: rgba(244, 67, 54, 0.95);
+}
+
+#status-bar.closing {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+#status-text {
+  display: block;
+  max-width: calc(100% - 40px);
+  word-wrap: break-word;
+}
+
+#status-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.terms-link {
+  color: #4db8ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-link {
+  color: #7ed6df;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-link:visited {
+  color: #7ed6df;
+}
+
+.terms-link:focus {
+  color: #4db8ff;
+  text-decoration: none;
+}
+
+.terms-link:focus {
+  text-decoration: underline;
+}
+
+.checkbox-label .terms-link {
+  color: #7ed6df;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.checkbox-label .terms-link:visited {
+  color: #7ed6df;
+}
+
+.checkbox-label .terms-link:focus {
+  text-decoration: underline;
+}
