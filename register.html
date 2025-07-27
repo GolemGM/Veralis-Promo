@@ -141,22 +141,15 @@ document.getElementById('status-close').addEventListener('click', () => {
 form.addEventListener('submit', async function (e) {
   e.preventDefault();
 
-  // Získej reCAPTCHA token
-  const captchaToken = grecaptcha.getResponse();
-  if (!captchaToken) {
-    showStatus('Potvrďte, že nejste robot.', false);
-    return;
-  }
-
-  const formData = {
-    username: document.getElementById('username').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    emailConfirm: document.getElementById('emailConfirm').value.trim(), // <-- doplněno!
-    termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
-    rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
-    lang: form.querySelector('input[name="lang"]').value || 'cs',
-    captcha: captchaToken
-  };
+const formData = {
+  username: document.getElementById('username').value.trim(),
+  email: document.getElementById('email').value.trim(),
+  emailConfirm: document.getElementById('emailConfirm').value.trim(),
+  termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
+  rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
+  lang: form.querySelector('input[name="lang"]').value || 'cs',
+  captcha: captchaToken  // ← použij rovnou tento token
+};
 
   if (!formData.username) return showStatus('Zadejte uživatelské jméno.', false);
   if (!formData.email) return showStatus('Zadejte email.', false);
