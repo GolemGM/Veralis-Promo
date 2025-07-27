@@ -386,4 +386,22 @@ main {
   margin: 0 auto;
   text-align: center;
 }
+  .checkbox-label {
+  color: white; /* reset na bílou */
+}
+
+.checkbox-label .terms-link {
+  color: #7ed6df;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.checkbox-label .terms-link:visited {
+  color: #7ed6df;
+}
+
+.checkbox-label .terms-link:hover,
+.checkbox-label .terms-link:focus {
+  text-decoration: underline;
+}
 }
