@@ -45,7 +45,7 @@
       Vyplňte prosím své uživatelské jméno a e-mail. Na e-mail vám přijde potvrzení a dočasné heslo, které si pak můžete změnit.
     </p>
     <div class="register-box">
-      <h2>Registrace</h2>
+      <h2 class="register-title">Registrace</h2>
       <form id="registrationForm">
         <label for="username">Uživatelské jméno</label>
         <input type="text" id="username" name="username" required>
@@ -53,25 +53,35 @@
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
+        <label for="emailConfirm">Potvrďdte email</label>
+        <input type="email" id="emailConfirm" name="emailConfirm" required>
+
         <div class="checkbox-row">
-  <div class="checkbox-label">
-    Souhlasím s <a href="tos.html" target="_blank">podmínkami použití</a>
-  </div>
-  <div class="checkbox-box">
-    <input type="checkbox" name="termsAccepted" required>
-  </div>
-</div>
+          <div class="checkbox-label">
+            Souhlasím s <span class="terms-link">podmínkami použití</span>
+          </div>
+          <div class="checkbox-box">
+            <input type="checkbox" name="termsAccepted" required>
+          </div>
+        </div>
 
-<div class="checkbox-row">
-  <div class="checkbox-label">
-    Souhlasím s <a href="rules.html" target="_blank">komunitními pravidly</a>
-  </div>
-  <div class="checkbox-box">
-    <input type="checkbox" name="rulesAccepted" required>
-  </div>
-</div>
+        <div class="checkbox-row">
+          <div class="checkbox-label">
+            Souhlasím s <span class="terms-link">komunitními pravidly</span>
+          </div>
+          <div class="checkbox-box">
+            <input type="checkbox" name="rulesAccepted" required>
+          </div>
+        </div>
 
-        <input type="hidden" name="lang" value="cs"> <!-- nebo "en" dynamicky -->
+        <div class="checkbox-row">
+          <div class="checkbox-label">
+            <input type="checkbox" name="fakeCaptcha" required>
+            <span class="captcha-label">Nejsem robot</span>
+          </div>
+        </div>
+
+        <input type="hidden" name="lang" value="cs">
 
         <button type="submit">Registrovat</button>
       </form>
@@ -79,125 +89,106 @@
   </div>
 </main>
 
-
-  <footer>
-    <div class="footer-content">
-      <a href="index.html">O hře</a> |
-      <a href="register.html">Registrace</a> |
-      <a href="login.html">Přihlášení</a> |
-      <a href="support.html">Podpora</a>
-      <p class="small">© 2025 Projekt Veralis</p>
-    </div>
-  </footer>
+<footer>
+  <div class="footer-content">
+    <a href="index.html">O hře</a> |
+    <a href="register.html">Registrace</a> |
+    <a href="login.html">Přihlášení</a> |
+    <a href="support.html">Podpora</a>
+    <p class="small">© 2025 Projekt Veralis</p>
+  </div>
+</footer>
 
 <script>
-  const form = document.getElementById('registrationForm');    
-  const langBtn = document.getElementById('langBtn');
-  const langList = document.getElementById('langList');
-  const statusBar = document.getElementById('status-bar');
+const form = document.getElementById('registrationForm');
+const langBtn = document.getElementById('langBtn');
+const langList = document.getElementById('langList');
+const statusBar = document.getElementById('status-bar');
 
-  // Nastavení jazyka podle URL (jazykový přepínač)
-  (() => {
-    const path = window.location.pathname;
-    if (path.includes('/en/')) {
-      langBtn.querySelector('img').src = '../images/flags/gb.svg';
-      langBtn.querySelector('.lang-text').textContent = 'EN';
-    } else {
-      langBtn.querySelector('img').src = 'images/flags/cz.svg';
-      langBtn.querySelector('.lang-text').textContent = 'CZ';
+(() => {
+  const path = window.location.pathname;
+  if (path.includes('/en/')) {
+    langBtn.querySelector('img').src = '../images/flags/gb.svg';
+    langBtn.querySelector('.lang-text').textContent = 'EN';
+  } else {
+    langBtn.querySelector('img').src = 'images/flags/cz.svg';
+    langBtn.querySelector('.lang-text').textContent = 'CZ';
+  }
+})();
+
+langBtn.addEventListener('click', () => {
+  langList.classList.toggle('visible');
+});
+
+langList.querySelectorAll('li').forEach(li => {
+  li.addEventListener('click', () => {
+    const selectedLang = li.getAttribute('data-lang');
+    if (selectedLang === 'en') {
+      window.location.href = 'en/index.html';
+    } else if (selectedLang === 'cs') {
+      window.location.href = './index.html';
     }
-  })();
-
-  langBtn.addEventListener('click', () => {
-    langList.classList.toggle('visible');
   });
+});
 
-  langList.querySelectorAll('li').forEach(li => {
-    li.addEventListener('click', () => {
-      const selectedLang = li.getAttribute('data-lang');
-      if (selectedLang === 'en') {
-        window.location.href = 'en/index.html';
-      } else if (selectedLang === 'cs') {
-        window.location.href = './index.html';
-      }
-    });
-  });
-  
-// Funkce pro zobrazení statusu
 function showStatus(message, isSuccess = true) {
   const wrapper = document.getElementById('status-bar-wrapper');
   const bar = document.getElementById('status-bar');
   const text = document.getElementById('status-text');
-
   wrapper.style.display = 'block';
   bar.classList.remove('success', 'error');
   bar.classList.add(isSuccess ? 'success' : 'error');
   text.textContent = message;
 }
 
-// Zavření status baru tlačítkem
 document.getElementById('status-close').addEventListener('click', () => {
   document.getElementById('status-bar-wrapper').style.display = 'none';
 });
 
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-  // Zpracování odeslání formuláře registrace
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
+  const formData = {
+    username: document.getElementById('username').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    emailConfirm: document.getElementById('emailConfirm').value.trim(),
+    termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
+    rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
+    fakeCaptcha: form.querySelector('input[name="fakeCaptcha"]').checked,
+    lang: form.querySelector('input[name="lang"]').value || 'cs',
+  };
 
-    // Připrav data z formuláře
-    const formData = {
-      username: document.getElementById('username').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
-      rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
-      lang: form.querySelector('input[name="lang"]').value || 'cs',
-    };
+  if (!formData.username) return showStatus('Zadejte uživatelské jméno.', false);
+  if (!formData.email) return showStatus('Zadejte email.', false);
+  if (formData.email !== formData.emailConfirm) return showStatus('E-maily se neshodují.', false);
+  if (!formData.termsAccepted || !formData.rulesAccepted) return showStatus('Musíte souhlasit s podmínkami a pravidly.', false);
+  if (!formData.fakeCaptcha) return showStatus('Ověřte, že nejste robot.', false);
 
-    // Jednoduchá validace na frontend (doporučuji)
-    if (!formData.username) {
-      showStatus('Zadejte uživatelské jméno.', false);
-      return;
+  try {
+    const response = await fetch('https://veralis-backend-production.up.railway.app/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+      showStatus(result.message || 'Registrace proběhla úěspěšně. Zkontrolujte svůj email.', true);
+      form.reset();
+    } else {
+      showStatus(result.error || 'Došlo k chybě při registraci.', false);
     }
-    if (!formData.email) {
-      showStatus('Zadejte email.', false);
-      return;
-    }
-    if (!formData.termsAccepted || !formData.rulesAccepted) {
-      showStatus('Musíte souhlasit s podmínkami a pravidly.', false);
-      return;
-    }
-
-    try {
-      // Odeslání na backend
-      const response = await fetch('https://veralis-backend-production.up.railway.app/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        showStatus(result.message || 'Registrace proběhla úspěšně. Zkontrolujte svůj email.', true);
-        form.reset();
-      } else {
-        showStatus(result.error || 'Došlo k chybě při registraci.', false);
-      }
-    } catch (error) {
-      showStatus('Nepodařilo se odeslat registraci. Zkuste to prosím později.', false);
-      console.error('Chyba:', error);
-    }
-  });
-
-  // Načtení zprávy ze sessionStorage a zobrazení (pokud nějaká je)
-  const message = sessionStorage.getItem('statusMessage');
-  if (message) {
-    showStatus(message, true);
-    sessionStorage.removeItem('statusMessage'); // jednorázové zobrazení
+  } catch (error) {
+    showStatus('Nepodařilo se odeslat registraci. Zkuste to prosím později.', false);
+    console.error('Chyba:', error);
   }
+});
+
+const message = sessionStorage.getItem('statusMessage');
+if (message) {
+  showStatus(message, true);
+  sessionStorage.removeItem('statusMessage');
+}
 </script>
 
 </body>
