@@ -387,6 +387,25 @@ footer {
 .title-blue {
   color: #85c1e9;
 }
+.support-box .register-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, #f5b041, #f7dc6f);
+  border: none;
+  border-radius: 6px;
+  color: #1a1a1a;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.support-box .register-btn:hover {
+  background: linear-gradient(to right, #f7dc6f, #f5b041);
+  text-decoration: none;
+}
 .register-wrapper {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 2rem;
