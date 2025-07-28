@@ -98,31 +98,6 @@
 
 <script>
 const form = document.getElementById('registrationForm');
-const langBtn = document.getElementById('langBtn');
-const langList = document.getElementById('langList');
-const statusBar = document.getElementById('status-bar');
-
-(() => {
-  const path = window.location.pathname;
-  if (path.includes('/en/')) {
-    langBtn.querySelector('img').src = '../images/flags/gb.svg';
-    langBtn.querySelector('.lang-text').textContent = 'EN';
-  } else {
-    langBtn.querySelector('img').src = 'images/flags/cz.svg';
-    langBtn.querySelector('.lang-text').textContent = 'CZ';
-  }
-})();
-
-langBtn.addEventListener('click', () => {
-  langList.classList.toggle('visible');
-});
-
-langList.querySelectorAll('li').forEach(li => {
-  li.addEventListener('click', () => {
-    const selectedLang = li.getAttribute('data-lang');
-    window.location.href = selectedLang === 'en' ? 'en/index.html' : './index.html';
-  });
-});
 
 function showStatus(message, isSuccess = true) {
   const wrapper = document.getElementById('status-bar-wrapper');
@@ -132,30 +107,30 @@ function showStatus(message, isSuccess = true) {
   bar.classList.remove('success', 'error');
   bar.classList.add(isSuccess ? 'success' : 'error');
   text.textContent = message;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 document.getElementById('status-close').addEventListener('click', () => {
   document.getElementById('status-bar-wrapper').style.display = 'none';
 });
 
-form.addEventListener('submit', async function (e) {
-  e.preventDefault();
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const captchaToken = grecaptcha.getResponse();
+  if (!captchaToken) {
+    showStatus("Prosím ověřte, že nejste robot.", false);
+    return;
+  }
 
-const captchaToken = grecaptcha.getResponse();
-if (!captchaToken) {
-  showStatus('Prosím ověřte, že nejste robot.', false);
-  return;
-}
-  
-const formData = {
-  username: document.getElementById('username').value.trim(),
-  email: document.getElementById('email').value.trim(),
-  emailConfirm: document.getElementById('emailConfirm').value.trim(),
-  termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
-  rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
-  lang: form.querySelector('input[name="lang"]').value || 'cs',
-  captcha: captchaToken  // ← použij rovnou tento token
-};
+  const formData = {
+    username: document.getElementById('username').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    emailConfirm: document.getElementById('emailConfirm').value.trim(),
+    termsAccepted: form.querySelector('input[name="termsAccepted"]').checked,
+    rulesAccepted: form.querySelector('input[name="rulesAccepted"]').checked,
+    lang: form.querySelector('input[name="lang"]').value || 'cs',
+    captcha: captchaToken
+  };
 
   if (!formData.username) return showStatus('Zadejte uživatelské jméno.', false);
   if (!formData.email) return showStatus('Zadejte email.', false);
@@ -173,20 +148,16 @@ const formData = {
     if (response.ok) {
       showStatus(result.message || 'Registrace proběhla úspěšně. Zkontrolujte svůj email.', true);
       form.reset();
+      grecaptcha.reset();  // Reset captcha token po úspěchu
     } else {
       showStatus(result.error || 'Došlo k chybě při registraci.', false);
+      grecaptcha.reset();  // Reset captcha token po chybě
     }
   } catch (error) {
     showStatus('Nepodařilo se odeslat registraci. Zkuste to prosím později.', false);
     console.error('Chyba:', error);
   }
 });
-
-const message = sessionStorage.getItem('statusMessage');
-if (message) {
-  showStatus(message, true);
-  sessionStorage.removeItem('statusMessage');
-}
 </script>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
