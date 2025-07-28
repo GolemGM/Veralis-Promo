@@ -32,13 +32,6 @@
     </div>
   </header>
   
-<div id="status-bar-wrapper">
-  <div id="status-bar">
-    <span id="status-text"></span>
-    <button id="status-close">×</button>
-  </div>
-</div>
-  
 <main>
   <div class="register-wrapper">
     <p class="register-info">
@@ -98,21 +91,6 @@
 
 <script>
 const form = document.getElementById('registrationForm');
-
-function showStatus(message, isSuccess = true) {
-  const wrapper = document.getElementById('status-bar-wrapper');
-  const bar = document.getElementById('status-bar');
-  const text = document.getElementById('status-text');
-  wrapper.style.display = 'block';
-  bar.classList.remove('success', 'error');
-  bar.classList.add(isSuccess ? 'success' : 'error');
-  text.textContent = message;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-document.getElementById('status-close').addEventListener('click', () => {
-  document.getElementById('status-bar-wrapper').style.display = 'none';
-});
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
