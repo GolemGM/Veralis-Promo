@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Komunitní pravidla - Veralis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-container">
+        <img src="images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
+      </a>
+      <div class="middle-container">
+        <div class="call-to-arm hidden-btn">Přidej se k budování nového světa</div>
+        <button class="register-btn hidden-btn" id="registerBtn">Registrace</button>
+      </div>
+      <div class="language-switcher-container">
+        <button id="langBtn">
+          <img src="images/flags/cz.svg" alt="CZ" class="flag-icon" />
+          <span class="lang-text">CZ</span> ▼
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="register-wrapper">
+      <div class="register-box">
+        <h2 class="register-title">Komunitní pravidla</h2>
+        <p>Projekt Veralis staví na přátelské a respektující komunitě. Níže najdete pravidla, jejichž dodržování očekáváme od všech hráčů:</p>
+
+        <ul>
+          <li>👥 <strong>Více účtů (multiučty) jsou omezeny.</strong> Vytváření dalších účtů pro obcházení pravidel, výhodu ve hře nebo manipulaci s obsahem (např. hlasováním, těžbou, skladováním apod.) je zakázáno. Multiučty sloužící ke zkušebním účelům musí být nahlášeny moderátorům.</li>
+          <li>🛡️ <strong>Respektuj ostatní hráče.</strong> Urážky, šikana či jakákoli forma obtěžování nebude tolerována.</li>
+          <li>🚫 <strong>Zákaz diskriminace.</strong> Hráči nesmí šířit nenávist na základě rasy, pohlaví, víry nebo identity.</li>
+          <li>🧠 <strong>Hraj férově.</strong> Využívání exploitů, bugů nebo cheatů vede k okamžitému zablokování účtu.</li>
+          <li>📣 <strong>Reklama bez povolení je zakázána.</strong> Propagace jiných projektů je možná pouze po schválení administrátorem.</li>
+          <li>🔇 <strong>Nespamuj.</strong> Nadměrné posílání zpráv nebo rušivé chování není vítáno.</li>
+          <li>📜 <strong>Dodržuj pravidla Discordu.</strong> Naše hlavní komunitní platforma je Discord.</li>
+        </ul>
+
+        <p>Pro komunitní diskuzi, návrhy, hlášení bugů nebo hledání spoluhráčů navštiv náš Discord server:</p>
+        <p>Každý hráč by měl používat pouze jeden hlavní účet. Pokud máš důvod používat více účtů (například testování), informuj prosím náš tým na Discordu. Neoznámené multiučty mohou být považovány za pokus o obcházení pravidel.</p>
+
+        <p style="text-align: center; margin: 1rem 0;">
+          <a href="https://discord.gg/f7s2jBfaSy" class="register-btn" target="_blank">Přejít na Discord</a>
+        </p>
+
+        <p>Porušení pravidel může vést k varování, dočasnému nebo trvalému zákazu účasti ve hře a na komunitních kanálech.</p>
+        <p>Díky, že pomáháš budovat zdravou komunitu!</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html">O hře</a> |
+      <a href="register.html">Registrace</a> |
+      <a href="login.html">Přihlášení</a> |
+      <a href="support.html">Podpora</a>
+      <p class="small">© 2025 Projekt Veralis</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('registerBtn').addEventListener('click', () => {
+      window.location.href = 'register.html';
+    });
+  </script>
+</body>
+</html>
