@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Podmínky použití - Veralis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-container">
+        <img src="images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
+      </a>
+      <div class="middle-container">
+        <div class="call-to-arm hidden-btn">Buduj nový svět</div>
+        <button class="register-btn hidden-btn" onclick="window.location.href='register.html'">Registrace</button>
+      </div>
+      <div class="language-switcher-container">
+        <button id="langBtn">
+          <img src="images/flags/cz.svg" alt="CZ" class="flag-icon" />
+          <span class="lang-text">CZ</span> ▼
+        </button>
+        <ul id="langList" class="hidden">
+          <li data-lang="cs"><img src="images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
+          <li data-lang="en"><img src="images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="register-wrapper">
+      <div class="register-box">
+        <h2>Podmínky použití</h2>
+        <p>
+          Používáním webu a hry Veralis souhlasíte s následujícími podmínkami:
+        </p>
+        <ul>
+          <li>Hra Veralis je ve fázi vývoje. Veškerý obsah se může měnit bez předchozího upozornění.</li>
+          <li>Vytvořením účtu souhlasíte s uchováním vaší e-mailové adresy pro účely správy účtu a komunikace.</li>
+          <li>Je zakázáno zneužívat chyby ve hře, šířit spam, vydávat se za jiné osoby nebo narušovat chod systému.</li>
+          <li>Jste povinni chránit své přihlašovací údaje. Za zneužití vašeho účtu nenese provozovatel odpovědnost.</li>
+          <li>Veškeré prvky hry (texty, grafika, mechaniky) jsou chráněny autorským právem.</li>
+          <li>Porušením těchto pravidel může být váš přístup do hry dočasně nebo trvale zablokován.</li>
+        </ul>
+        <p>
+          Tato pravidla se mohou měnit. O větších změnách budete informováni prostřednictvím webu.
+        </p>
+        <p>
+          Máte-li dotazy nebo potřebujete pomoc, navštivte naši <a href="support.html">stránku podpory</a>.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html">O hře</a> |
+      <a href="register.html">Registrace</a> |
+      <a href="login.html">Přihlášení</a> |
+      <a href="support.html">Podpora</a>
+      <p class="small">© 2025 Projekt Veralis</p>
+    </div>
+  </footer>
+
+  <script>
+    const langBtn = document.getElementById('langBtn');
+    const langList = document.getElementById('langList');
+
+    langBtn.addEventListener('click', () => {
+      langList.classList.toggle('visible');
+    });
+
+    langList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const selectedLang = li.getAttribute('data-lang');
+        window.location.href = selectedLang === 'en' ? 'en/tos.html' : './tos.html';
+      });
+    });
+  </script>
+</body>
+</html>
