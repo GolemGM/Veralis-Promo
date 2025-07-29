@@ -174,7 +174,11 @@ function showStatus(message, isSuccess = false, isInfo = false) {
 
 function hideStatus() {
   const wrapper = document.getElementById('status-bar-wrapper');
+  const bar = document.getElementById('status-bar');
+
+  // Pro jistotu oba schovat
   wrapper.classList.add('hidden');
+  bar.classList.remove('status-success', 'status-error', 'status-info');
 }
 </script>
 
