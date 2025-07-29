@@ -633,11 +633,11 @@ footer {
 /* === STATUS BAR STYLY === */
 
 #status-bar-wrapper {
-  max-width: 1080px;
   width: 100%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   padding: 10px 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4); /* průhledný wrapper */
   box-sizing: border-box;
 }
 
