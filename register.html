@@ -99,8 +99,13 @@
 </footer>
 
 <script>
+console.log("Lang switch INIT");
+console.log("langBtn:", document.getElementById('langBtn'));
+console.log("langList:", document.getElementById('langList'));
 const form = document.getElementById('registrationForm');
+</script>
 
+    <script>
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const captchaToken = grecaptcha.getResponse();
