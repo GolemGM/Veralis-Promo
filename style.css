@@ -754,3 +754,8 @@ footer {
 #langList.visible {
   display: block;
 }
+#langList {
+  top: 100%;
+  left: auto;
+  right: 0;
+}
