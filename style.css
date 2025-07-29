@@ -633,10 +633,10 @@ footer {
 /* === STATUS BAR STYLY === */
 
 #status-bar-wrapper {
-  max-width: 800px;                     /* ✅ stejné jako .register-wrapper */
+  max-width: 1080px;                     /* ✅ stejné jako .register-wrapper */
   width: 100%;
   margin: 0 auto;                       /* centrování */
-  padding: 10px 0;
+  padding: 20px 0 30px; /* top, right/left, bottom */
   background-color: rgba(0, 0, 0, 0.4); /* průhledný rámeček */
   box-sizing: border-box;
 }
