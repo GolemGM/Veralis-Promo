@@ -759,3 +759,12 @@ footer {
   left: auto;
   right: 0;
 }
+#langList.visible {
+  display: block;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: red;
+  color: white;
+  z-index: 9999;
+}
