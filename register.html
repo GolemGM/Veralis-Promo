@@ -33,8 +33,8 @@
   </header>
 
   <!-- 🔽 STATUS BAR WRAPPER START -->
-<div id="status-bar-wrapper">
-  <div id="status-bar" class="hidden">
+<div id="status-bar-wrapper" class="hidden">
+  <div id="status-bar">
     <span id="status-message">✅ Status hláška</span>
     <button id="status-close" onclick="hideStatus()">×</button>
   </div>
@@ -149,13 +149,15 @@ form.addEventListener("submit", async (event) => {
   
 <script>
 function showStatus(message, isSuccess = false, isInfo = false) {
+  const wrapper = document.getElementById('status-bar-wrapper');
   const bar = document.getElementById('status-bar');
   const messageBox = document.getElementById('status-message');
 
   // Reset tříd
-  bar.classList.remove('status-success', 'status-error', 'status-info', 'hidden');
+  wrapper.classList.remove('hidden');
+  bar.classList.remove('status-success', 'status-error', 'status-info');
 
-  // Nastavit třídu dle typu
+  // Nastavení typu hlášky
   if (isInfo) {
     bar.classList.add('status-info');
     messageBox.textContent = `ℹ️ ${message}`;
@@ -167,16 +169,12 @@ function showStatus(message, isSuccess = false, isInfo = false) {
     messageBox.textContent = `❌ ${message}`;
   }
 
-  // Zobrazit bar
-  bar.classList.remove('hidden');
-
-  // Scrollnout nahoru
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function hideStatus() {
-  const bar = document.getElementById('status-bar');
-  bar.classList.add('hidden');
+  const wrapper = document.getElementById('status-bar-wrapper');
+  wrapper.classList.add('hidden');
 }
 </script>
 
