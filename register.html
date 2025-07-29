@@ -31,6 +31,15 @@
       </div>
     </div>
   </header>
+
+  <!-- 🔽 STATUS BAR WRAPPER START -->
+<div id="status-bar-wrapper">
+  <div id="status-bar" class="hidden">
+    <span id="status-message">✅ Status hláška</span>
+    <button id="status-close" onclick="hideStatus()">×</button>
+  </div>
+</div>
+<!-- 🔼 STATUS BAR WRAPPER END -->
   
 <main>
   <div class="register-wrapper">
@@ -136,6 +145,39 @@ form.addEventListener("submit", async (event) => {
     console.error('Chyba:', error);
   }
 });
+</script>
+  
+<script>
+function showStatus(message, isSuccess = false, isInfo = false) {
+  const bar = document.getElementById('status-bar');
+  const messageBox = document.getElementById('status-message');
+
+  // Reset tříd
+  bar.classList.remove('status-success', 'status-error', 'status-info', 'hidden');
+
+  // Nastavit třídu dle typu
+  if (isInfo) {
+    bar.classList.add('status-info');
+    messageBox.textContent = `ℹ️ ${message}`;
+  } else if (isSuccess) {
+    bar.classList.add('status-success');
+    messageBox.textContent = `✅ ${message}`;
+  } else {
+    bar.classList.add('status-error');
+    messageBox.textContent = `❌ ${message}`;
+  }
+
+  // Zobrazit bar
+  bar.classList.remove('hidden');
+
+  // Scrollnout nahoru
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function hideStatus() {
+  const bar = document.getElementById('status-bar');
+  bar.classList.add('hidden');
+}
 </script>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
