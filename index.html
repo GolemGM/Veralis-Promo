@@ -106,45 +106,57 @@
       index = (index + 1) % lines.length;
     }, 3000);
   </script>
-  <script>
+ <script>
   const langBtn = document.getElementById('langBtn');
-const langList = document.getElementById('langList');
+  const langList = document.getElementById('langList');
 
-// Nastavení tlačítka podle aktuálního jazyka (podle URL)
-(() => {
-  const path = window.location.pathname;
-  if (path.includes('/en/')) {
-    langBtn.querySelector('img').src = '../images/flags/gb.svg';
-    langBtn.querySelector('.lang-text').textContent = 'EN';
-  } else {
-    langBtn.querySelector('img').src = 'images/flags/cz.svg';
-    langBtn.querySelector('.lang-text').textContent = 'CZ';
+  if (langBtn && langList) {
+    // Detekce jazyka a nastavení vzhledu tlačítka
+    (() => {
+      const path = window.location.pathname;
+      if (path.includes('/en/')) {
+        langBtn.querySelector('img').src = '../images/flags/gb.svg';
+        langBtn.querySelector('.lang-text').textContent = 'EN';
+      } else {
+        langBtn.querySelector('img').src = 'images/flags/cz.svg';
+        langBtn.querySelector('.lang-text').textContent = 'CZ';
+      }
+    })();
+
+    // Zobrazit/skryt jazykové menu
+    langBtn.addEventListener('click', () => {
+      langList.classList.toggle('visible');
+    });
+
+    // Přepnutí jazyka
+    langList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const selectedLang = li.getAttribute('data-lang');
+        const currentPath = window.location.pathname;
+        const fileName = currentPath.split('/').pop();
+
+        if (selectedLang === 'en') {
+          // Pokud už jsme v /en/, zůstaň
+          if (!currentPath.includes('/en/')) {
+            window.location.href = 'en/' + fileName;
+          }
+        } else if (selectedLang === 'cs') {
+          // Pokud jsme v /en/, odstraň 'en/' z cesty
+          if (currentPath.includes('/en/')) {
+            window.location.href = '../' + fileName;
+          }
+        }
+      });
+    });
+
+    // Klik mimo menu = schovat výběr
+    document.addEventListener('click', (e) => {
+      if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
+        langList.classList.remove('visible');
+      }
+    });
   }
-})();
-
-// Přepínání viditelnosti menu
-langBtn.addEventListener('click', () => {
-  langList.classList.toggle('visible');
-});
-
-// Přepnutí jazyka podle výběru
-langList.querySelectorAll('li').forEach(li => {
-  li.addEventListener('click', () => {
-    const selectedLang = li.getAttribute('data-lang');
-     if (selectedLang === 'en') {
-     window.location.href = 'en/index.html';
-     } else if (selectedLang === 'cs') {
-     window.location.href = './index.html'; 
-     }
-  });
-});
-
-// Kliknutí mimo menu skryje výběr
-document.addEventListener('click', (e) => {
-  if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
-    langList.classList.remove('visible');
-  }
-});
 </script>
+
 </body>
 </html>
