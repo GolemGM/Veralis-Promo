@@ -636,19 +636,21 @@ footer {
   max-width: 1080px;
   width: 100%;
   margin: 0 auto;
-  padding: 20px 0 30px;
+  padding: 0 0 30px; /* žádná mezera nahoře */
   background-color: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
-  border-radius: 8px;
   display: flex;
-  justify-content: center; /* ✅ zajistí centrování vnitřního boxu */
+  justify-content: center;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 #status-bar {
   background-color: black;
   color: white;
   padding: 12px 18px;
-  border-radius: 1rem; /* ✅ stejný radius jako wrapper/main */
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   max-width: 800px;
   width: 100%;
   position: relative;
@@ -659,8 +661,9 @@ footer {
   justify-content: space-between;
   gap: 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-  margin: 0 auto; /* ✅ fallback centrování */
+  margin: 0 auto;
 }
+
 
 #status-bar.hidden {
   display: none;
