@@ -149,6 +149,22 @@ header {
 .language-switcher-container ul#langList li:hover {
   background-color: #333;
 }
+.language-switcher-container ul {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 5px 0;
+  z-index: 1000;
+  list-style: none;
+  min-width: 120px;
+}
+
+.language-switcher-container ul.visible {
+  display: block;
+}
 
 .flag-icon {
   width: 24px;
