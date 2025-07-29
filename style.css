@@ -691,4 +691,9 @@ footer {
 .status-info #status-message {
   color: #29b6f6; /* modrá ℹ️ */
 }
-
+#status-bar-wrapper {
+  outline: 2px dashed red;
+}
+.hidden {
+  display: none !important;
+}
