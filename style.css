@@ -738,9 +738,16 @@ footer {
   color: #000;
   text-decoration: none; /* zajištění bez podtržení při hoveru */
 }
+/* === LANGUAGE SWITCHER === */
+
+.language-switcher-container {
+  position: relative;
+}
+
 #langList {
   display: none;
   position: absolute;
+  top: 100%;
   right: 0;
   background-color: #1a1a2e;
   border: 1px solid #444;
@@ -753,18 +760,4 @@ footer {
 
 #langList.visible {
   display: block;
-}
-#langList {
-  top: 100%;
-  left: auto;
-  right: 0;
-}
-#langList.visible {
-  display: block;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: red;
-  color: white;
-  z-index: 9999;
 }
