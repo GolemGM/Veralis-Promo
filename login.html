@@ -17,7 +17,7 @@
       <div class="middle-container">
         <div class="call-to-arm">Přidej se k budování nového světa</div>
         <button class="register-btn" id="registerBtn">Registrace</button>
-      </div>
+        </div>
 
       <div class="language-switcher-container">
         <button id="langBtn">
@@ -66,20 +66,12 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('registerBtn').addEventListener('click', () => {
-      window.location.href = 'register.html';
-    });
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langList = document.getElementById('langList');
 
-    const form = document.getElementById('loginForm');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert("Zatím není napojeno na backend. Přihlášení simulováno.");
-    });
-
-    const langBtn = document.getElementById('langBtn');
-    const langList = document.getElementById('langList');
-
+  if (langBtn && langList) {
+    // Detekce jazyka a nastavení vzhledu tlačítka
     (() => {
       const path = window.location.pathname;
       if (path.includes('/en/')) {
@@ -91,26 +83,39 @@
       }
     })();
 
+    // Zobrazit/skryt jazykové menu
     langBtn.addEventListener('click', () => {
       langList.classList.toggle('visible');
     });
 
+    // Přepnutí jazyka
     langList.querySelectorAll('li').forEach(li => {
       li.addEventListener('click', () => {
         const selectedLang = li.getAttribute('data-lang');
+        const currentPath = window.location.pathname;
+        const fileName = currentPath.split('/').pop();
+
         if (selectedLang === 'en') {
-          window.location.href = 'en/index.html';
+          // Pokud už jsme v /en/, zůstaň
+          if (!currentPath.includes('/en/')) {
+            window.location.href = 'en/' + fileName;
+          }
         } else if (selectedLang === 'cs') {
-          window.location.href = './index.html';
+          // Pokud jsme v /en/, odstraň 'en/' z cesty
+          if (currentPath.includes('/en/')) {
+            window.location.href = '../' + fileName;
+          }
         }
       });
     });
 
+    // Klik mimo menu = schovat výběr
     document.addEventListener('click', (e) => {
       if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
         langList.classList.remove('visible');
       }
     });
-  </script>
+  }
+</script>
 </body>
 </html>
