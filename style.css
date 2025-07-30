@@ -94,6 +94,8 @@ header {
   color: #000;
 }
 
+/* === LANGUAGE SWITCHER === */
+
 .language-switcher-container {
   flex-shrink: 0;
   display: flex;
@@ -106,7 +108,7 @@ header {
 .language-switcher-container button#langBtn {
   background-color: #1a1a2e;
   color: #fff;
-  border: 1px solid #444; /* rámeček kolem tlačítka */
+  border: 1px solid #444;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
@@ -149,22 +151,6 @@ header {
 .language-switcher-container ul#langList li:hover {
   background-color: #333;
 }
-.language-switcher-container ul {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #1a1a2e;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 5px 0;
-  z-index: 1000;
-  list-style: none;
-  min-width: 120px;
-}
-
-.language-switcher-container ul.visible {
-  display: block;
-}
 
 .flag-icon {
   width: 24px;
@@ -172,6 +158,8 @@ header {
   vertical-align: middle;
   margin-right: 6px;
 }
+
+
 
 /* MAIN - hlavní obsah stránky - upraveno, odstraněno flex centrování */
 main {
@@ -737,27 +725,4 @@ footer {
   border-color: #e0b05c;
   color: #000;
   text-decoration: none; /* zajištění bez podtržení při hoveru */
-}
-/* === LANGUAGE SWITCHER === */
-
-.language-switcher-container {
-  position: relative;
-}
-
-#langList {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #1a1a2e;
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 5px 0;
-  z-index: 1000;
-  list-style: none;
-  min-width: 120px;
-}
-
-#langList.visible {
-  display: block;
 }
