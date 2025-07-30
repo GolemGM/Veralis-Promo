@@ -33,45 +33,43 @@
     </div>
   </header>
 
-<main>
-  <!-- Blok 1 – Nadpis + úvodní věta -->
-  <section class="categories">
-    <div class="register-box">
-      <h2 class="register-title">Podpora projektu Veralis</h2>
-      <p style="margin-top: 10px; font-size: 1rem; color: #ddd; text-align: center;">
-        Jsme stále ve fázi vývoje. Omlouváme se za možné nedostatky a chyby.<br>
-        Pokud potřebujete pomoc, máte dotaz nebo jen chcete nahlásit chybu, využijte níže uvedené možnosti.
-      </p>
-    </div>
-  </section>
+  <main>
+    <!-- BLOK 1: TITULEK -->
+    <section class="support-title-box">
+      <div class="support-title">
+        <h2 class="register-title">Podpora<br><span style="color:#29b6f6">projektu Veralis</span></h2>
+        <p class="support-description">
+          Jsme stále ve fázi vývoje. Omlouváme se za možné nedostatky a chyby.<br>
+          Pokud potřebujete pomoc, máte dotaz nebo jen chcete nahlásit chybu, využijte níže uvedené možnosti.
+        </p>
+      </div>
+    </section>
 
-  <!-- Blok 2 – Discord blok -->
-  <section class="features-slider" style="margin-bottom: 0;">
-    <div style="text-align: center;">
-      <img src="images/flags/discord_logo.svg" alt="Discord" class="discord-icon" style="height: 50px; vertical-align: middle; margin-right: 10px;">
-      <a href="https://discord.gg/f7s2jBfaSy" class="register-btn" target="_blank" style="text-decoration: none;">Připoj se na Discord</a>
-      <img src="images/flags/discord_logo.svg" alt="Discord" class="discord-icon" style="height: 50px; vertical-align: middle; margin-left: 10px;">
-    </div>
-  </section>
+    <!-- BLOK 2: DISCORD -->
+    <section class="support-discord-box">
+      <div class="support-discord">
+        <img src="images/flags/discord_logo.svg" alt="discord" class="support-icon" />
+        <button class="golden-btn">Připoj se na Discord</button>
+        <img src="images/flags/discord_logo.svg" alt="discord" class="support-icon" />
+      </div>
+    </section>
 
-  <!-- Blok 3 – Formulář + upozornění -->
-  <section class="categories">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <p style="margin-bottom: 1.5rem; color: #ccc;">
-        Pokud se rozhodnete využít tento formulář, mějte prosím na paměti, že se jedná o jednosměrný kontakt. Odpověď neobdržíte. Doporučujeme výhradně Discord, kde Vám komunita či vývojáři mohou reagovat a pomoci. 
-        Prosím, mějte vždy na paměti <a href="rules.html" class="terms-link">Pravidla!</a>
-      </p>
-
-      <h3 class="register-title" style="margin-bottom: 1rem;">Jednosměrný formulář</h3>
-      <form id="supportForm">
-        <textarea id="supportMessage" name="message" rows="6" maxlength="1000" required placeholder="Vaše zpráva..." style="width: 100%; padding: 1rem; border-radius: 8px; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; resize: none; overflow-y: auto;"></textarea>
-        <div style="text-align: right; margin-top: 1rem;">
-          <button type="submit" class="register-btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Odeslat</button>
-        </div>
-      </form>
-    </div>
-  </section>
-</main>
+    <!-- BLOK 3: FORMULÁŘ -->
+    <section class="support-form-box">
+      <div class="support-form-text">
+        <p>
+          Pokud se rozhodnete využít tento formulář, mějte prosím na paměti, že se jedná o jednosměrný kontakt.<br>
+          Odpověď neobdržíte. Doporučujeme výhradně Discord, kde Vám komunita či vývojáři mohou reagovat a pomoci.<br>
+          Prosím, mějte vždy na paměti <a href="rules.html" class="highlight-link">Pravidla!</a>
+        </p>
+      </div>
+      <div class="support-form">
+        <label for="supportMessage" class="form-title">Jednosměrný formulář</label>
+        <textarea id="supportMessage" name="message" placeholder="Vaše zpráva..." rows="5" maxlength="1000"></textarea>
+        <button class="golden-btn small">Odeslat</button>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-content">
