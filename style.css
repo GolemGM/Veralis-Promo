@@ -732,3 +732,123 @@ footer {
   color: #000;
   text-decoration: none; /* zajištění bez podtržení při hoveru */
 }
+/* === PODPORA STRÁNKA === */
+
+.support-title-box {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.support-title-box h2 {
+  color: #00bfff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.support-title-box p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.support-discord-bar {
+  background-color: #11133c;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin: 40px auto 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1080px;
+}
+
+.support-discord-bar .golden-btn {
+  background: linear-gradient(to right, #f5b041, #f7dc6f);
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.support-discord-bar .golden-btn:hover {
+  background: linear-gradient(to right, #f7dc6f, #f5b041);
+}
+
+.support-discord-bar img {
+  height: 48px;
+  width: auto;
+}
+
+.support-form-box {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.support-form-box p {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.support-form-box a {
+  color: #00cfff;
+  text-decoration: none;
+}
+
+.support-form-box a:hover {
+  text-decoration: underline;
+}
+
+.support-form-box h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.support-form-box textarea {
+  width: 100%;
+  border-radius: 6px;
+  padding: 0.75rem;
+  resize: none;
+  font-size: 1rem;
+  font-family: inherit;
+  max-height: 200px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: white;
+}
+
+.support-form-box button {
+  background: linear-gradient(to right, #f5b041, #f7dc6f);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  float: right;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.support-form-box button:hover {
+  background: linear-gradient(to right, #f7dc6f, #f5b041);
+}
