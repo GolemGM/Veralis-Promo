@@ -739,8 +739,8 @@ footer {
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto 20px auto;
 }
 
 .support-title-box h2 {
@@ -759,13 +759,13 @@ footer {
 .support-discord-bar {
   background-color: #11133c;
   padding: 1.5rem;
-  border-radius: 0.5rem;
-  margin: 40px auto 30px auto;
+  border-radius: 1rem;
+  margin: 0 auto 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  max-width: 1080px;
+  max-width: 900px;
 }
 
 .support-discord-bar img {
@@ -833,6 +833,14 @@ footer {
   border: 1px solid #444;
   background-color: #222;
   color: white;
+  box-sizing: border-box;
+}
+
+.support-form-box .button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
 }
 
 .support-form-box button {
@@ -844,11 +852,14 @@ footer {
   font-size: 1rem;
   color: #1a1a1a;
   cursor: pointer;
-  float: right;
-  margin-top: 1rem;
   transition: background 0.3s ease;
 }
 
 .support-form-box button:hover {
   background: linear-gradient(to right, #f7dc6f, #f5b041);
+}
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
 }
