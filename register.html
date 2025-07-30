@@ -164,6 +164,9 @@ form.addEventListener("submit", async (event) => {
   const langBtn = document.getElementById('langBtn');
   const langList = document.getElementById('langList');
 
+  console.log("TEST: langBtn = ", langBtn);
+  console.log("TEST: langList = ", langList);
+
   if (langBtn && langList) {
     (() => {
       const path = window.location.pathname;
@@ -173,6 +176,7 @@ form.addEventListener("submit", async (event) => {
     })();
 
     langBtn.addEventListener('click', () => {
+      console.log("Klik na jazykový přepínač");
       langList.classList.toggle('visible');
     });
 
@@ -196,7 +200,6 @@ form.addEventListener("submit", async (event) => {
     });
   }
 </script>
-
   
 <script>
 function showStatus(message, isSuccess = false, isInfo = false) {
