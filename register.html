@@ -106,14 +106,7 @@ console.log("langList:", document.getElementById('langList'));
 const form = document.getElementById('registrationForm');
 </script>
 
-    <script>
-langBtn.addEventListener('click', () => {
-  langList.classList.toggle('visible');
-  console.log("LANG MENU TOGGLE"); // ✅ testovací výpis
-});
-      </script>
-
-       <script>
+  <script>
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const captchaToken = grecaptcha.getResponse();
