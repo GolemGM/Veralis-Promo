@@ -19,16 +19,17 @@
         <button class="register-btn" id="registerBtn">Registrace</button>
         </div>
 
-      <div class="language-switcher-container">
-        <button id="langBtn">
-          <img src="images/flags/cz.svg" alt="CZ" class="flag-icon" />
-          <span class="lang-text">CZ</span> ▼
-        </button>
-        <ul id="langList" class="hidden">
-          <li data-lang="cs"><img src="images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
-          <li data-lang="en"><img src="images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
-        </ul>
-      </div>
+   <div class="language-switcher-container">
+  <button id="langBtn">
+    <img src="images/flags/cz.svg" alt="CZ" class="flag-icon" />
+    <span class="lang-text">CZ</span> ▼
+  </button>
+  <ul id="langList" class="hidden">
+    <li data-lang="cs"><img src="images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
+    <li data-lang="en"><img src="images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
+  </ul>
+</div>
+
     </div>
   </header>
 
@@ -71,45 +72,30 @@
   const langList = document.getElementById('langList');
 
   if (langBtn && langList) {
-    // Detekce jazyka a nastavení vzhledu tlačítka
     (() => {
       const path = window.location.pathname;
-      if (path.includes('/en/')) {
-        langBtn.querySelector('img').src = '../images/flags/gb.svg';
-        langBtn.querySelector('.lang-text').textContent = 'EN';
-      } else {
-        langBtn.querySelector('img').src = 'images/flags/cz.svg';
-        langBtn.querySelector('.lang-text').textContent = 'CZ';
-      }
+      const isEN = path.includes('/en/');
+      langBtn.querySelector('img').src = isEN ? '../images/flags/gb.svg' : 'images/flags/cz.svg';
+      langBtn.querySelector('.lang-text').textContent = isEN ? 'EN' : 'CZ';
     })();
 
-    // Zobrazit/skryt jazykové menu
     langBtn.addEventListener('click', () => {
       langList.classList.toggle('visible');
     });
 
-    // Přepnutí jazyka
     langList.querySelectorAll('li').forEach(li => {
       li.addEventListener('click', () => {
-        const selectedLang = li.getAttribute('data-lang');
-        const currentPath = window.location.pathname;
-        const fileName = currentPath.split('/').pop();
+        const lang = li.getAttribute('data-lang');
+        const current = window.location.pathname.split('/').pop();
 
-        if (selectedLang === 'en') {
-          // Pokud už jsme v /en/, zůstaň
-          if (!currentPath.includes('/en/')) {
-            window.location.href = 'en/' + fileName;
-          }
-        } else if (selectedLang === 'cs') {
-          // Pokud jsme v /en/, odstraň 'en/' z cesty
-          if (currentPath.includes('/en/')) {
-            window.location.href = '../' + fileName;
-          }
+        if (lang === 'en' && !window.location.pathname.includes('/en/')) {
+          window.location.href = 'en/' + current;
+        } else if (lang === 'cs' && window.location.pathname.includes('/en/')) {
+          window.location.href = '../' + current;
         }
       });
     });
 
-    // Klik mimo menu = schovat výběr
     document.addEventListener('click', (e) => {
       if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
         langList.classList.remove('visible');
