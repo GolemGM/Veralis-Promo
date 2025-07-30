@@ -768,6 +768,11 @@ footer {
   max-width: 1080px;
 }
 
+.support-discord-bar img {
+  height: 48px;
+  width: auto;
+}
+
 .support-discord-bar .golden-btn {
   background: linear-gradient(to right, #f5b041, #f7dc6f);
   border: none;
@@ -783,11 +788,6 @@ footer {
 
 .support-discord-bar .golden-btn:hover {
   background: linear-gradient(to right, #f7dc6f, #f5b041);
-}
-
-.support-discord-bar img {
-  height: 48px;
-  width: auto;
 }
 
 .support-form-box {
