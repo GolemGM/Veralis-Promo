@@ -33,43 +33,41 @@
     </div>
   </header>
 
-  <main>
-    <!-- BLOK 1: TITULEK -->
-    <section class="support-title-box">
-      <div class="support-title">
-        <h2 class="register-title">Podpora<br><span style="color:#29b6f6">projektu Veralis</span></h2>
-        <p class="support-description">
-          Jsme stále ve fázi vývoje. Omlouváme se za možné nedostatky a chyby.<br>
-          Pokud potřebujete pomoc, máte dotaz nebo jen chcete nahlásit chybu, využijte níže uvedené možnosti.
-        </p>
-      </div>
-    </section>
+<main>
+  <!-- 🔷 BLOK 1: Nadpis + popis -->
+  <section class="support-section">
+    <div class="support-header">
+      <h2 class="support-title">Podpora projektu Veralis</h2>
+      <p>Jsme stále ve fázi vývoje. Omlouváme se za možné nedostatky a chyby.<br>
+      Pokud potřebujete pomoc, máte dotaz nebo jen chcete nahlásit chybu, využijte níže uvedené možnosti.</p>
+    </div>
+  </section>
 
-    <!-- BLOK 2: DISCORD -->
-    <section class="support-discord-box">
-      <div class="support-discord">
-        <img src="images/flags/discord_logo.svg" alt="discord" class="support-icon" />
-        <button class="golden-btn">Připoj se na Discord</button>
-        <img src="images/flags/discord_logo.svg" alt="discord" class="support-icon" />
-      </div>
-    </section>
+  <!-- 🔷 BLOK 2: Discord tlačítko -->
+  <section class="support-discord">
+    <div class="discord-container">
+      <img src="images/flags/discord_logo.svg" alt="Discord" class="discord-icon" />
+      <a href="https://discord.gg/f7s2jBfaSy" class="register-btn">Připoj se na Discord</a>
+      <img src="images/flags/discord_logo.svg" alt="Discord" class="discord-icon" />
+    </div>
+  </section>
 
-    <!-- BLOK 3: FORMULÁŘ -->
-    <section class="support-form-box">
-      <div class="support-form-text">
-        <p>
-          Pokud se rozhodnete využít tento formulář, mějte prosím na paměti, že se jedná o jednosměrný kontakt.<br>
-          Odpověď neobdržíte. Doporučujeme výhradně Discord, kde Vám komunita či vývojáři mohou reagovat a pomoci.<br>
-          Prosím, mějte vždy na paměti <a href="rules.html" class="highlight-link">Pravidla!</a>
-        </p>
-      </div>
-      <div class="support-form">
-        <label for="supportMessage" class="form-title">Jednosměrný formulář</label>
-        <textarea id="supportMessage" name="message" placeholder="Vaše zpráva..." rows="5" maxlength="1000"></textarea>
-        <button class="golden-btn small">Odeslat</button>
-      </div>
-    </section>
-  </main>
+  <!-- 🔷 BLOK 3: Formulář -->
+  <section class="support-form">
+    <div class="form-container">
+      <p>Pokud se rozhodnete využít tento formulář, mějte prosím na paměti, že se jedná o jednosměrný kontakt.<br>
+      Odpověď neobdržíte. Doporučujeme výhradně Discord, kde Vám komunita či vývojáři mohou reagovat a pomoci.<br>
+      Prosím, mějte vždy na paměti <a href="rules.html" class="blue-link">Pravidla!</a></p>
+
+      <h3 class="form-title">Jednosměrný formulář</h3>
+
+      <form id="supportForm">
+        <textarea id="supportMessage" name="message" placeholder="Vaše zpráva..." maxlength="1000" rows="6" required></textarea>
+        <button type="submit" class="form-submit">Odeslat</button>
+      </form>
+    </div>
+  </section>
+</main>
 
   <footer>
     <div class="footer-content">
