@@ -107,5 +107,37 @@
     });
   }
 </script>
+  <script>
+  const supportForm = document.getElementById('supportForm');
+
+  supportForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const message = supportForm.querySelector('textarea').value.trim();
+    if (!message) {
+      alert('Zadejte zprávu před odesláním.');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://veralis-backend-production.up.railway.app/api/support', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert('Zpráva odeslána. Děkujeme!');
+        supportForm.reset();
+      } else {
+        alert('Chyba: ' + (result.error || 'Nepodařilo se odeslat.'));
+      }
+    } catch (error) {
+      console.error('Chyba při odesílání:', error);
+      alert('Nepodařilo se kontaktovat server.');
+    }
+  });
+</script>
 </body>
 </html>
