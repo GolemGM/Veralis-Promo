@@ -34,26 +34,43 @@
   </header>
 
 <main>
-  <div class="support-wrapper">
-    <h1 class="title-blue">Podpora projektu Veralis</h1>
-    <p>Jsme stále ve fázi vývoje. Omlouváme se za možné nedostatky a chyby.</p>
-    <p>Pokud potřebujete pomoc, máte dotaz nebo jen nahlásit chybu, využijte níže uvedené možnosti.</p>
+  <!-- Blok 1 – Nadpis + úvodní věta -->
+  <section class="categories">
+    <div style="text-align: center; width: 100%;">
+      <h2 class="register-title">Podpora projektu Veralis</h2>
+      <p style="margin-top: 10px; font-size: 1rem; color: #ddd;">
+        Jsme stále ve fázi vývoje. Omlouváme se za možné nedostatky a chyby.<br>
+        Pokud potřebujete pomoc, máte dotaz nebo jen chcete nahlásit chybu, využijte níže uvedené možnosti.
+      </p>
+    </div>
+  </section>
 
-    <div class="support-box">
-      <img src="images/flags/discord_logo.svg" alt="Discord logo" class="discord-icon" />
-      <h2 class="discord-blue">Kontakt přes Discord</h2>
-   <p>Připojte se k našemu <a href="https://discord.gg/5PqRxtZdZD" target="_blank" rel="noopener noreferrer"><span class="discord-blue">Discord serveru</span></a>, kde můžete komunikovat s komunitou a vývojáři.</p>
+  <!-- Blok 2 – Discord blok -->
+  <section class="features-slider">
+    <div style="text-align: center;">
+      <img src="images/flags/discord_logo.svg" alt="Discord" class="discord-icon" style="height: 50px; vertical-align: middle; margin-right: 10px;">
+      <a href="https://discord.gg/f7s2jBfaSy" class="register-btn" target="_blank">Připoj se na Discord</a>
+      <img src="images/flags/discord_logo.svg" alt="Discord" class="discord-icon" style="height: 50px; vertical-align: middle; margin-left: 10px;">
+    </div>
+  </section>
 
-
-     <h3 class="discord-blue">Nebo použíj formulář</h3>
-      <ul>
-        <li>Chci nahlásit problém: Jednosměrný formulář, bez zpětné vazby.</li>
-      </ul>
-<!-- Formulář – nahlásit problém -->
-     <p><a class="discord-blue">Ve vývoji</a></p>
-     </div>
-
-  </div>
+  <!-- Blok 3 – Formulář + upozornění -->
+  <section class="categories">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <p style="margin-bottom: 1.5rem; color: #ccc;">
+        Pokud se rozhodnete využít tento formulář, mějte prosím na paměti, že se jedná o jednosměrný kontakt. Odpověď neobdržíte. Doporučujeme výhradně Discord, kde Vám komunita či vývojáři mohou reagovat a pomoci. 
+        Prosím, mějte vždy na paměti <a href="rules.html" class="terms-link">Pravidla!</a>
+      </p>
+      
+      <h3 style="color: #f7dc6f; margin-bottom: 1rem;">Jednosměrný formulář</h3>
+      <form id="supportForm">
+        <textarea id="supportMessage" name="message" rows="6" required placeholder="Vaše zpráva..." style="width: 100%; padding: 1rem; border-radius: 8px; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;"></textarea>
+        <div style="text-align: right; margin-top: 1rem;">
+          <button type="submit" class="register-btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Odeslat</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </main>
 
   <footer>
