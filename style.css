@@ -735,7 +735,7 @@ footer {
 /* === PODPORA STRÁNKA === */
 
 .support-title-box {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(14, 14, 26, 0.5);
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
@@ -757,7 +757,7 @@ footer {
 }
 
 .support-discord-bar {
-  background-color: #11133c;
+  background-color: rgba(27, 31, 51);
   padding: 1.5rem;
   border-radius: 1rem;
   margin: 0 auto 20px auto;
@@ -791,7 +791,7 @@ footer {
 }
 
 .support-form-box {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(14, 14, 26, 0.5);
   padding: 2rem;
   border-radius: 1rem;
   max-width: 900px;
