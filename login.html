@@ -103,5 +103,36 @@
     });
   }
 </script>
+<script>
+  const loginForm = document.getElementById("loginForm");
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value.trim();
+
+    try {
+      const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // ✅ Přihlášení úspěšné – redirect
+        window.location.href = "demogame.html";
+      } else {
+        alert(result.error || "Chyba při přihlášení.");
+      }
+    } catch (error) {
+      console.error("Chyba:", error);
+      alert("Nepodařilo se připojit k serveru.");
+    }
+  });
+</script>
+
 </body>
 </html>
