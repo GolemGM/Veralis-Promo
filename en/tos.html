@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use - Veralis</title>
+  <link rel="icon" type="image/png" href="../images/ui-pics/veralisfavicon.png">
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-container">
+        <img src="../images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
+      </a>
+      <div class="middle-container">
+        <div class="call-to-arm hidden-btn">Build a new world</div>
+        <button class="register-btn hidden-btn" onclick="window.location.href='register.html'">Register</button>
+      </div>
+      <div class="language-switcher-container">
+        <button id="langBtn">
+          <img src="../images/flags/gb.svg" alt="EN" class="flag-icon" />
+          <span class="lang-text">EN</span> ▼
+        </button>
+        <ul id="langList" class="hidden">
+          <li data-lang="cs"><img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
+          <li data-lang="en"><img src="../images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+<main>
+  <div class="support-wrapper">
+    <div class="support-box">
+      <h2>Terms of Use</h2>
+      <p>
+        By using the Veralis website and game, you agree to the following terms:
+      </p>
+      <ul>
+        <li>Veralis is in development. All content may change without prior notice.</li>
+        <li>By creating an account, you agree to the storage of your email address for account and communication purposes.</li>
+        <li>Exploiting bugs, spamming, impersonating others, or disrupting the system is strictly prohibited.</li>
+        <li>You are responsible for keeping your login credentials secure. The operator is not liable for any misuse.</li>
+        <li>All game content (texts, graphics, mechanics) is protected by copyright.</li>
+        <li>Do not use your real name or any other sensitive data (e.g., email, address, phone number) as your username.</li>
+        <li>Violation of these rules may result in temporary or permanent access restrictions.</li>
+      </ul>
+      <p style="margin-top: 2rem; font-size: 0.95rem; color: #aaa;">
+        We only store the minimum necessary account data: your username and email address.
+      </p>
+      <p>
+        These terms may change. Major updates will be announced on the website.
+      </p>
+      <p>
+        If you have any questions or need assistance, visit our <a href="support.html">support page</a>.
+      </p>
+    </div>
+  </div>
+</main>
+
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html">About</a> |
+      <a href="register.html">Register</a> |
+      <a href="login.html">Login</a> |
+      <a href="support.html">Support</a>
+      <p class="small">© 2025 Project Veralis</p>
+    </div>
+  </footer>
+
+  <script>
+    const langBtn = document.getElementById('langBtn');
+    const langList = document.getElementById('langList');
+
+    langBtn.addEventListener('click', () => {
+      langList.classList.toggle('visible');
+    });
+
+    langList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const selectedLang = li.getAttribute('data-lang');
+        window.location.href = selectedLang === 'cs' ? '../tos.html' : './tos.html';
+      });
+    });
+  </script>
+</body>
+</html>
