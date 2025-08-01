@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veralis | Game Test</title>
+  <link rel="icon" type="image/png" href="../images/ui-pics/veralisfavicon.png">
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo-container">
+      <img src="../images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
+    </a>
+    <div class="middle-container">
+      <div class="call-to-arm">You're in the game!</div>
+      <button class="register-btn" onclick="location.href='index.html'">Better go back</button>
+    </div>
+
+    <div class="language-switcher-container">
+      <button id="langBtn">
+        <img src="../images/flags/gb.svg" alt="EN" class="flag-icon" />
+        <span class="lang-text">EN</span> ▼
+      </button>
+      <ul id="langList" class="hidden">
+        <li data-lang="cs"><img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
+        <li data-lang="en"><img src="../images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  TEST version for login result – welcome.
+</main>
+
+<footer>
+  <div class="footer-content">
+    <a href="index.html">About</a> |
+    <a href="register.html">Register</a> |
+    <a href="login.html">Login</a> |
+    <a href="support.html">Support</a>
+    <p class="small">© 2025 Project Veralis</p>
+  </div>
+</footer>
+
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langList = document.getElementById('langList');
+
+  if (langBtn && langList) {
+    (() => {
+      const path = window.location.pathname;
+      const isEN = path.includes('/en/');
+      langBtn.querySelector('img').src = isEN ? '../images/flags/gb.svg' : '../images/flags/cz.svg';
+      langBtn.querySelector('.lang-text').textContent = isEN ? 'EN' : 'CZ';
+    })();
+
+    langBtn.addEventListener('click', () => {
+      langList.classList.toggle('visible');
+    });
+
+    langList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const lang = li.getAttribute('data-lang');
+        const current = window.location.pathname.split('/').pop();
+
+        if (lang === 'en' && !window.location.pathname.includes('/en/')) {
+          window.location.href = 'en/' + current;
+        } else if (lang === 'cs' && window.location.pathname.includes('/en/')) {
+          window.location.href = '../' + current;
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
+        langList.classList.remove('visible');
+      }
+    });
+  }
+</script>
+
+<script>
+  const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>
