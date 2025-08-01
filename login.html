@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <div class="wrapper-status-bar">
     <div class="status-bar" id="status-bar">
       <span id="status-text">Text hlášky</span>
@@ -164,6 +165,23 @@
       } catch (error) {
         console.error("Chyba při přihlášení:", error);
         showStatus("Nepodařilo se připojit k serveru.");
+      }
+    });
+  </script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const status = params.get("status");
+      if (status) {
+        let message = "";
+        switch (status) {
+          case "badpass": message = "Špatné jméno nebo heslo."; break;
+          case "inactive": message = "Účet není aktivován. Zkontroluj e-mail."; break;
+          case "tokenfail": message = "Chyba ověření tokenu."; break;
+          default: message = decodeURIComponent(status);
+        }
+        showStatus(message, true);
       }
     });
   </script>
