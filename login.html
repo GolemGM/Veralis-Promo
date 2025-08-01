@@ -5,26 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Přihlášení - Veralis</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Status bar – stejný jako u registrace */
-    #status-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      transform: translateY(-100%);
-      transition: transform 0.5s ease;
-      background-color: rgba(180, 50, 50, 0.85);
-      color: white;
-      text-align: center;
-      padding: 10px;
-      font-weight: bold;
-      z-index: 9999;
-    }
-  </style>
 </head>
 <body>
-  <div id="status-bar"></div>
+  <div class="wrapper-status-bar">
+    <div class="status-bar" id="status-bar">
+      <span id="status-text">Text hlášky</span>
+      <button class="status-close" onclick="hideStatus()">×</button>
+    </div>
+  </div>
 
   <div class="overlay"></div>
 
@@ -86,6 +74,26 @@
   </footer>
 
   <script>
+    function showStatus(message, isError = true) {
+      const wrapper = document.querySelector(".wrapper-status-bar");
+      const bar = document.getElementById("status-bar");
+      const text = document.getElementById("status-text");
+
+      text.textContent = message;
+      bar.classList.remove("error", "success");
+      bar.classList.add(isError ? "error" : "success");
+
+      wrapper.classList.add("show");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function hideStatus() {
+      const wrapper = document.querySelector(".wrapper-status-bar");
+      wrapper.classList.remove("show");
+    }
+  </script>
+
+  <script>
     const langBtn = document.getElementById('langBtn');
     const langList = document.getElementById('langList');
 
@@ -123,18 +131,6 @@
   </script>
 
   <script>
-    // Status bar – zobrazí chybovou hlášku
-    function showStatus(message, isError = true) {
-      const statusBar = document.getElementById("status-bar");
-      statusBar.textContent = message;
-      statusBar.style.backgroundColor = isError ? "rgba(180, 50, 50, 0.85)" : "rgba(50, 160, 80, 0.85)";
-      statusBar.style.transform = "translateY(0)";
-      setTimeout(() => {
-        statusBar.style.transform = "translateY(-100%)";
-      }, 4000);
-    }
-
-    // Login – zpracování přihlášení a tokenu
     const loginForm = document.getElementById("loginForm");
 
     loginForm.addEventListener("submit", async (e) => {
@@ -143,7 +139,7 @@
       const username = document.getElementById("login-username").value.trim();
       const password = document.getElementById("login-password").value.trim();
 
-      console.log("Zadáno:", username, password); // 🟩 Výpis 1
+      console.log("Zadáno:", username, password);
 
       try {
         const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
@@ -152,40 +148,22 @@
           body: JSON.stringify({ username, password })
         });
 
-        console.log("Status:", response.status); // 🟩 Výpis 2
+        console.log("Status:", response.status);
 
         const result = await response.json();
 
-        console.log("Odpověď backendu:", result); // 🟩 Výpis 3
+        console.log("Odpověď backendu:", result);
 
         if (response.ok && result.token) {
-          console.log("Přihlášení OK, token:", result.token); // 🟩 Výpis 4
+          console.log("Přihlášení OK, token:", result.token);
           localStorage.setItem("token", result.token);
           window.location.href = "demogame.html";
         } else {
           showStatus(result.message || "Chyba při přihlášení.");
         }
       } catch (error) {
-        console.error("Chyba při přihlášení:", error); // 🟥 Výpis chyby
+        console.error("Chyba při přihlášení:", error);
         showStatus("Nepodařilo se připojit k serveru.");
-      }
-    });
-  </script>
-
-  <script>
-    // Volitelné: zobraz status z URL parametru (např. ?status=inactive)
-    window.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const status = params.get("status");
-      if (status) {
-        let message = "";
-        switch (status) {
-          case "badpass": message = "Špatné jméno nebo heslo."; break;
-          case "inactive": message = "Účet není aktivován. Zkontroluj e-mail."; break;
-          case "tokenfail": message = "Chyba ověření tokenu."; break;
-          default: message = decodeURIComponent(status);
-        }
-        showStatus(message, true);
       }
     });
   </script>
