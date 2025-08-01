@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Veralis | A New Beginning for Civilization</title>
+  <link rel="icon" type="image/png" href="../images/ui-pics/veralisfavicon.png">
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
@@ -89,6 +90,21 @@
     <p class="small">© 2025 Project Veralis</p>
   </div>
 </footer>
+
+  <script>
+  const lines = [
+    "🌌 Enter a world where survival depends on your choices",
+    "🛰️ Build your own base from the ruins of past prosperity",
+    "🔬 Explore the secrets of human legacy and lost knowledge",
+    "⚔️ Choose your path – isolation, trade, or alliance",
+    "🚀 From prototype to metropolis – your skill defines the outcome"
+  ];
+  let index = 0;
+  setInterval(() => {
+    document.getElementById("slider-text").textContent = lines[index];
+    index = (index + 1) % lines.length;
+  }, 3000);
+</script>
   
 <script>
   const langBtn = document.getElementById('langBtn');
