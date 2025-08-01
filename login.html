@@ -103,7 +103,10 @@
     });
   }
 </script>
+
+  
 <script>
+// Login , zpracování Tokenu
   const loginForm = document.getElementById("loginForm");
 
   loginForm.addEventListener("submit", async (e) => {
@@ -121,11 +124,11 @@
 
       const result = await response.json();
 
-      if (response.ok) {
-        // ✅ Přihlášení úspěšné – redirect
+      if (response.ok && result.token) {
+        localStorage.setItem("token", result.token); // ✅ token uložen
         window.location.href = "demogame.html";
       } else {
-        alert(result.error || "Chyba při přihlášení.");
+        alert(result.message || "Chyba při přihlášení.");
       }
     } catch (error) {
       console.error("Chyba:", error);
@@ -133,32 +136,6 @@
     }
   });
 </script>
-  <script>
-async function handleLogin(event) {
-  event.preventDefault();
-
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  const response = await fetch('https://tvuj-backend-url.cz/api/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ username, password })
-  });
-
-  const data = await response.json();
-
-  if (data.success && data.token) {
-    localStorage.setItem('token', data.token);
-    window.location.href = 'demogame.html';
-  } else {
-    alert(data.message || 'Přihlášení se nezdařilo');
-  }
-}
-</script>
-
 
 </body>
 </html>
