@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veralis | Support</title>
+  <link rel="icon" type="image/png" href="../images/ui-pics/veralisfavicon.png">
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo-container">
+      <img src="../images/ui-pics/veralis_logo_transparent.png" alt="Veralis Logo" />
+    </a>
+    <div class="middle-container">
+      <div class="call-to-arm hidden-btn">Join the creation of a new world</div>
+      <button class="register-btn" onclick="location.href='register.html'">Register</button>
+    </div>
+
+    <div class="language-switcher-container">
+      <button id="langBtn">
+        <img src="../images/flags/gb.svg" alt="EN" class="flag-icon" />
+        <span class="lang-text">EN</span> ▼
+      </button>
+      <ul id="langList" class="hidden">
+        <li data-lang="cs"><img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
+        <li data-lang="en"><img src="../images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="support-title-box">
+    <h2>Veralis Project Support</h2>
+    <p>We are still in the development phase. We apologize for any bugs or unfinished elements.<br>
+    If you need help, have a question, or want to report a bug, please use one of the options below.</p>
+  </div>
+
+  <div class="support-discord-bar">
+    <img src="../images/flags/discord_logo.svg" alt="Discord">
+    <a href="https://discord.gg/f7s2jBfaSy" class="golden-btn" target="_blank">Join Discord</a>
+    <img src="../images/flags/discord_logo.svg" alt="Discord">
+  </div>
+
+  <div class="support-form-box">
+    <p>If you choose to use this form, please note that it is a one-way contact.<br>
+    You will not receive a reply. We strongly recommend using Discord, where the community or developers can help.<br>
+    Please always remember the <a href="../rules.html">rules</a>. Optionally, you may leave your name in the message.</p>
+
+    <h3>One-Way Form</h3>
+    <form id="supportForm">
+      <textarea rows="6" placeholder="Your message..." maxlength="1000" required></textarea>
+      <div class="button-wrapper">
+        <button type="submit">Send</button>
+      </div>
+    </form>
+    <div id="support-status" class="support-status"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <a href="index.html">About</a> |
+    <a href="register.html">Register</a> |
+    <a href="login.html">Login</a> |
+    <a href="support.html">Support</a>
+    <p class="small">© 2025 Project Veralis</p>
+  </div>
+</footer>
+
+<script>
+  const langBtn = document.getElementById('langBtn');
+  const langList = document.getElementById('langList');
+
+  if (langBtn && langList) {
+    (() => {
+      const path = window.location.pathname;
+      const isEN = path.includes('/en/');
+      langBtn.querySelector('img').src = isEN ? '../images/flags/gb.svg' : '../images/flags/cz.svg';
+      langBtn.querySelector('.lang-text').textContent = isEN ? 'EN' : 'CZ';
+    })();
+
+    langBtn.addEventListener('click', () => {
+      langList.classList.toggle('visible');
+    });
+
+    langList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const lang = li.getAttribute('data-lang');
+        const current = window.location.pathname.split('/').pop();
+
+        if (lang === 'en' && !window.location.pathname.includes('/en/')) {
+          window.location.href = 'en/' + current;
+        } else if (lang === 'cs' && window.location.pathname.includes('/en/')) {
+          window.location.href = '../' + current;
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
+        langList.classList.remove('visible');
+      }
+    });
+  }
+</script>
+
+<script>
+  const supportForm = document.getElementById("supportForm");
+
+  supportForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const message = supportForm.querySelector("textarea").value.trim();
+    const statusBox = document.getElementById("support-status");
+    statusBox.textContent = "";
+    if (!message) return;
+
+    try {
+      const response = await fetch("https://veralis-backend-production.up.railway.app/api/support", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message }),
+      });
+
+      if (response.ok) {
+        supportForm.reset();
+        statusBox.textContent = "✅ Message sent. Thank you!";
+        statusBox.style.color = "#4caf50";
+      } else {
+        statusBox.textContent = "❌ Error while sending.";
+        statusBox.style.color = "#f44336";
+      }
+    } catch (error) {
+      console.error("Sending error:", error);
+      statusBox.textContent = "❌ Server is currently unavailable.";
+      statusBox.style.color = "#f44336";
+    }
+
+    statusBox.style.marginTop = "0.75rem";
+    statusBox.style.fontSize = "0.95rem";
+
+    setTimeout(() => {
+      statusBox.textContent = "";
+    }, 6000);
+  });
+</script>
+
+</body>
+</html>
