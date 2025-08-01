@@ -24,22 +24,92 @@
           <img src="../images/flags/gb.svg" alt="EN" class="flag-icon" />
           <span class="lang-text">EN</span> ▼
         </button>
+        <ul id="langList" class="hidden">
+          <li data-lang="cs"><img src="../images/flags/cz.svg" alt="CZ" class="flag-icon" /> CZ</li>
+          <li data-lang="en"><img src="../images/flags/gb.svg" alt="EN" class="flag-icon" /> EN</li>
+        </ul>
       </div>
     </div>
   </header>
 
-<main>
-  <div class="support-wrapper">
-    <div class="support-box">
-      <h2>Community Rules</h2>
-      <p>Players are part of the Veralis community, and we ask that you follow these behavioral principles:</p>
+  <main>
+    <div class="support-wrapper">
+      <div class="support-box">
+        <h2>Community Rules</h2>
+        <p>Players are part of the Veralis community and are therefore expected to follow these behavioral guidelines:</p>
 
-      <h3>1. Basic Behavior Rules</h3>
-      <ul>
-        <li>Respect other players and developers.</li>
-        <li>No hate speech, bullying, or harassment.</li>
-        <li>No spam, advertising, or flooding.</li>
-      </ul>
+        <h3>1. Basic Behavior</h3>
+        <ul>
+          <li>Respect other players and developers.</li>
+          <li>No hate speech, bullying or harassment.</li>
+          <li>No spam, advertising or flooding.</li>
+        </ul>
 
-      <h3>2. Multiple Accounts</h3>
-      <p>Having multiple accounts per person is allo
+        <h3>2. Multiple Accounts</h3>
+        <p>Having more than one account per person is allowed only if not abused (e.g., resource transfer, cooldown circumvention). Violations may lead to account bans.</p>
+
+        <h3>3. Communication & Community</h3>
+        <div style="margin-top: 2rem;">
+          <p>Official communication takes place on our Discord server:</p>
+          <a href="https://discord.gg/f7s2jBfaSy" target="_blank" class="register-btn">
+            Join Discord
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html">About</a> |
+      <a href="register.html">Register</a> |
+      <a href="login.html">Login</a> |
+      <a href="support.html">Support</a>
+      <p class="small">© 2025 Project Veralis</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('registerBtn').addEventListener('click', () => {
+      window.location.href = 'register.html';
+    });
+  </script>
+
+  <script>
+    const langBtn = document.getElementById('langBtn');
+    const langList = document.getElementById('langList');
+
+    if (langBtn && langList) {
+      (() => {
+        const path = window.location.pathname;
+        const isEN = path.includes('/en/');
+        langBtn.querySelector('img').src = isEN ? '../images/flags/gb.svg' : '../images/flags/cz.svg';
+        langBtn.querySelector('.lang-text').textContent = isEN ? 'EN' : 'CZ';
+      })();
+
+      langBtn.addEventListener('click', () => {
+        langList.classList.toggle('visible');
+      });
+
+      langList.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', () => {
+          const lang = li.getAttribute('data-lang');
+          const current = window.location.pathname.split('/').pop();
+
+          if (lang === 'en' && !window.location.pathname.includes('/en/')) {
+            window.location.href = 'en/' + current;
+          } else if (lang === 'cs' && window.location.pathname.includes('/en/')) {
+            window.location.href = '../' + current;
+          }
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
+          langList.classList.remove('visible');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
