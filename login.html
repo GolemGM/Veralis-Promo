@@ -8,10 +8,11 @@
 </head>
 <body>
 
-  <div class="wrapper-status-bar">
-    <div class="status-bar" id="status-bar">
-      <span id="status-text">Text hlášky</span>
-      <button class="status-close" onclick="hideStatus()">×</button>
+  <!-- Status bar wrapper (přesně z register.html) -->
+  <div id="status-bar-wrapper" class="hidden">
+    <div id="status-bar" class="status-error">
+      <span id="status-message">Chyba</span>
+      <span id="status-close" onclick="hideStatus()">×</span>
     </div>
   </div>
 
@@ -76,21 +77,21 @@
 
   <script>
     function showStatus(message, isError = true) {
-      const wrapper = document.querySelector(".wrapper-status-bar");
+      const wrapper = document.getElementById("status-bar-wrapper");
       const bar = document.getElementById("status-bar");
-      const text = document.getElementById("status-text");
+      const text = document.getElementById("status-message");
 
+      wrapper.classList.remove("hidden");
+      bar.classList.remove("status-error", "status-success");
+      bar.classList.add(isError ? "status-error" : "status-success");
       text.textContent = message;
-      bar.classList.remove("error", "success");
-      bar.classList.add(isError ? "error" : "success");
 
-      wrapper.classList.add("show");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function hideStatus() {
-      const wrapper = document.querySelector(".wrapper-status-bar");
-      wrapper.classList.remove("show");
+      const wrapper = document.getElementById("status-bar-wrapper");
+      wrapper.classList.add("hidden");
     }
   </script>
 
@@ -140,8 +141,6 @@
       const username = document.getElementById("login-username").value.trim();
       const password = document.getElementById("login-password").value.trim();
 
-      console.log("Zadáno:", username, password);
-
       try {
         const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
           method: "POST",
@@ -149,21 +148,15 @@
           body: JSON.stringify({ username, password })
         });
 
-        console.log("Status:", response.status);
-
         const result = await response.json();
 
-        console.log("Odpověď backendu:", result);
-
         if (response.ok && result.token) {
-          console.log("Přihlášení OK, token:", result.token);
           localStorage.setItem("token", result.token);
           window.location.href = "demogame.html";
         } else {
           showStatus(result.message || "Chyba při přihlášení.");
         }
       } catch (error) {
-        console.error("Chyba při přihlášení:", error);
         showStatus("Nepodařilo se připojit k serveru.");
       }
     });
