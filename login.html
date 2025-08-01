@@ -110,31 +110,38 @@
   const loginForm = document.getElementById("loginForm");
 
   loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const username = document.getElementById("login-username").value.trim();
-    const password = document.getElementById("login-password").value.trim();
+  const username = document.getElementById("login-username").value.trim();
+  const password = document.getElementById("login-password").value.trim();
 
-    try {
-      const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-      });
+  console.log("Zadáno:", username, password); // 🟩 Výpis 1
 
-      const result = await response.json();
+  try {
+    const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
 
-      if (response.ok && result.token) {
-        localStorage.setItem("token", result.token); // ✅ token uložen
-        window.location.href = "demogame.html";
-      } else {
-        alert(result.message || "Chyba při přihlášení.");
-      }
-    } catch (error) {
-      console.error("Chyba:", error);
-      alert("Nepodařilo se připojit k serveru.");
+    console.log("Status:", response.status); // 🟩 Výpis 2
+
+    const result = await response.json();
+
+    console.log("Odpověď backendu:", result); // 🟩 Výpis 3
+
+    if (response.ok && result.token) {
+      console.log("Přihlášení OK, token:", result.token); // 🟩 Výpis 4
+      localStorage.setItem("token", result.token);
+      window.location.href = "demogame.html";
+    } else {
+      alert(result.message || "Chyba při přihlášení.");
     }
-  });
+  } catch (error) {
+    console.error("Chyba při přihlášení:", error); // 🟥 Výpis chyby
+    alert("Nepodařilo se připojit k serveru.");
+  }
+});
 </script>
 
 </body>
