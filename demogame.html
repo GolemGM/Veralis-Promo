@@ -34,6 +34,7 @@
 </header>
 
   <main>
+    <button id="logoutBtn" style="position:absolute; top:10px; right:10px;">🔓 Odhlásit se</button>
     <div style="display: flex; align-items: center; gap: 1rem;">
         <p style="margin: 0;">TEST verze pro výsledky loginu , díky kod pro report je LAMA :D pošlete mi feedback na discord #TEST</p>
 
@@ -92,6 +93,9 @@
     });
   }
 </script>
+
+// Nemáš token ? padej ! 
+
   <script>
   const token = localStorage.getItem('token');
   if (!token) {
@@ -99,5 +103,21 @@
   }
 </script>
 
+// Script pro Logout BTN
+
+<script>
+  // Ověření tokenu
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "https://golemgm.github.io/Veralis-Promo/login.html?status=tokenfail";
+  }
+
+  // Odhlášení
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "https://golemgm.github.io/Veralis-Promo/login.html";
+  });
+</script>
+  
 </body>
 </html>
