@@ -134,50 +134,48 @@
   </script>
 
   <script>
-    const loginForm = document.getElementById("loginForm");
+  const loginForm = document.getElementById("loginForm");
 
-    loginForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const username = document.getElementById("login-username").value.trim();
-      const password = document.getElementById("login-password").value.trim();
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value.trim();
 
-      try {
-        const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password })
-        });
+    try {
+      const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
 
-        const result = await response.json();
+      const result = await response.json();
 
-        if (response.ok && result.token) {
-          localStorage.setItem("token", result.token);
-          window.location.href = "demogame.html";
-        } else {
-          showStatus(result.message || "Chyba při přihlášení.");
-        }
-      } catch (error) {
-        showStatus("Nepodařilo se připojit k serveru.");
+      if (!response.ok) {
+        // Server hlásí chybu (např. 401, 403)
+        showStatus(result.error || result.message || "Chyba při přihlášení.");
+        return;
       }
-    });
-  </script>
 
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const status = params.get("status");
-      if (status) {
-        let message = "";
-        switch (status) {
-          case "badpass": message = "Špatné jméno nebo heslo."; break;
-          case "inactive": message = "Účet není aktivován. Zkontroluj e-mail."; break;
-          case "tokenfail": message = "Chyba ověření tokenu."; break;
-          default: message = decodeURIComponent(status);
-        }
-        showStatus(message, true);
+      // 🔐 Kontrola aktivace účtu
+      if (result.is_active === false) {
+        showStatus("Účet není aktivován. Zkontroluj e-mail.");
+        return;
       }
-    });
-  </script>
+
+      // ✅ Úspěšné přihlášení
+      if (result.token) {
+        localStorage.setItem("token", result.token);
+        window.location.href = "StarBridge.html"; // nebo demogame.html později
+      } else {
+        showStatus("Přihlášení selhalo.");
+      }
+
+    } catch (error) {
+      showStatus("Nepodařilo se připojit k serveru.");
+    }
+  });
+</script>
+
 </body>
 </html>
