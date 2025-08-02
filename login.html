@@ -164,9 +164,9 @@
       }
 
       // ✅ Úspěšné přihlášení
-      if (result.token) {
-        localStorage.setItem("token", result.token);
-        window.location.href = "StarBridge.html"; // nebo demogame.html později
+      if (response.ok && result.token) {
+         localStorage.setItem("token", result.token);
+         window.location.href = "StarBridge.html"; // ✅ rovnou na hlasatele
       } else {
         showStatus("Přihlášení selhalo.");
       }
