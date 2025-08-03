@@ -132,35 +132,38 @@
     }
   </script>
 
-  <script>
-    const loginForm = document.getElementById("loginForm");
+  /* Script na login tlačitko 
+  
+ <script>
+  const loginForm = document.getElementById("loginForm");
 
-    loginForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const username = document.getElementById("login-username").value.trim();
-      const password = document.getElementById("login-password").value.trim();
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value.trim();
 
-      try {
-        const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password })
-        });
+    try {
+      const response = await fetch("https://veralis-backend-production.up.railway.app/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
 
-        const result = await response.json();
+      const result = await response.json();
 
-        if (response.ok && result.token) {
-          localStorage.setItem("token", result.token);
-          window.location.href = "demogame.html";
-        } else {
-          showStatus(result.message || "Login failed.");
-        }
-      } catch (error) {
-        showStatus("Unable to connect to the server.");
+      if (response.ok && result.token) {
+        localStorage.setItem("token", result.token);
+        window.location.href = "https://golemgm.github.io/Veralis-Game/StarBridge.html?lang=en";
+      } else {
+        showStatus(result.message || "Login failed.");
       }
-    });
-  </script>
+    } catch (error) {
+      showStatus("Unable to connect to the server.");
+    }
+  });
+</script>
+
 
   <script>
     window.addEventListener("DOMContentLoaded", () => {
