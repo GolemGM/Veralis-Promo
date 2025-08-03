@@ -133,7 +133,9 @@
     }
   </script>
 
-  <script>
+/* Script na funkci Login tlačitka
+  
+<script>
   const loginForm = document.getElementById("loginForm");
 
   loginForm.addEventListener("submit", async (e) => {
@@ -152,21 +154,21 @@
       const result = await response.json();
 
       if (!response.ok) {
-        // Server hlásí chybu (např. 401, 403)
         showStatus(result.error || result.message || "Chyba při přihlášení.");
         return;
       }
 
-      // 🔐 Kontrola aktivace účtu
       if (result.is_active === false) {
         showStatus("Účet není aktivován. Zkontroluj e-mail.");
         return;
       }
 
-      // ✅ Úspěšné přihlášení
       if (response.ok && result.token) {
-         localStorage.setItem("token", result.token);
-         window.location.href = "https://golemgm.github.io/Veralis-Game/StarBridge.html"; // ✅ rovnou na hlasatele
+        localStorage.setItem("token", result.token);
+
+        // 🧠 Detekuj jazyk z URL cesty
+        const lang = window.location.pathname.includes("/cs/") ? "cs" : "en";
+        window.location.href = `https://golemgm.github.io/Veralis-Game/StarBridge.html?lang=${lang}`;
       } else {
         showStatus("Přihlášení selhalo.");
       }
@@ -176,6 +178,7 @@
     }
   });
 </script>
+
   
   <script>
     window.addEventListener("DOMContentLoaded", () => {
