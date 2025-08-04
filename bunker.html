@@ -1,3 +1,102 @@
+Přeskočit na obsah
+Historie chatu
+
+
+Řekl/a jsi:
+tak bunker.html funguje, umíme u světelný efekt ? něco jako byl ten kod o probliknutí , ale jen okolo toho světla popřípadně pod rámem 
+ChatGPT řekl:
+Ano, můžeme udělat světelný efekt kolem určitého prvku (např. „bunkrového světla“) pomocí CSS animací a efektů jako box-shadow, filter: drop-shadow nebo glow simulací. Máš několik možností podle toho, jaký styl chceš dosáhnout:
+
+✅ 1. Jemné pulsující světlo (glow) kolem prvku
+.light-glow {
+  animation: pulseGlow 2s infinite;
+  box-shadow: 0 0 10px #f7e97f, 0 0 20px #f7e97f;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 8px #f7e97f, 0 0 16px #f7e97f;
+  }
+  50% {
+    box-shadow: 0 0 20px #fff899, 0 0 35px #fff899;
+  }
+  100% {
+    box-shadow: 0 0 8px #f7e97f, 0 0 16px #f7e97f;
+  }
+}
+Použiješ v HTML:
+
+<div class="bunker-light light-glow"></div>
+✅ 2. Probliknutí jako výboj
+Jednorázový efekt (např. po kliknutí nebo při načtení):
+
+.flash {
+  animation: flashGlow 0.5s ease-out;
+}
+
+@keyframes flashGlow {
+  0% {
+    box-shadow: 0 0 0px transparent;
+  }
+  50% {
+    box-shadow: 0 0 30px 10px #ffff99;
+  }
+  100% {
+    box-shadow: 0 0 0px transparent;
+  }
+}
+HTML:
+
+<div class="bunker-light flash"></div>
+JS pro spuštění (např. onclick):
+
+const light = document.querySelector('.bunker-light');
+light.classList.remove('flash');
+void light.offsetWidth; // reflow for restart
+light.classList.add('flash');
+✅ 3. Podsvícení pod rámečkem (simulace spodního svitu)
+Pokud chceš, aby světlo bylo jen dole pod rámečkem:
+
+.underlight {
+  position: relative;
+}
+
+.underlight::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(255,255,180,0.6), transparent);
+  filter: blur(8px);
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.6; }
+}
+Můžeš kombinovat:
+.light-glow + .underlight → svit kolem i pod.
+
+Barvy můžeš přizpůsobit (#ffff99, #fce96b, atd.).
+
+Chceš, abych ti to připravil přímo do bunker.html + style.css, podle aktuálního stylu, co používáš? Stačí mi říct, který efekt se ti líbí a jaký prvek přesně má „svítit“ – třeba #bunker-lamp, nebo jiný.
+
+Řekl/a jsi:
+upravíš mi to ? aby seděl efekt světla pod rámeček kde je okno ?
+ChatGPT řekl:
+Ano – upravím ti efekt jemného světla pod okno v bunkru, přímo pod rámeček, jako světelný svit směrem dolů. Předpokládám, že tvůj HTML kód obsahuje prvek jako:
+
+<div id="bunker-window"></div>
+Níže ti dám úpravu do style.css, aby to:
+
+vytvořilo svítící zónu pod oknem (s rozmazaným
+
+Řekl/a jsi:
+
 
 <!DOCTYPE html>
 <html lang="cs">
@@ -67,3 +166,120 @@
 
 </body>
 </html>
+ChatGPT řekl:
+Díky, přesně takto to můžu upravit.
+
+Přidám efekt jemného svitu pod oknem, tedy pod tou částí obrázku, kde je lampa. Efekt bude vytvořen pomocí ::after pseudo-elementu pod obrázkem bunkr_dark.png, zarovnaný tak, aby to vypadalo jako „rozsvícení pod rámeček“.
+
+🔧 Úprava:
+Doplníme div s třídou .lamp-light do HTML.
+
+Přidáme příslušné styly do <style>.
+
+Světlo bude blikat zároveň s lamp-overlay.
+
+✅ Upravený celý kód:
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Blikající lampa test</title>
+  <style>
+    body {
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .scene {
+      position: relative;
+      width: 100%;
+      max-width: 1500px;
+      margin: auto;
+    }
+
+    .base-image {
+      width: 100%;
+      display: block;
+    }
+
+    .lamp-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      opacity: 0;
+      transition: opacity 0.1s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .lamp-overlay.blink {
+      opacity: 1;
+    }
+
+    .lamp-light {
+      position: absolute;
+      left: 50%;
+      top: 31.5%; /* přizpůsob podle pozice lampy */
+      transform: translateX(-50%);
+      width: 200px;
+      height: 40px;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 180, 0.5), transparent);
+      filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.1s ease;
+    }
+
+    .lamp-light.blink {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="scene">
+  <img src="images/ui-pics/bunkr_dark.png" alt="Tmavý bunkr" class="base-image" />
+  <div class="lamp-light"></div>
+  <img src="images/ui-pics/bunkr_lamp.png" alt="Svítící lampa" class="lamp-overlay" />
+</div>
+
+<script>
+  function blinkLamp() {
+    const lamp = document.querySelector('.lamp-overlay');
+    const glow = document.querySelector('.lamp-light');
+    lamp.classList.add('blink');
+    glow.classList.add('blink');
+    setTimeout(() => {
+      lamp.classList.remove('blink');
+      glow.classList.remove('blink');
+    }, 1000);
+  }
+
+  window.onload = () => {
+    setTimeout(blinkLamp, 1000);
+  };
+</script>
+
+</body>
+</html>
+🔍 Možnosti přizpůsobení:
+top: 31.5% nastav dle pozice lampy (přesně odhadnuto pro 1500px šířku).
+
+width, height nastavíš podle rozměru rámečku okna.
+
+Barvu můžeš změnit z rgba(255,255,180,0.5) na teplejší nebo studenější odstín světla.
+
+Chceš další efekt – např. pomalé pulzování, nebo opakovací blikání? Můžeme rozšířit.
+
+
+
+Soubor nevybránSoubor nevybrán
+ChatGPT může dělat chyby. Doporučujeme kontrolovat důležité informace. Viz předvolby cookies.
