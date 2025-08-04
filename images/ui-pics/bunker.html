@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Blikající lampa test</title>
+  <style>
+    body {
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .scene {
+      position: relative;
+      width: 100%;
+      max-width: 1500px;
+      margin: auto;
+    }
+
+    .base-image {
+      width: 100%;
+      display: block;
+    }
+
+    .lamp-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      opacity: 0;
+      transition: opacity 0.1s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .lamp-overlay.blink {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="scene">
+  <img src="bunkr_dark.png" alt="Tmavý bunkr" class="base-image" />
+  <img src="bunkr_lamp.png" alt="Svítící lampa" class="lamp-overlay" />
+</div>
+
+<script>
+  function blinkLamp() {
+    const lamp = document.querySelector('.lamp-overlay');
+    lamp.classList.add('blink');
+    setTimeout(() => {
+      lamp.classList.remove('blink');
+    }, 1000); // délka bliknutí: 1 sekunda
+  }
+
+  window.onload = () => {
+    setTimeout(blinkLamp, 1000); // spustí bliknutí po 1s
+  };
+</script>
+
+</body>
+</html>
